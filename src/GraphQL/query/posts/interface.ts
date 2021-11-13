@@ -1,4 +1,4 @@
-export interface Posts {
+export interface Post {
   id: string;
   body: string;
   createdAt: string;

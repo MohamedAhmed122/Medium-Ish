@@ -1,2 +1,3 @@
 export {GET_POSTS} from './posts';
-export type {Posts} from './posts/interface';
+export type {Post} from './posts/interface';
+export {useGetPosts} from './posts/useGetPosts';

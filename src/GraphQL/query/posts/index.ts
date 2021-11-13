@@ -3,9 +3,9 @@ import {fragmentsField} from '../../types';
 import {gql} from 'graphql-tag';
 
 const GET_POSTS = gql`
-    query getPosts {
+    query getAllPosts {
         getPosts{
-            ...${fragmentsField.post}
+           ...${fragmentsField.post}
         }
     }
     ${CORE_POST_FIELDS}

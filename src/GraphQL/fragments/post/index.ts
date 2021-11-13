@@ -7,6 +7,5 @@ export const CORE_POST_FIELDS = gql`
     body
     createdAt
     username
-    likeCount
-    commentLike
+  }
 `;

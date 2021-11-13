@@ -2,26 +2,28 @@ import {useQuery} from '@apollo/client';
 import gql from 'graphql-tag';
 import React from 'react';
 import {Text, View} from 'react-native';
-// import styles from './styles'
+import {useGetPosts} from '../../GraphQL/query';
 
 interface PostsProps {}
 export const Posts: React.FC<PostsProps> = () => {
-  const GET_POSTS = gql`
-    query getPosts {
-      getPosts {
-        id
-        body
-      }
-    }
-  `;
+  const {postsLoading, posts, postError} = useGetPosts();
+  const {loading, error, data} = useQuery(GET);
 
-  const {loading, error, data} = useQuery(GET_POSTS);
+  console.log(loading, error, data, 'number1');
 
-  console.log(loading, error, data);
-
+  console.log(postsLoading, posts, postError, 'number2');
   return (
     <View>
       <Text>Posts</Text>
     </View>
   );
 };
+
+const GET = gql`
+  query getAllPosts {
+    getPosts {
+      id
+      body
+    }
+  }
+`;
