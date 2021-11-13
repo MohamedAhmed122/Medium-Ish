@@ -1,8 +1,8 @@
 import React from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
-import {COLORS} from '../../styles';
+import {COLORS} from '@Styles/index';
 
-export default function AppLoading() {
+export function AppLoading() {
   return (
     <View style={styles.loading}>
       <ActivityIndicator size="large" color={COLORS.primary} />

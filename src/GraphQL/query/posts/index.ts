@@ -1,5 +1,5 @@
-import {CORE_POST_FIELDS} from '../../fragments/post/index';
-import {fragmentsField} from '../../types';
+import {CORE_POST_FIELDS} from '@GraphQL/fragments';
+import {fragmentsField} from '@GraphQL/types';
 import {gql} from 'graphql-tag';
 
 const GET_POSTS = gql`

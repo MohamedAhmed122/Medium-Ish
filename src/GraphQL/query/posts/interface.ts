@@ -3,6 +3,6 @@ export interface Post {
   body: string;
   createdAt: string;
   username: string;
-  likeCount: number;
-  commentLike: number;
+  likeCount?: number;
+  commentLike?: number;
 }

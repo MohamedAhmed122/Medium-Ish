@@ -1,4 +1,4 @@
-import {COLORS} from './../../styles';
+import {COLORS} from '@Styles/index';
 import {ScaledSheet} from 'react-native-size-matters';
 import {Platform} from 'react-native';
 

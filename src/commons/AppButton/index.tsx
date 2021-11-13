@@ -1,13 +1,13 @@
 import React from 'react';
-import {COLORS} from '../../styles';
+import {COLORS} from '@Styles/index';
 import {StyleProp, Text, TouchableOpacity, ViewStyle} from 'react-native';
 import styles from './styles';
 
 interface Props {
   title: string;
-  color: string;
+  color?: string;
   onPress(): void;
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }
 
 export const AppButton: React.FC<Props> = ({

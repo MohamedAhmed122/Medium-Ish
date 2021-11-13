@@ -1,29 +1,32 @@
-import {useQuery} from '@apollo/client';
-import gql from 'graphql-tag';
+/* eslint-disable curly */
 import React from 'react';
-import {Text, View} from 'react-native';
-import {useGetPosts} from '../../GraphQL/query';
+import {FlatList} from 'react-native';
+import {Error, AppLoading, Screen, AppButton} from '@Commons/index';
+import {useGetPosts} from '@GraphQL/query';
+import {COLORS} from '@Styles/index';
+import {Post} from './Post';
 
 interface PostsProps {}
 export const Posts: React.FC<PostsProps> = () => {
   const {postsLoading, posts, postError} = useGetPosts();
-  const {loading, error, data} = useQuery(GET);
 
-  console.log(loading, error, data, 'number1');
+  if (postsLoading) return <AppLoading />;
+  if (postError || !posts) return <Error />;
 
-  console.log(postsLoading, posts, postError, 'number2');
   return (
-    <View>
-      <Text>Posts</Text>
-    </View>
+    <Screen>
+      <FlatList
+        ListHeaderComponent={() => (
+          <AppButton
+            title="Create Post"
+            onPress={() => {}}
+            color={COLORS.secondary}
+          />
+        )}
+        renderItem={({item}) => <Post item={item} />}
+        data={posts.getPosts}
+        keyExtractor={item => item.id}
+      />
+    </Screen>
   );
 };
-
-const GET = gql`
-  query getAllPosts {
-    getPosts {
-      id
-      body
-    }
-  }
-`;

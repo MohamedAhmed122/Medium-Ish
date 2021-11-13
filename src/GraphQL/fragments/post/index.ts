@@ -1,4 +1,4 @@
-import {fragmentsField, typename} from '../../types';
+import {fragmentsField, typename} from '@GraphQL/types';
 import {gql} from '@apollo/client';
 
 export const CORE_POST_FIELDS = gql`
