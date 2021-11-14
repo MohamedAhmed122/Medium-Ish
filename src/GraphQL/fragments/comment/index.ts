@@ -7,4 +7,5 @@ export const CORE_COMMENT_FIELDS = gql`
     body
     createdAt
     username
+  }
 `;

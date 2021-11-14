@@ -8,9 +8,10 @@ import styles from './styles';
 
 interface PostProps {
   item: PostInterface;
+  handleNavigate(id: string): void;
 }
 
-export const Post: React.FC<PostProps> = ({item}) => {
+export const Post: React.FC<PostProps> = ({item, handleNavigate}) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
 
   const toggleButton = (): void => setIsLiked(!isLiked);
@@ -34,7 +35,11 @@ export const Post: React.FC<PostProps> = ({item}) => {
           />
           <Text style={styles.like}> 120 Likes</Text>
         </View>
-        <AppBadge onPress={() => {}} title="View" color={COLORS.primary} />
+        <AppBadge
+          onPress={() => handleNavigate(item.id)}
+          title="View"
+          color={COLORS.primary}
+        />
       </View>
     </View>
   );

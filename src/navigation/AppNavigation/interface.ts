@@ -8,6 +8,6 @@ export enum PostParams {
 
 export type PostParamsList = {
   Posts: NO_PARAMS;
-  PostDetail: NO_PARAMS;
+  PostDetail: {id: string};
   Settings: NO_PARAMS;
 };
