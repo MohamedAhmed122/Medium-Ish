@@ -19,6 +19,10 @@ export const Screen: React.FC<ScreenProps> = ({
       </ScrollView>
     );
   } else {
-    return <SafeAreaView style={styles.scrollScreen}>{children}</SafeAreaView>;
+    return (
+      <SafeAreaView style={[styles.scrollScreen, scrollContainerStyle]}>
+        {children}
+      </SafeAreaView>
+    );
   }
 };
