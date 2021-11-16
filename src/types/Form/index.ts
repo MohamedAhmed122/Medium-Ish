@@ -4,8 +4,12 @@ export interface LoginValue {
   username: string;
   password: string;
 }
+export interface RegisterValue extends LoginValue {
+  email: string;
+  confirmPassword: string;
+}
 
-export type initialFormValues = LoginValue;
+export type initialFormValues = LoginValue | RegisterValue;
 
 export interface UseFormikContext {
   setFieldValue: (

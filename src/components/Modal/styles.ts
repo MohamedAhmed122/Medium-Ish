@@ -4,13 +4,13 @@ const {width, height} = Dimensions.get('window');
 
 export default ScaledSheet.create({
   modal: {
-    width,
     left: -20,
-    height,
+    bottom: -20,
+    position: 'absolute',
   },
   modalContainer: {
     width,
-    height,
+    height: height / 1.5,
     backgroundColor: 'white',
     borderRadius: 18,
   },

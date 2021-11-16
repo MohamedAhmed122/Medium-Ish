@@ -1,24 +1,28 @@
 import React from 'react';
+import {initialFormValues} from '@Types/Form';
 import {ModalType} from '@Types/Modal';
-import {LoginValue} from '@Types/Form';
 import * as Yup from 'yup';
 import * as Animatable from 'react-native-animatable';
 import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
 import {StyleSheet} from 'react-native';
-import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';
+import {Header} from '@Components/Header';
 
-interface LoginProps {
+interface RegisterProps {
   setModalType(type: ModalType): void;
 }
 
-export const LoginModal: React.FC<LoginProps> = ({setModalType}) => {
-  const validationSchema = Yup.object().shape({
-    username: Yup.string().required().min(4).label('Email'),
-    password: Yup.string().required().min(6).label('Password'),
-  });
-
-  const handleSubmit = (values: LoginValue): void => {
+const validationSchema = Yup.object().shape({
+  email: Yup.string().required().email().label('Email'),
+  username: Yup.string().required().min(4).label('Username'),
+  password: Yup.string().required().min(6).label('Password'),
+  confirmPassword: Yup.string().oneOf(
+    [Yup.ref('password'), null],
+    'Passwords must match',
+  ),
+});
+export const RegisterModal: React.FC<RegisterProps> = ({setModalType}) => {
+  const handleSubmit = (values: initialFormValues): void => {
     console.log(values);
   };
 
@@ -29,14 +33,21 @@ export const LoginModal: React.FC<LoginProps> = ({setModalType}) => {
       style={styles.loginContainer}
       duration={1000}
       animation="slideInUp">
-      <Header title="Login Form" handleGoBack={handleGoBack} />
+      <Header handleGoBack={handleGoBack} title={'Register From'} />
       <AppForm
         onSubmit={handleSubmit}
-        initialValues={{username: '', password: ''}}
+        initialValues={{
+          username: '',
+          password: '',
+          confirmPassword: '',
+          email: '',
+        }}
         validationSchema={validationSchema}>
+        <AppInputField name="email" placeholder="Email" />
         <AppInputField name="username" placeholder="Username" />
         <AppInputField name="password" placeholder="Password" />
-        <AppSubmitButton title="Login" />
+        <AppInputField name="confirmPassword" placeholder="Confirm Password" />
+        <AppSubmitButton title="Register" color={COLORS.secondary} />
       </AppForm>
     </Animatable.View>
   );
