@@ -28,6 +28,7 @@ module.exports = {
           '@Screens': './src/screens',
           '@Config': './src/config',
           '@Assets': './src/Assets',
+          '@Types': './src/types',
         },
       },
     ],

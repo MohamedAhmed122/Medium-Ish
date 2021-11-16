@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, View} from 'react-native';
 // import CommentList from '../../components/CommentList';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -8,6 +8,7 @@ import {COLORS} from '@Styles/colors';
 import styles from './styles';
 
 export const Comment = () => {
+  const [value, setValue] = useState<string>('');
   return (
     <View style={styles.CommentContainer}>
       <Text style={styles.title}>Write Comment</Text>
@@ -15,8 +16,8 @@ export const Comment = () => {
         <View style={styles.comment}>
           <AppInput
             placeholder="write Comment..."
-            value=""
-            onChangeText={() => {}}>
+            value={value}
+            onChangeText={setValue}>
             <FontAwesome
               name="angellist"
               color="gray"

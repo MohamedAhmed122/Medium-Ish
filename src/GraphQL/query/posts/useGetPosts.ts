@@ -6,13 +6,13 @@ export interface Posts {
   getPosts: Post[];
 }
 
-interface GetPosts {
+interface UseGetPosts {
   postsLoading: boolean;
   posts?: Posts;
   postError?: ApolloError;
 }
 
-export const useGetPosts = (): GetPosts => {
+export const useGetPosts = (): UseGetPosts => {
   const {loading, data, error} = useQuery<Posts>(GET_POSTS);
   return {postsLoading: loading, posts: data, postError: error};
 };

@@ -72,7 +72,8 @@
       "@Styles/*": ["src/styles/*"],
       "@Assets/*": ["src/Assets/*"],
       "@Screens/*": ["src/screens/*"],
-      "@Config/*": ["src/config/*"]
+      "@Config/*": ["src/config/*"],
+      "@Types/*": ["src/types/*"]
     }
   },
   "exclude": [

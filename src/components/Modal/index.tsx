@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Dimensions} from 'react-native';
 import Modal from 'react-native-modal';
+import {LoginModal} from './Login';
 import {RequestAuth} from './RequestAuth';
 import styles from './styles';
 
@@ -21,7 +22,8 @@ export const AppModal: React.FC<Props> = ({handleCloseModal, isVisible}) => {
       isVisible={isVisible}
       style={[styles.modal, {bottom: -height / 1.6}]}>
       <View style={styles.modalContainer}>
-        <RequestAuth />
+        {/* <RequestAuth /> */}
+        <LoginModal />
       </View>
     </Modal>
   );

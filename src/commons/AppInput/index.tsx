@@ -3,28 +3,13 @@ import {TextInput, TextInputProps, View} from 'react-native';
 
 import styles from './styles';
 
-interface Props extends TextInputProps {
-  placeholder: string;
-  value: string;
-  onChangeText(): void;
-}
+interface Props extends TextInputProps {}
 
-export const AppInput: React.FC<Props> = ({
-  placeholder,
-  value,
-  onChangeText,
-  children,
-  ...otherProps
-}) => {
+export const AppInput: React.FC<Props> = ({children, ...otherProps}) => {
   return (
     <View style={styles.container}>
       {children}
-      <TextInput
-        value={value}
-        placeholder={placeholder}
-        onChangeText={onChangeText}
-        {...otherProps}
-      />
+      <TextInput {...otherProps} />
     </View>
   );
 };
