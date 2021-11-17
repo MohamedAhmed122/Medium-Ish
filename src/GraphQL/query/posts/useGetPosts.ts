@@ -1,6 +1,6 @@
 import {Post} from './interface';
 import {ApolloError, useQuery} from '@apollo/client';
-import {GET_POSTS} from './index';
+import {GET_POSTS} from './query';
 
 export interface Posts {
   getPosts: Post[];
@@ -13,6 +13,12 @@ interface UseGetPosts {
 }
 
 export const useGetPosts = (): UseGetPosts => {
-  const {loading, data, error} = useQuery<Posts>(GET_POSTS);
+  const {loading, data, error} = useQuery<Posts>(GET_POSTS, {
+    errorPolicy: 'all',
+    onCompleted: () => {
+      console.log('YES');
+    },
+  });
+
   return {postsLoading: loading, posts: data, postError: error};
 };

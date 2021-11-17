@@ -9,7 +9,7 @@ export interface RegisterValue extends LoginValue {
   confirmPassword: string;
 }
 
-export type initialFormValues = LoginValue | RegisterValue;
+export type initialFormValues = Readonly<LoginValue | RegisterValue>;
 
 export interface UseFormikContext {
   setFieldValue: (

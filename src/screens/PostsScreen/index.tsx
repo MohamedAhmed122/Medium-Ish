@@ -27,6 +27,7 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
 
   const handleToggleModal = (): void => setIsVisible(!isVisible);
 
+  console.log(postError, 'error');
   if (postsLoading) return <AppLoading />;
   if (postError || !posts) return <Error />;
 

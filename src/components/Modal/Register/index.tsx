@@ -1,5 +1,5 @@
 import React from 'react';
-import {initialFormValues} from '@Types/Form';
+import {initialFormValues, RegisterValue} from '@Types/Form';
 import {ModalType} from '@Types/Modal';
 import * as Yup from 'yup';
 import * as Animatable from 'react-native-animatable';
@@ -7,6 +7,7 @@ import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
 import {StyleSheet} from 'react-native';
 import {COLORS} from '@Styles/colors';
 import {Header} from '@Components/Header';
+import {useRegisterUser} from '@GraphQL/query';
 
 interface RegisterProps {
   setModalType(type: ModalType): void;
@@ -22,12 +23,26 @@ const validationSchema = Yup.object().shape({
   ),
 });
 export const RegisterModal: React.FC<RegisterProps> = ({setModalType}) => {
-  const handleSubmit = (values: initialFormValues): void => {
-    console.log(values);
-  };
+  const {registerUser, user, loading, error} = useRegisterUser();
 
   const handleGoBack = (): void => setModalType(ModalType.RequestAuth);
 
+  const handleSubmit = (values: initialFormValues): void => {
+    const newValue = values as RegisterValue;
+    console.log(newValue);
+    registerUser({
+      variables: newValue,
+      // update() {
+      //   setModalType(ModalType.CreatePost);
+      //   console.log('YES');
+      // },
+      onCompleted: () => {
+        setModalType(ModalType.CreatePost);
+        console.log('YES');
+      },
+    });
+  };
+  console.log(user, loading, error);
   return (
     <Animatable.View
       style={styles.loginContainer}

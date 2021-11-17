@@ -1,6 +1,6 @@
 import {ApolloError, useQuery} from '@apollo/client';
 import {PostDetail} from '@GraphQL/query';
-import {GET_SINGLE_POST} from './index';
+import {GET_SINGLE_POST} from './query';
 
 export interface GetPost {
   getPost: PostDetail;
