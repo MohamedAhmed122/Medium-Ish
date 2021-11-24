@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Post as PostInterface} from '@GraphQL/query';
 import {Text, Image, View} from 'react-native';
 import {AppBadge} from '@Commons/index';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import {LikeButton} from '@Components/LikeButton';
 import {COLORS} from '@Styles/index';
 import styles from './styles';
 
@@ -26,15 +26,7 @@ export const Post: React.FC<PostProps> = ({item, handleNavigate}) => {
         <Text style={styles.desc}>{item.body}</Text>
       </View>
       <View style={styles.likeContainer}>
-        <View style={styles.flex}>
-          <AntDesign
-            name={isLiked ? 'like1' : 'like2'}
-            color={COLORS.primary}
-            size={20}
-            onPress={toggleButton}
-          />
-          <Text style={styles.like}> 120 Likes</Text>
-        </View>
+        <LikeButton likes={120} isLiked={isLiked} toggleButton={toggleButton} />
         <AppBadge
           onPress={() => handleNavigate(item.id)}
           title="View"

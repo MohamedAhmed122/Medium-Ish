@@ -7,6 +7,7 @@ export {Screen} from './Screen';
 export {AppBadge} from './AppBadge';
 export {Empty} from './Empty';
 export {AppText} from './AppText';
+export {ItemSeparator} from './ItemSeparator';
 // Condition
 export {IF} from './Condition/IF';
 export {Choose} from './Condition/Choose';

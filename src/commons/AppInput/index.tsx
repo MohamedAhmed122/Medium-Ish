@@ -9,7 +9,12 @@ export const AppInput: React.FC<Props> = ({children, ...otherProps}) => {
   return (
     <View style={styles.container}>
       {children}
-      <TextInput {...otherProps} autoCapitalize="none" autoCorrect={false} />
+      <TextInput
+        {...otherProps}
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.inputText}
+      />
     </View>
   );
 };

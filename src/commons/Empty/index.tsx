@@ -1,3 +1,4 @@
+import {AppText} from '@Commons/AppText';
 import {COLORS} from '@Styles/colors';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
@@ -6,10 +7,12 @@ interface Props {
   message: string;
 }
 
-export const Empty: React.FC<Props> = ({message}) => {
+export const Empty: React.FC<Props> = ({
+  message = 'Unfortunately, The Current List is Empty',
+}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{message}</Text>
+      <AppText style={styles.text}>{message}</AppText>
     </View>
   );
 };
@@ -21,8 +24,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: '400',
-    fontSize: 17,
-    color: COLORS.secondary,
+    fontSize: 19,
+    color: COLORS.primary,
     marginTop: 40,
     textAlign: 'center',
   },

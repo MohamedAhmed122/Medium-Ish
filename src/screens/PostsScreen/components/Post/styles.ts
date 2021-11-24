@@ -41,7 +41,4 @@ export default ScaledSheet.create({
     justifyContent: 'space-between',
     marginVertical: '10@vs',
   },
-  like: {
-    color: COLORS.primary,
-  },
 });
