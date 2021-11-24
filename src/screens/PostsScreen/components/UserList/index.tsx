@@ -6,7 +6,6 @@ interface Props {
   index: number;
 }
 export const UserList: React.FC<Props> = ({index}) => {
-  console.log(index);
   return (
     <TouchableOpacity>
       <View

@@ -1,5 +1,5 @@
 /* eslint-disable curly */
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 // TYPES
 import {
   PostParamsList,
@@ -25,7 +25,9 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
   const handleNavigate = (id: string): void =>
     navigation.navigate(PostParams.PostDetail, {id});
 
-  const handleToggleModal = (): void => setIsVisible(!isVisible);
+  const handleToggleModal = useCallback(() => {
+    setIsVisible(!isVisible);
+  }, [isVisible]);
 
   console.log(postError, 'error');
   if (postsLoading) return <AppLoading />;
