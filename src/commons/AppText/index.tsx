@@ -22,7 +22,7 @@ export const AppText: React.FC<AppTextProps> = ({
   ...props
 }) => (
   <Text
-    style={[{fontFamily, letterSpacing: 0.1, fontSize: 14}, style]}
+    style={[{fontFamily, letterSpacing: 0.1, fontSize: 15}, style]}
     {...props}
   />
 );

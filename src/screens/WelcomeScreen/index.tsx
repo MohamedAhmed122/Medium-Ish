@@ -1,6 +1,13 @@
 import React from 'react';
-import {Button, Text, View} from 'react-native';
-import {RootNavigation} from '@Navigation/AppNavigation/interface';
+import {Image, View} from 'react-native';
+import {
+  AppNavigationParams,
+  RootNavigation,
+} from '@Navigation/AppNavigation/interface';
+import {Screen} from '@Commons/Screen';
+import styles from './styles';
+import {AppButton, AppText} from '@Commons/index';
+import {COLORS} from '@Styles/colors';
 import {Navigators} from '@Navigation/index';
 
 // import styles from './styles'
@@ -9,16 +16,31 @@ interface WelcomeScreenProps {
   navigation: RootNavigation;
 }
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
-  const handleNavigation = () => {
+  const handleAppNavigation = () =>
     navigation.navigate(Navigators.App.TabNavigation, {
-      screen: Navigators.Tab.Search,
+      screen: Navigators.Tab.Post,
     });
-  };
 
+  const handleAuthNavigation = () =>
+    navigation.navigate(AppNavigationParams.AuthNavigation);
   return (
-    <View style={{margin: 100}}>
-      <Text>WelcomeScreen</Text>
-      <Button title="Navigate" onPress={handleNavigation} />
-    </View>
+    <Screen>
+      <Image
+        source={require('@Assets/images/welcome.png')}
+        style={styles.img}
+        resizeMode="cover"
+      />
+      <View style={styles.container}>
+        <AppButton title="Continue as Guest" onPress={handleAppNavigation} />
+        <AppButton
+          title="Login"
+          onPress={handleAuthNavigation}
+          color={COLORS.lightGreen}
+        />
+        <AppText fontFamily="Roboto-Medium" style={styles.title}>
+          this appLication inspired by Medium ❤️
+        </AppText>
+      </View>
+    </Screen>
   );
 };

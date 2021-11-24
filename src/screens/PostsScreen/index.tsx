@@ -13,6 +13,7 @@ import {useGetPosts} from '@GraphQL/query';
 import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
 import {AppModal} from '@Components/Modal';
+import styles from './styles';
 
 interface PostsProps {
   navigation: NativeStackNavigationProp<PostParamsList, PostParams.Posts>;
@@ -34,7 +35,7 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
   return (
     <Screen>
       <FlatList
-        ListHeaderComponentStyle={{marginTop: 30}}
+        ListHeaderComponentStyle={styles.header}
         ListHeaderComponent={() => (
           <FlatList
             showsHorizontalScrollIndicator={false}
