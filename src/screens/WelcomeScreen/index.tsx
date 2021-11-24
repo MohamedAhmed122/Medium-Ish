@@ -4,13 +4,11 @@ import {
   AppNavigationParams,
   RootNavigation,
 } from '@Navigation/AppNavigation/interface';
+import {Navigators} from '@Navigation/index';
 import {Screen} from '@Commons/Screen';
-import styles from './styles';
 import {AppButton, AppText} from '@Commons/index';
 import {COLORS} from '@Styles/colors';
-import {Navigators} from '@Navigation/index';
-
-// import styles from './styles'
+import styles from './styles';
 
 interface WelcomeScreenProps {
   navigation: RootNavigation;
@@ -23,6 +21,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
 
   const handleAuthNavigation = () =>
     navigation.navigate(AppNavigationParams.AuthNavigation);
+
   return (
     <Screen>
       <Image

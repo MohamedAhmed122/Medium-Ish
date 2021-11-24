@@ -3,12 +3,11 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    width: '80%',
+    width: '90%',
     marginLeft: '5%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginTop: 20,
   },
   iconContainer: {
     height: 43,
