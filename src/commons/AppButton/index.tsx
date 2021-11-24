@@ -9,6 +9,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import styles from './styles';
+import {Choose, When, OtherWise} from '@Commons/index';
 
 export interface AppButtonProps {
   title: string;
@@ -34,11 +35,20 @@ export const AppButton: React.FC<AppButtonProps> = ({
         styles.container,
         {backgroundColor: color, opacity: loading ? 0.6 : 1},
       ]}>
-      {loading ? (
-        <ActivityIndicator color={COLORS.white} size={'small'} />
-      ) : (
-        <Text style={styles.text}>{title}</Text>
-      )}
+      <Choose>
+        <When condition={loading ? loading : false}>
+          <ActivityIndicator color={COLORS.white} size={'small'} />
+        </When>
+        <OtherWise>
+          <Text style={styles.text}>{title}</Text>
+        </OtherWise>
+      </Choose>
     </TouchableOpacity>
   );
 };
+
+// {loading ? (
+//   <ActivityIndicator color={COLORS.white} size={'small'} />
+// ) : (
+//   <Text style={styles.text}>{title}</Text>
+// )}
