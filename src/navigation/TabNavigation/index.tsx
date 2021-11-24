@@ -1,22 +1,28 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {TabParams, TabParamList} from './interface';
-import {PostNavigator} from '../PostNavigator';
-import {CreatePost} from '@Screens/CreatePostScreen';
-import {UserList} from '@Screens/UserListScreen';
-import {SettingScreen} from '@Screens/SettingsScreen';
-import {SearchScreen} from '@Screens/SearchScreen';
+import {TabParamList} from './interface';
+
+import {tabs} from './tabs';
+import {COLORS} from '@Styles/colors';
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
 export const TabNavigation = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name={TabParams.Post} component={PostNavigator} />
-      <Tab.Screen name={TabParams.Search} component={SearchScreen} />
-      <Tab.Screen name={TabParams.CreatePost} component={CreatePost} />
-      <Tab.Screen name={TabParams.UserList} component={UserList} />
-      <Tab.Screen name={TabParams.Settings} component={SettingScreen} />
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarInactiveTintColor: COLORS.lightGrey,
+        tabBarActiveTintColor: COLORS.primary,
+      }}>
+      {tabs.map(tab => (
+        <Tab.Screen
+          key={tab.id}
+          name={tab.name}
+          component={tab.component}
+          options={tab.options}
+        />
+      ))}
     </Tab.Navigator>
   );
 };

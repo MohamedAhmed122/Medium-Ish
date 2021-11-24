@@ -29,7 +29,7 @@ export const Post: React.FC<PostProps> = ({item, handleNavigate}) => {
         <View style={styles.flex}>
           <AntDesign
             name={isLiked ? 'like1' : 'like2'}
-            color={isLiked ? COLORS.secondary : COLORS.danger}
+            color={COLORS.primary}
             size={20}
             onPress={toggleButton}
           />
@@ -38,7 +38,7 @@ export const Post: React.FC<PostProps> = ({item, handleNavigate}) => {
         <AppBadge
           onPress={() => handleNavigate(item.id)}
           title="View"
-          color={COLORS.primary}
+          color={COLORS.secondary}
         />
       </View>
     </View>

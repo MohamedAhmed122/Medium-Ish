@@ -2,11 +2,11 @@ import React from 'react';
 import {Text, View} from 'react-native';
 // import styles from './styles'
 
-interface UserListProps {}
-export const UserList: React.FC<UserListProps> = () => {
+interface UserWatchListProps {}
+export const UserWatchListScreen: React.FC<UserWatchListProps> = () => {
   return (
     <View>
-      <Text>UserList</Text>
+      <Text>UserWatchListScreen</Text>
     </View>
   );
 };

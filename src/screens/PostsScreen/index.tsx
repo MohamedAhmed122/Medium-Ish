@@ -6,14 +6,13 @@ import {
   PostParams,
 } from '../../navigation/AppNavigation/interface';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Post} from './Post';
+import {Post, UserList} from './components';
 // GRAPHQL
 import {useGetPosts} from '@GraphQL/query';
 // RENDER
 import {FlatList} from 'react-native';
-import {Error, AppLoading, Screen, AppButton} from '@Commons/index';
+import {Error, AppLoading, Screen} from '@Commons/index';
 import {AppModal} from '@Components/Modal';
-import {COLORS} from '@Styles/index';
 
 interface PostsProps {
   navigation: NativeStackNavigationProp<PostParamsList, PostParams.Posts>;
@@ -30,15 +29,19 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
   console.log(postError, 'error');
   if (postsLoading) return <AppLoading />;
   if (postError || !posts) return <Error />;
+  let flatData = [1, 2, 3, 4, 5];
 
   return (
     <Screen>
       <FlatList
+        ListHeaderComponentStyle={{marginTop: 30}}
         ListHeaderComponent={() => (
-          <AppButton
-            title="Create Post"
-            onPress={handleToggleModal}
-            color={COLORS.secondary}
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            keyExtractor={(_, index) => index.toString()}
+            data={flatData}
+            renderItem={({item, index}) => <UserList index={index} />}
           />
         )}
         renderItem={({item}) => (

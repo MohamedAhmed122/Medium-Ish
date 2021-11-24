@@ -1,3 +1,4 @@
+import {StackNavigationProp} from '@react-navigation/stack';
 import {NavigatorScreenParams} from '@react-navigation/native';
 import {PostParamsList} from '../AppNavigation/interface';
 
@@ -17,3 +18,5 @@ export type TabParamList = {
   UserList: NO_PARAMS;
   Settings: NO_PARAMS;
 };
+
+export type TabRootNavigation = StackNavigationProp<TabParamList, TabParams>;

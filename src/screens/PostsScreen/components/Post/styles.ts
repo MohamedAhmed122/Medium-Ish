@@ -28,7 +28,7 @@ export default ScaledSheet.create({
   },
   username: {
     fontSize: 25,
-    color: COLORS.secondary,
+    color: COLORS.primary,
   },
   desc: {
     fontSize: 18,
@@ -42,6 +42,6 @@ export default ScaledSheet.create({
     marginVertical: '10@vs',
   },
   like: {
-    color: COLORS.secondary,
+    color: COLORS.primary,
   },
 });
