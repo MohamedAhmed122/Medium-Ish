@@ -1,45 +1,31 @@
 import React from 'react';
+// GraphQL
+import {useRegisterUser} from '@GraphQL/query';
+// TYPES
 import {initialFormValues, RegisterValue} from '@Types/Form';
 import {ModalType} from '@Types/Modal';
-import * as Yup from 'yup';
-import * as Animatable from 'react-native-animatable';
+// FORM
+import {validationRegisterSchema as validationSchema} from '@Utils/validationSchema';
 import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
+// RENDER
+import * as Animatable from 'react-native-animatable';
 import {StyleSheet} from 'react-native';
-import {COLORS} from '@Styles/colors';
 import {Header} from '@Components/Header';
-import {useRegisterUser} from '@GraphQL/query';
+import {COLORS} from '@Styles/colors';
 
 interface RegisterProps {
   setModalType(type: ModalType): void;
 }
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string().required().email().label('Email'),
-  username: Yup.string().required().min(4).label('Username'),
-  password: Yup.string().required().min(6).label('Password'),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'Passwords must match',
-  ),
-});
 export const RegisterModal: React.FC<RegisterProps> = ({setModalType}) => {
-  const {registerUser, user, loading, error} = useRegisterUser();
+  const {registerUser, user, loading, error} = useRegisterUser(setModalType);
 
   const handleGoBack = (): void => setModalType(ModalType.RequestAuth);
 
   const handleSubmit = (values: initialFormValues): void => {
     const newValue = values as RegisterValue;
-    console.log(newValue);
     registerUser({
       variables: newValue,
-      // update() {
-      //   setModalType(ModalType.CreatePost);
-      //   console.log('YES');
-      // },
-      onCompleted: () => {
-        setModalType(ModalType.CreatePost);
-        console.log('YES');
-      },
     });
   };
   console.log(user, loading, error);
@@ -48,7 +34,7 @@ export const RegisterModal: React.FC<RegisterProps> = ({setModalType}) => {
       style={styles.loginContainer}
       duration={1000}
       animation="slideInUp">
-      <Header handleGoBack={handleGoBack} title={'Register From'} />
+      <Header handleGoBack={handleGoBack} title={'Register Form'} />
       <AppForm
         onSubmit={handleSubmit}
         initialValues={{

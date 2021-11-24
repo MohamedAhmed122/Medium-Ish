@@ -2,13 +2,13 @@ import React from 'react';
 //Navigation
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //TYPES
-import {PostParams, PostParamsList} from './interface';
-//SCREENS
-import {Posts} from '@Screens/PostsScreen';
-import {PostDetails} from '@Screens/PostDetailScreen';
-import {SettingScreen} from '@Screens/SettingsScreen';
+import {AppNavigationParams, AppNavigationParamList} from './interface';
+// Navigation
+import {TabNavigation} from '../TabNavigation';
+import {AuthNavigator} from '../AuthNavigator';
+import {WelcomeScreen} from '@Screens/WelcomeScreen';
 
-const Stack = createNativeStackNavigator<PostParamsList>();
+const Stack = createNativeStackNavigator<AppNavigationParamList>();
 
 export const AppNavigation = () => {
   return (
@@ -16,9 +16,18 @@ export const AppNavigation = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name={PostParams.Posts} component={Posts} />
-      <Stack.Screen name={PostParams.PostDetail} component={PostDetails} />
-      <Stack.Screen name={PostParams.Settings} component={SettingScreen} />
+      <Stack.Screen
+        name={AppNavigationParams.Welcome}
+        component={WelcomeScreen}
+      />
+      <Stack.Screen
+        name={AppNavigationParams.TabNavigation}
+        component={TabNavigation}
+      />
+      <Stack.Screen
+        name={AppNavigationParams.AuthNavigation}
+        component={AuthNavigator}
+      />
     </Stack.Navigator>
   );
 };

@@ -29,6 +29,7 @@ module.exports = {
           '@Config': './src/config',
           '@Assets': './src/Assets',
           '@Types': './src/types',
+          '@Navigation': './src/navigation',
         },
       },
     ],

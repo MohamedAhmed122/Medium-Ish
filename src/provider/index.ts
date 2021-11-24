@@ -1,8 +1,21 @@
-import {ApolloClient, InMemoryCache, HttpLink, from} from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  HttpLink,
+  from,
+  makeVar,
+  gql,
+} from '@apollo/client';
 import {onError} from '@apollo/client/link/error';
 
+export const cartItemsVar = makeVar([]);
+
+const baseURL = {
+  dev: 'http://localhost:5000',
+};
+
 const httpLink = new HttpLink({
-  uri: 'http://localhost:5000',
+  uri: baseURL.dev,
 });
 
 const errorLink = onError(({graphQLErrors, networkError}) => {
@@ -19,11 +32,30 @@ const errorLink = onError(({graphQLErrors, networkError}) => {
   }
 });
 
-// If you provide a link chain to ApolloClient, you
-// don't provide the `uri` option.
+// export const cache = new InMemoryCache({
+//   typePolicies: {
+//     Query: {
+//       fields: {
+
+//       },
+//     },
+//   },
+// });
+const cache = new InMemoryCache({});
+
+export const IS_LOGGED_IN = gql`
+  query IsUserLoggedIn {
+    isLoggedIn @client
+  }
+`;
+cache.writeQuery({
+  query: IS_LOGGED_IN,
+  data: {
+    isLoggedIn: true,
+  },
+});
+
 export const client = new ApolloClient({
-  // The `from` function combines an array of individual links
-  // into a link chain
   link: from([errorLink, httpLink]),
   cache: new InMemoryCache(),
 });

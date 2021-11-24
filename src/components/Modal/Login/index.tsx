@@ -1,9 +1,12 @@
 import React from 'react';
+// TYPES
 import {ModalType} from '@Types/Modal';
 import {LoginValue} from '@Types/Form';
-import * as Yup from 'yup';
-import * as Animatable from 'react-native-animatable';
+// FORM
 import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
+import {validationLoginSchema as validationSchema} from '@Utils/validationSchema';
+// RENDER
+import * as Animatable from 'react-native-animatable';
 import {StyleSheet} from 'react-native';
 import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';
@@ -13,11 +16,6 @@ interface LoginProps {
 }
 
 export const LoginModal: React.FC<LoginProps> = ({setModalType}) => {
-  const validationSchema = Yup.object().shape({
-    username: Yup.string().required().min(4).label('Email'),
-    password: Yup.string().required().min(6).label('Password'),
-  });
-
   const handleSubmit = (values: LoginValue): void => {
     console.log(values);
   };

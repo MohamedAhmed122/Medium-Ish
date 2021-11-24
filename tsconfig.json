@@ -73,7 +73,8 @@
       "@Assets/*": ["src/Assets/*"],
       "@Screens/*": ["src/screens/*"],
       "@Config/*": ["src/config/*"],
-      "@Types/*": ["src/types/*"]
+      "@Types/*": ["src/types/*"],
+      "@Navigation/*": ["src/navigation/*"]
     }
   },
   "exclude": [

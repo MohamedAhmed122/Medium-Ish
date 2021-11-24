@@ -48,7 +48,6 @@ interface PropsRenderModal {
 }
 
 const RenderModal: React.FC<PropsRenderModal> = ({modalType, setModalType}) => {
-  // console.log(setModalType);
   return (
     <View>
       {modalType === ModalType.CreatePost ? (
