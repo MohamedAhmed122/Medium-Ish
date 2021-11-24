@@ -1,11 +1,11 @@
 export const COLORS = {
   primary: '#186B8C',
 
-  secondary: '#F29E38',
+  secondary: '#4EBF7F',
+
+  orange: '#F29E38',
 
   darkOrange: '#F28729',
-
-  lightGreen: '#4EBF7F',
 
   blue: '#55C1D9',
 

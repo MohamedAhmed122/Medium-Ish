@@ -1,15 +1,16 @@
 import React from 'react';
 import {useFormikContext} from 'formik';
-import {StyleProp, ViewStyle} from 'react-native';
-import {AppButton} from '@Commons/index';
+import {AppButton, AppButtonProps} from '@Commons/index';
 
-interface Props {
-  title: string;
-  color?: string;
-  style?: StyleProp<ViewStyle>;
-}
+interface Props extends Omit<AppButtonProps, 'onPress'> {}
 
-export const AppSubmitButton: React.FC<Props> = ({title, color, style}) => {
+export const AppSubmitButton: React.FC<Props> = ({
+  title,
+  color,
+  style,
+  loading,
+  disabled,
+}) => {
   const {handleSubmit} = useFormikContext();
   return (
     <AppButton
@@ -17,6 +18,8 @@ export const AppSubmitButton: React.FC<Props> = ({title, color, style}) => {
       color={color}
       style={style}
       onPress={handleSubmit}
+      loading={loading}
+      disabled={disabled}
     />
   );
 };

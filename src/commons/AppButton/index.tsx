@@ -1,25 +1,44 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {COLORS} from '@Styles/index';
-import {StyleProp, Text, TouchableOpacity, ViewStyle} from 'react-native';
+import {
+  ActivityIndicator,
+  StyleProp,
+  Text,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 import styles from './styles';
 
-interface Props {
+export interface AppButtonProps {
   title: string;
   color?: string;
   onPress(): void;
   style?: StyleProp<ViewStyle>;
+  loading?: boolean;
+  disabled?: boolean;
 }
 
-export const AppButton: React.FC<Props> = ({
+export const AppButton: React.FC<AppButtonProps> = ({
   title,
   color = COLORS.primary,
   onPress,
+  loading,
+  disabled,
 }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[styles.container, {backgroundColor: color}]}>
-      <Text style={styles.text}>{title}</Text>
+      disabled={loading || disabled}
+      style={[
+        styles.container,
+        {backgroundColor: color, opacity: loading ? 0.6 : 1},
+      ]}>
+      {loading ? (
+        <ActivityIndicator color={COLORS.white} size={'small'} />
+      ) : (
+        <Text style={styles.text}>{title}</Text>
+      )}
     </TouchableOpacity>
   );
 };

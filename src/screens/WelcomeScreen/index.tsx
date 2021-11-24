@@ -30,14 +30,14 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
         resizeMode="cover"
       />
       <View style={styles.container}>
-        <AppButton title="Continue as Guest" onPress={handleAppNavigation} />
         <AppButton
-          title="Login"
-          onPress={handleAuthNavigation}
-          color={COLORS.lightGreen}
+          color={COLORS.secondary}
+          title="Continue as Guest"
+          onPress={handleAppNavigation}
         />
+        <AppButton title="Login" onPress={handleAuthNavigation} />
         <AppText fontFamily="Roboto-Medium" style={styles.title}>
-          this appLication inspired by Medium ❤️
+          Inspired by Medium ❤️
         </AppText>
       </View>
     </Screen>

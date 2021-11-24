@@ -5,15 +5,19 @@ import {LoginValue} from '@Types/Form';
 import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
 import {validationLoginSchema as validationSchema} from '@Utils/validationSchema';
 // RENDER
-
-import {StyleSheet, View} from 'react-native';
-import {COLORS} from '@Styles/colors';
+import {Pressable, View} from 'react-native';
+import {AppText} from '@Commons/AppText';
+import styles from './styles';
 
 interface LoginFormProps {
   handleSubmit(value: LoginValue): void;
+  handleNavigateToRegister(): void;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({handleSubmit}) => {
+export const LoginForm: React.FC<LoginFormProps> = ({
+  handleSubmit,
+  handleNavigateToRegister,
+}) => {
   return (
     <View style={styles.loginContainer}>
       <AppForm
@@ -24,17 +28,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({handleSubmit}) => {
         <AppInputField name="password" placeholder="Password" />
         <AppSubmitButton title="Login" />
       </AppForm>
+      <Pressable onPress={handleNavigateToRegister}>
+        <AppText fontFamily="Roboto-Bold" style={styles.title}>
+          Create new Account!
+        </AppText>
+      </Pressable>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  loginContainer: {
-    marginTop: 15,
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 18,
-    color: COLORS.secondary,
-  },
-});
