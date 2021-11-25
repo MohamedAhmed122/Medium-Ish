@@ -6,7 +6,8 @@ import {
   PostParams,
 } from '../../navigation/AppNavigation/interface';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Post, UserList} from './components';
+import {UserList} from './UserList';
+import {PostCard} from '@Components/PostCard';
 // GRAPHQL
 import {useGetPosts} from '@GraphQL/query';
 // RENDER
@@ -48,7 +49,7 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
           />
         )}
         renderItem={({item}) => (
-          <Post item={item} handleNavigate={handleNavigate} />
+          <PostCard item={item} handleNavigate={handleNavigate} />
         )}
         data={posts.getPosts}
         keyExtractor={item => item.id}

@@ -1,7 +1,7 @@
+import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {AppText} from '@Commons/AppText';
 import {COLORS} from '@Styles/colors';
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
 
 interface Props {
   message: string;

@@ -20,6 +20,16 @@ export default ScaledSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  main: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  iconContainer: {
+    marginRight: '10@s',
+    width: 45,
+    height: 45,
+  },
   avatar: {
     width: '100@s',
     height: '100@s',
