@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Post as PostInterface} from '@GraphQL/query';
 import {Text, Image, View} from 'react-native';
 import {LikeButton} from '@Components/LikeButton';
@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppBadge} from '@Commons/index';
 import {COLORS} from '@Styles/index';
 import styles from './styles';
+import {useToggleButton} from '@Hooks/useToggle';
 
 interface PostProps {
   item: PostInterface;
@@ -14,11 +15,8 @@ interface PostProps {
 }
 
 export const PostCard: React.FC<PostProps> = ({item, handleNavigate}) => {
-  const [isLiked, setIsLiked] = useState<boolean>(false);
-  const [isWatched, setIsWatched] = useState<boolean>(false);
-
-  const toggleLikeButton = (): void => setIsLiked(!isLiked);
-  const toggleWatchButton = (): void => setIsWatched(!isWatched);
+  const {value: isLiked, toggleButton: toggleLikeButton} = useToggleButton();
+  const {value: isWatched, toggleButton: toggleWatchButton} = useToggleButton();
 
   return (
     <View style={styles.container}>

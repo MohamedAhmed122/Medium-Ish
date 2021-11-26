@@ -1,5 +1,5 @@
 /* eslint-disable curly */
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 // TYPES
 import {
   PostParamsList,
@@ -15,20 +15,18 @@ import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
 import {AppModal} from '@Components/Modal';
 import styles from './styles';
+import {useToggleButton} from '@Hooks/useToggle';
 
 interface PostsProps {
   navigation: NativeStackNavigationProp<PostParamsList, PostParams.Posts>;
 }
 export const Posts: React.FC<PostsProps> = ({navigation}) => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
   const {postsLoading, posts, postError} = useGetPosts();
+
+  const {value: isVisible, toggleButton: handleToggleModal} = useToggleButton();
 
   const handleNavigate = (id: string): void =>
     navigation.navigate(PostParams.PostDetail, {id});
-
-  const handleToggleModal = useCallback(() => {
-    setIsVisible(!isVisible);
-  }, [isVisible]);
 
   console.log(postError, 'error');
   if (postsLoading) return <AppLoading />;

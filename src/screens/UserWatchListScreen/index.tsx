@@ -12,6 +12,13 @@ import {PostCard} from '@Components/PostCard';
 
 // import styles from './styles'
 
+export interface Req {
+  body: any;
+}
+export interface Req {
+  Json: any;
+}
+
 interface UserWatchListProps {
   navigation: StackNavigationProp<TabParamList, TabParams>;
 }

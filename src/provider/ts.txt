@@ -1,0 +1,9 @@
+interface vs types
+
+key difference 
+inheritance : extends  -||-  type = type &(intersection type) {}
+declaration merging -> two names
+
+
+What are TypeScript Generics?
+it's a fixable way to define types in TypeScript
