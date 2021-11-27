@@ -1,17 +1,25 @@
 import React from 'react';
 import {useFormikContext} from 'formik';
 import {AppInput} from '@Commons/AppInput';
-import {Text, StyleSheet, TextInputProps} from 'react-native';
-import {COLORS} from '@Styles/colors';
 import {UseFormikContext} from '@Types/Form';
+import {
+  Text,
+  StyleSheet,
+  TextInputProps,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
+import {COLORS} from '@Styles/colors';
 
 interface Props extends TextInputProps {
   name: string;
+  inputContainerStyle?: StyleProp<ViewStyle>;
 }
 
 export const AppInputField: React.FC<Props> = ({
   children,
   name,
+  inputContainerStyle,
   ...otherProps
 }) => {
   const {
@@ -24,6 +32,7 @@ export const AppInputField: React.FC<Props> = ({
   return (
     <>
       <AppInput
+        inputContainerStyle={inputContainerStyle}
         onChangeText={text => setFieldValue(name, text)}
         value={values[name]}
         onBlur={() => setFieldTouched(name)}

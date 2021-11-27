@@ -1,7 +1,7 @@
 import React from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {AuthParamList, AuthParams} from '@Navigation/AuthNavigator/interface';
-import {LoginValue} from '@Types/Form';
+import {LoginValue, initialFormValues} from '@Types/Form';
 import {LoginForm} from './LoginForm';
 import {Screen} from '@Commons/index';
 import {Header} from '@Components/Header';
@@ -13,7 +13,10 @@ interface LoginScreenProps {
   navigation: StackNavigationProp<AuthParamList, AuthParams.Login>;
 }
 export const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
-  const handleLoginSubmit = (value: LoginValue) => console.log(value);
+  const handleLoginSubmit = (value: initialFormValues) => {
+    const newValues = value as LoginValue;
+    console.log(newValues);
+  };
 
   const handleGoBack = () => navigation.goBack();
 

@@ -1,13 +1,25 @@
 import React from 'react';
-import {TextInput, TextInputProps, View} from 'react-native';
+import {
+  StyleProp,
+  TextInput,
+  TextInputProps,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 import styles from './styles';
 
-interface Props extends TextInputProps {}
+interface Props extends TextInputProps {
+  inputContainerStyle?: StyleProp<ViewStyle>;
+}
 
-export const AppInput: React.FC<Props> = ({children, ...otherProps}) => {
+export const AppInput: React.FC<Props> = ({
+  children,
+  inputContainerStyle,
+  ...otherProps
+}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, inputContainerStyle]}>
       {children}
       <TextInput
         {...otherProps}

@@ -1,4 +1,5 @@
 import {FormikErrors, FormikTouched} from 'formik';
+import {Nullable} from '../Common';
 
 export interface LoginValue {
   username: string;
@@ -9,7 +10,16 @@ export interface RegisterValue extends LoginValue {
   confirmPassword: string;
 }
 
-export type initialFormValues = Readonly<LoginValue | RegisterValue>;
+export interface CreatePostValue {
+  title: string;
+  description: string;
+  additionalDescription: string;
+  categories: Nullable<string>;
+}
+
+export type initialFormValues = Readonly<
+  LoginValue | RegisterValue | CreatePostValue
+>;
 
 export interface UseFormikContext {
   setFieldValue: (

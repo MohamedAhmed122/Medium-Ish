@@ -18,7 +18,7 @@ const styles = ScaledSheet.create({
   inputText: {
     backgroundColor: 'transparent',
     width: 'auto',
-    height: '100%',
+    // height: '100%',
     marginLeft: 20,
     color: COLORS.dark,
     fontSize: 18,

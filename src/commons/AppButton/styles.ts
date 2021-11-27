@@ -3,7 +3,7 @@ import {COLORS} from '@Styles/index';
 
 const styles = ScaledSheet.create({
   container: {
-    width: '98%',
+    width: '90%',
     padding: 13,
     borderRadius: 25,
     alignItems: 'center',

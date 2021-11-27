@@ -1,12 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-// import styles from './styles'
+import {Screen} from '@Commons/Screen';
 
-interface CreatePostProps {}
-export const CreatePost: React.FC<CreatePostProps> = () => {
+import {PostForm} from './PostForm';
+
+export function CreatePost() {
   return (
-    <View>
-      <Text>CreatePost</Text>
-    </View>
+    <Screen>
+      <PostForm />
+    </Screen>
   );
-};
+}
