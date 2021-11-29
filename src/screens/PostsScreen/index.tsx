@@ -9,13 +9,15 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {UserList} from './UserList';
 import {PostCard} from '@Components/PostCard';
 // GRAPHQL
-import {useGetPosts} from '@GraphQL/query';
+import {Post, useGetPosts} from '@GraphQL/query';
 // RENDER
 import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
 import {AppModal} from '@Components/Modal';
-import styles from './styles';
 import {useToggleButton} from '@Hooks/useToggle';
+import {watchListVar} from '@GraphQL/Apollo/cache';
+import {watchListResolver} from '@Utils/cart';
+import styles from './styles';
 
 interface PostsProps {
   navigation: NativeStackNavigationProp<PostParamsList, PostParams.Posts>;
@@ -25,10 +27,14 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
 
   const {value: isVisible, toggleButton: handleToggleModal} = useToggleButton();
 
-  const handleNavigate = (id: string): void =>
+  const handleNavigate = (id: string): void => {
     navigation.navigate(PostParams.PostDetail, {id});
+  };
 
-  console.log(postError, 'error');
+  const handleWatchListItems = (item: Post): void =>
+    watchListVar && watchListResolver(watchListVar, item);
+
+  console.log(posts, 'error');
   if (postsLoading) return <AppLoading />;
   if (postError || !posts) return <Error />;
   let flatData = [1, 2, 3, 4, 5];
@@ -43,11 +49,15 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
             horizontal
             keyExtractor={(_, index) => index.toString()}
             data={flatData}
-            renderItem={({item, index}) => <UserList index={index} />}
+            renderItem={({}) => <UserList index={1} />}
           />
         )}
         renderItem={({item}) => (
-          <PostCard item={item} handleNavigate={handleNavigate} />
+          <PostCard
+            item={item}
+            handleNavigate={handleNavigate}
+            handleWatchListItems={handleWatchListItems}
+          />
         )}
         data={posts.getPosts}
         keyExtractor={item => item.id}

@@ -6,6 +6,7 @@ export const COLORS = {
   orange: '#F29E38',
 
   darkOrange: '#F28729',
+
   quicksilver: '#9c9c9c',
 
   blue: '#55C1D9',

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Post as PostInterface} from '@GraphQL/query';
+import {Post, Post as PostInterface} from '@GraphQL/query';
 import {Text, Image, View} from 'react-native';
 import {LikeButton} from '@Components/LikeButton';
 import {IconContainer} from '@Components/IconContainer';
@@ -12,12 +12,21 @@ import {useToggleButton} from '@Hooks/useToggle';
 interface PostProps {
   item: PostInterface;
   handleNavigate(id: string): void;
+  handleWatchListItems(item: Post): void;
 }
 
-export const PostCard: React.FC<PostProps> = ({item, handleNavigate}) => {
+export const PostCard: React.FC<PostProps> = ({
+  item,
+  handleNavigate,
+  handleWatchListItems,
+}) => {
   const {value: isLiked, toggleButton: toggleLikeButton} = useToggleButton();
   const {value: isWatched, toggleButton: toggleWatchButton} = useToggleButton();
 
+  const onWatchList = () => {
+    toggleWatchButton();
+    handleWatchListItems(item);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.main}>
@@ -27,7 +36,7 @@ export const PostCard: React.FC<PostProps> = ({item, handleNavigate}) => {
         </View>
         <IconContainer
           style={styles.iconContainer}
-          onPress={toggleWatchButton}
+          onPress={onWatchList}
           color={isWatched ? COLORS.orange : COLORS.lightGrey}>
           <Icon name="bookmark" size={22} color={COLORS.white} />
         </IconContainer>

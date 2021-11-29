@@ -6,6 +6,7 @@ const GET_POSTS = gql`
     query getAllPosts {
         getPosts{
            ...${fragmentsField.post}
+           isInCart @client
         }
     }
     ${CORE_POST_FIELDS}

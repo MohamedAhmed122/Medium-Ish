@@ -6,6 +6,7 @@ export const GET_SINGLE_POST = gql`
     query getPost($postId: ID!) {
         getPost(postId: $postId){
             ...${fragmentsField.post}
+            isInCart @client
             comments{
             ...${fragmentsField.comment}
             }
