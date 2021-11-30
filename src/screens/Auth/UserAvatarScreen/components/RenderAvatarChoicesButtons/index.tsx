@@ -1,8 +1,11 @@
 /* eslint-disable curly */
-import {AppButton} from '@Commons/AppButton';
-import {COLORS} from '@Styles/colors';
-import {Status} from '@Types/Avatar';
 import React from 'react';
+
+import {Status} from '@Types/Avatar';
+import {AnimatableView, AppButton} from '@Commons/index';
+
+import {COLORS} from '@Styles/colors';
+import styles from './styles';
 
 interface Props {
   status: Status;
@@ -15,7 +18,7 @@ export const RenderAvatarChoicesButtons: React.FC<Props> = ({
 }) => {
   if (status !== Status.Default) return null;
   return (
-    <>
+    <AnimatableView style={styles.container}>
       <AppButton
         title={'Generate Avatar'}
         onPress={() => onChoiceAvatar(Status.GenerateAvatar)}
@@ -25,6 +28,6 @@ export const RenderAvatarChoicesButtons: React.FC<Props> = ({
         onPress={() => onChoiceAvatar(Status.UploadImage)}
         color={COLORS.secondary}
       />
-    </>
+    </AnimatableView>
   );
 };

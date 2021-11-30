@@ -8,6 +8,7 @@ export {AppBadge} from './AppBadge';
 export {Empty} from './Empty';
 export {AppText} from './AppText';
 export {ItemSeparator} from './ItemSeparator';
+export {AnimatableView} from './AnimatableView';
 // Condition
 export {IF} from './Condition/IF';
 export {Choose} from './Condition/Choose';

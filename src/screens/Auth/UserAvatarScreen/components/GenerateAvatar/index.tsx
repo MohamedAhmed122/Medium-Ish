@@ -1,21 +1,26 @@
 import React from 'react';
 import {View} from 'react-native';
 import {SvgUri} from 'react-native-svg';
-import {AppBadge, AppButton} from '@Commons/index';
+import {Seed} from '@Types/Avatar';
+import {AnimatableView, AppBadge, AppButton} from '@Commons/index';
 import {avatars} from '@Assets/data';
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
-import {GenerateAvatarProps} from '../RenderAvatarPickers';
 
-interface Props extends GenerateAvatarProps {}
-export const GenerateAvatar: React.FC<Props> = ({
+export interface GenerateAvatarProps {
+  changeSeed(type: Seed): void;
+  randomize(): void;
+  handleProcessed(): void;
+  uri: string;
+}
+export const GenerateAvatar: React.FC<GenerateAvatarProps> = ({
   uri,
   changeSeed,
   randomize,
   handleProcessed,
 }) => {
   return (
-    <View>
+    <AnimatableView>
       <View style={styles.imgContainer}>
         <SvgUri width={200} height={200} uri={uri} />
       </View>
@@ -29,7 +34,6 @@ export const GenerateAvatar: React.FC<Props> = ({
           />
         ))}
       </View>
-
       <View style={styles.btnContainer}>
         <AppButton color={COLORS.dark} title="Randomize" onPress={randomize} />
         <AppButton
@@ -38,7 +42,7 @@ export const GenerateAvatar: React.FC<Props> = ({
           onPress={handleProcessed}
         />
       </View>
-    </View>
+    </AnimatableView>
   );
 };
 //

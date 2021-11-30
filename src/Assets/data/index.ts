@@ -1,5 +1,5 @@
 import {COLORS} from '@Styles/colors';
-import {Seed} from '@Types/Common';
+import {Seed} from '@Types/Avatar';
 
 export const avatars: {id: string; type: Seed; title: string; color: string}[] =
   [
