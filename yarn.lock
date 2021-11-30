@@ -5781,11 +5781,6 @@ react-native-modal@^13.0.0:
     prop-types "^15.6.2"
     react-native-animatable "1.3.3"
 
-react-native-personas-avatar@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-personas-avatar/-/react-native-personas-avatar-1.0.0.tgz#fb9ac03177389c2dd6352199bb99ec4ed657c7aa"
-  integrity sha512-wpNgpoN9qJLVJDUKl0Pqi4d2pFUN5BZOFmaHx8mmpKjaE8b4fPJpqo39svkal5yQvykjwx2nqfwhR3QscHPfgQ==
-
 react-native-reanimated@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.2.4.tgz#36c5d15028b0bd7d479fba5199117ac870c7a532"

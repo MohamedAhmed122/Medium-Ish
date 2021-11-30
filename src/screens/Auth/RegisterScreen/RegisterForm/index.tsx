@@ -25,7 +25,7 @@ export const RegisterForm: React.FC<RegisterProps> = ({
           confirmPassword: '',
           email: '',
         }}
-        validationSchema={validationSchema}>
+        validationSchema={null}>
         <AppInputField name="email" placeholder="Email" />
         <AppInputField name="username" placeholder="Username" />
         <AppInputField name="password" placeholder="Password" />
