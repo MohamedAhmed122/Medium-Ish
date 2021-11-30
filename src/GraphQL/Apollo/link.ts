@@ -3,10 +3,11 @@ import {onError} from '@apollo/client/link/error';
 
 const baseURL = {
   dev: 'http://localhost:5000',
+  dev1: 'https://api-ap-northeast-1.graphcms.com/v2/ckwhjc6l90ymo01xnarxj4q7k/master',
 };
 
 const httpLink = new HttpLink({
-  uri: baseURL.dev,
+  uri: baseURL.dev1,
 });
 
 const errorLink = onError(({graphQLErrors, networkError}) => {

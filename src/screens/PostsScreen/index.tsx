@@ -18,6 +18,8 @@ import {useToggleButton} from '@Hooks/useToggle';
 import {watchListVar} from '@GraphQL/Apollo/cache';
 import {watchListResolver} from '@Utils/cart';
 import styles from './styles';
+import gql from 'graphql-tag';
+import {useQuery} from '@apollo/client';
 
 interface PostsProps {
   navigation: NativeStackNavigationProp<PostParamsList, PostParams.Posts>;
@@ -26,6 +28,18 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
   const {postsLoading, posts, postError} = useGetPosts();
 
   const {value: isVisible, toggleButton: handleToggleModal} = useToggleButton();
+
+  const GET_AUTHORS = gql`
+    {
+      authors {
+        id
+        username
+      }
+    }
+  `;
+
+  const {loading, error, data} = useQuery(GET_AUTHORS);
+  console.log(loading, error, data);
 
   const handleNavigate = (id: string): void => {
     navigation.navigate(PostParams.PostDetail, {id});

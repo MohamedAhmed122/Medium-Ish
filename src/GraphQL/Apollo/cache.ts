@@ -4,7 +4,6 @@ import {Post} from '@GraphQL/query';
 
 const watchListVar: ReactiveVar<Post[] | any> = makeVar([]);
 
-// TODO: Is-In the WatchList
 // TODO: Test the New GRAPHQL APIs
 // TODO: ADD the First Screens
 
