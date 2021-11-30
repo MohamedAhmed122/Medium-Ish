@@ -1,6 +1,6 @@
 import React from 'react';
 // TYPES
-import {LoginValue} from '@Types/Form';
+import {initialFormValues} from '@Types/Form';
 // FORM
 import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
 import {validationLoginSchema as validationSchema} from '@Utils/validationSchema';
@@ -10,7 +10,7 @@ import {AppText} from '@Commons/AppText';
 import styles from './styles';
 
 interface LoginFormProps {
-  handleSubmit(value: LoginValue): void;
+  handleSubmit(value: initialFormValues): void;
   handleNavigateToRegister(): void;
 }
 

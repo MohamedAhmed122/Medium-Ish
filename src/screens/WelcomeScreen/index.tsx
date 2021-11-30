@@ -1,9 +1,6 @@
 import React from 'react';
 import {Image, View} from 'react-native';
-import {
-  AppNavigationParams,
-  RootNavigation,
-} from '@Navigation/AppNavigation/interface';
+import {RootNavigation} from '@Navigation/AppNavigation/interface';
 import {Navigators} from '@Navigation/index';
 import {Screen} from '@Commons/Screen';
 import {AppButton, AppText} from '@Commons/index';
@@ -20,7 +17,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
     });
 
   const handleAuthNavigation = () =>
-    navigation.navigate(AppNavigationParams.AuthNavigation);
+    navigation.navigate(Navigators.App.AuthNavigation, {
+      screen: Navigators.AuthStack.Register,
+    });
 
   return (
     <Screen>
@@ -35,7 +34,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
           title="Continue as Guest"
           onPress={handleAppNavigation}
         />
-        <AppButton title="Login" onPress={handleAuthNavigation} />
+        <AppButton title="Register" onPress={handleAuthNavigation} />
         <AppText fontFamily="Roboto-Medium" style={styles.title}>
           Inspired by Medium ❤️
         </AppText>
