@@ -1,5 +1,8 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Screen} from '@Commons/Screen';
+import {Header} from '@Components/Header';
+import {FromBio} from './FromBio';
+import {COLORS} from '@Styles/colors';
 
 // import styles from './styles'
 
@@ -7,8 +10,9 @@ interface UserBioScreenProps {}
 
 export const UserBioScreen: React.FC<UserBioScreenProps> = () => {
   return (
-    <View>
-      <Text>UserBioScreen</Text>
-    </View>
+    <Screen>
+      <Header title="Bio" handleGoBack={() => {}} color={COLORS.primary} />
+      <FromBio />
+    </Screen>
   );
 };

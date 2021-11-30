@@ -40,9 +40,11 @@ export const AppPicker: React.FC<Props> = ({
         <View style={styles.modalContainer}>
           <Button title="close" onPress={() => setModalVisible(false)} />
           <FlatList
-            style={styles.listContainer}
+            // horizontal={true}
+            numColumns={4}
+            contentContainerStyle={styles.listContainer}
             data={items}
-            keyExtractor={items => items.id.toString()}
+            keyExtractor={item => item.id.toString()}
             renderItem={({item}) => (
               <PickerItem
                 label={item.label}

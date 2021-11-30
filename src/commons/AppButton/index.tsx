@@ -21,6 +21,7 @@ export const AppButton: React.FC<AppButtonProps> = ({
   onPress,
   loading,
   disabled,
+  style,
 }) => {
   return (
     <AppPressableScale
@@ -30,6 +31,7 @@ export const AppButton: React.FC<AppButtonProps> = ({
       style={[
         styles.container,
         {backgroundColor: color, opacity: loading ? 0.6 : 1},
+        style,
       ]}>
       <Choose>
         <When condition={loading ? loading : false}>

@@ -3,11 +3,15 @@ import {COLORS} from '@Styles/colors';
 
 export default StyleSheet.create({
   container: {
-    width: '89%',
-    alignSelf: 'center',
-    borderRadius: 25,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    marginHorizontal: 10,
     alignItems: 'center',
-    padding: 10,
+    justifyContent: 'center',
+
+    // alignSelf: 'center',
+
     flexDirection: 'row',
     marginTop: 25,
 
@@ -23,6 +27,7 @@ export default StyleSheet.create({
   },
   text: {
     marginHorizontal: 10,
+    textAlign: 'center',
   },
 
   pickerContainer: {
@@ -45,7 +50,5 @@ export default StyleSheet.create({
     marginTop: 30,
     flex: 1,
   },
-  listContainer: {
-    flex: 1,
-  },
+  listContainer: {},
 });

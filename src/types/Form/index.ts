@@ -17,8 +17,13 @@ export interface CreatePostValue {
   categories: Nullable<string>;
 }
 
+export interface BioValues {
+  bio: string;
+  color: string;
+}
+
 export type initialFormValues = Readonly<
-  LoginValue | RegisterValue | CreatePostValue
+  LoginValue | RegisterValue | CreatePostValue | BioValues
 >;
 
 export interface UseFormikContext {
