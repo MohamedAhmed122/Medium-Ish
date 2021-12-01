@@ -12,8 +12,9 @@ interface WelcomeScreenProps {
 }
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
   const handleAppNavigation = () =>
-    navigation.navigate(Navigators.App.TabNavigation, {
-      screen: Navigators.Tab.Post,
+    navigation.reset({
+      index: 0,
+      routes: [{name: Navigators.App.TabNavigation}],
     });
 
   const handleAuthNavigation = () =>

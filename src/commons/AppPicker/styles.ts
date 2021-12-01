@@ -9,12 +9,8 @@ export default StyleSheet.create({
     marginHorizontal: 10,
     alignItems: 'center',
     justifyContent: 'center',
-
-    // alignSelf: 'center',
-
     flexDirection: 'row',
     marginTop: 25,
-
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -22,7 +18,6 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-
     elevation: 5,
   },
   text: {
@@ -43,12 +38,27 @@ export default StyleSheet.create({
     marginTop: 20,
   },
   pickerText: {
-    flex: 1,
     marginLeft: 10,
   },
   modalContainer: {
     marginTop: 30,
     flex: 1,
   },
-  listContainer: {},
+  listContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+
+  colorInputContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  colorView: {
+    height: 10,
+    width: 10,
+    backgroundColor: 'red',
+    borderRadius: 5,
+    marginLeft: 5,
+  },
 });

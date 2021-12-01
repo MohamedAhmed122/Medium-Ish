@@ -6,6 +6,7 @@ import {
   AppPickerField,
 } from '@Components/Form';
 import {createPostValidationSchema as validationSchema} from '@Utils/validationSchema';
+import {categories} from '@Assets/data';
 import styles from './styles';
 
 export const PostForm = () => {
@@ -32,7 +33,7 @@ export const PostForm = () => {
         name="additionalDescription"
         placeholder="More Description"
       />
-      <AppPickerField name="categories" />
+      <AppPickerField name="categories" items={categories} />
       {/* <AppInputField name="categories" placeholder="Categories" /> */}
       <AppSubmitButton title="Create Post" />
     </AppForm>

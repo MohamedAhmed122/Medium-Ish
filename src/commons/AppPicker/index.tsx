@@ -6,6 +6,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import {PickerItem as PickerItemInterface} from '@Types/Common';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import {AppText} from '../AppText';
@@ -14,15 +15,19 @@ import {PickerItem} from './PickerItem';
 import styles from './styles';
 
 interface Props {
-  items: Array<any>;
-  selectedItem: any;
-  setSelectedItem(item: any): void;
+  items: Array<PickerItemInterface>;
+  selectedItem: PickerItemInterface;
+  setSelectedItem(item: PickerItemInterface): void;
+  placeholder: string;
+  inverted?: boolean;
 }
 
 export const AppPicker: React.FC<Props> = ({
   items,
   selectedItem,
   setSelectedItem,
+  placeholder,
+  inverted = false,
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
@@ -30,9 +35,19 @@ export const AppPicker: React.FC<Props> = ({
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.pickerContainer}>
           <Entypo name="list" size={24} color="gray" />
-          <AppText style={styles.pickerText}>
-            {selectedItem ? selectedItem.label : 'Category'}
-          </AppText>
+          <View style={styles.colorInputContainer}>
+            <AppText style={styles.pickerText}>
+              {selectedItem ? selectedItem.label : placeholder}
+            </AppText>
+            {inverted && (
+              <View
+                style={[
+                  styles.colorView,
+                  {backgroundColor: selectedItem.color},
+                ]}
+              />
+            )}
+          </View>
           <Entypo name="chevron-down" size={24} color="gray" />
         </View>
       </TouchableWithoutFeedback>

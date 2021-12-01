@@ -5,20 +5,31 @@ import {
   AppPickerField,
   AppSubmitButton,
 } from '@Components/Form';
+import {colors} from '@Assets/data';
 import styles from './styles';
+import {initialFormValues} from '@Types/Form';
 
-export const FromBio = () => {
+interface Props {
+  handleSubmit(values: initialFormValues): void;
+}
+
+export const FromBio: React.FC<Props> = ({handleSubmit}) => {
   return (
     <AppForm
       initialValues={{bio: '', color: ''}}
-      onSubmit={() => {}}
+      onSubmit={handleSubmit}
       validationSchema={null}>
       <AppInputField
         name="bio"
         placeholder="Bio"
         inputContainerStyle={styles.textarea}
       />
-      <AppPickerField name="color" />
+      <AppPickerField
+        name="color"
+        items={colors}
+        placeholder="Favorite Color"
+        inverted={true}
+      />
       <AppSubmitButton title="Submit" style={styles.button} />
     </AppForm>
   );
