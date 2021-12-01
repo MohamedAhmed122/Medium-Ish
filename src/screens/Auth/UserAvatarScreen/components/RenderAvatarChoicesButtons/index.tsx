@@ -1,33 +1,33 @@
-/* eslint-disable curly */
 import React from 'react';
 
 import {Status} from '@Types/Avatar';
-import {AnimatableView, AppButton} from '@Commons/index';
 
-import {COLORS} from '@Styles/colors';
+import {AnimatableView, IF} from '@Commons/index';
+import {TouchableOpacity} from 'react-native';
+
 import styles from './styles';
+
+import {ChoicesButton} from './ChoicesButton';
 
 interface Props {
   status: Status;
-  onChoiceAvatar(type: Status): void;
+  onChoiceAvatar(): void;
 }
 
 export const RenderAvatarChoicesButtons: React.FC<Props> = ({
   status,
   onChoiceAvatar,
 }) => {
-  if (status !== Status.Default) return null;
   return (
     <AnimatableView style={styles.container}>
-      <AppButton
-        title={'Generate Avatar'}
-        onPress={() => onChoiceAvatar(Status.GenerateAvatar)}
-      />
-      <AppButton
-        title={'Upload Image'}
-        onPress={() => onChoiceAvatar(Status.UploadImage)}
-        color={COLORS.secondary}
-      />
+      <TouchableOpacity onPress={onChoiceAvatar} style={styles.buttonContainer}>
+        <IF condition={status === Status.GenerateAvatar} style={styles.button}>
+          <ChoicesButton icon title="Upload Photo" />
+        </IF>
+        <IF condition={status === Status.UploadImage} style={styles.button}>
+          <ChoicesButton title="Create Avatar" />
+        </IF>
+      </TouchableOpacity>
     </AnimatableView>
   );
 };

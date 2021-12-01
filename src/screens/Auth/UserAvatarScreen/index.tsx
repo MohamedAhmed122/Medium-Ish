@@ -17,7 +17,7 @@ interface AvatarScreenProps {
 }
 
 export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
-  const [status, setStatus] = useState<Status>(Status.Default);
+  const [status, setStatus] = useState<Status>(Status.GenerateAvatar);
   const [seed, setSeed] = useState<Seed>('avataaars');
   const [random, setRandom] = useState<number>(1);
   const [image, setImage] = useState<string>('');
@@ -32,10 +32,15 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
     navigation.navigate(AuthParams.UserBio);
   };
 
-  const onChoiceAvatar = (type: Status): void => setStatus(type);
+  const onChoiceAvatar = (): void =>
+    status === Status.GenerateAvatar
+      ? setStatus(Status.UploadImage)
+      : setStatus(Status.GenerateAvatar);
 
   const handleGoBack = (): void =>
-    status === Status.Default ? navigation.goBack() : setStatus(Status.Default);
+    status === Status.GenerateAvatar
+      ? navigation.goBack()
+      : setStatus(Status.GenerateAvatar);
 
   const handlePickImage = async () => {
     const value = await pickImage();
@@ -49,10 +54,6 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
         color={COLORS.primary}
         handleGoBack={handleGoBack}
       />
-      <RenderAvatarChoicesButtons
-        status={status}
-        onChoiceAvatar={onChoiceAvatar}
-      />
       <RenderAvatarPickers
         status={status}
         avatar={{
@@ -62,6 +63,10 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
           handleProcessed,
         }}
         image={{image, handlePickImage}}
+      />
+      <RenderAvatarChoicesButtons
+        status={status}
+        onChoiceAvatar={onChoiceAvatar}
       />
     </Screen>
   );

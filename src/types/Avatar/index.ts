@@ -12,7 +12,6 @@ export type Seed =
   | 'human';
 
 export enum Status {
-  Default = 'DEFAULT',
   GenerateAvatar = 'GENERATE_AVATAR',
   UploadImage = 'UPLOAD_IMAGE',
 }

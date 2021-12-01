@@ -1,11 +1,14 @@
 import {COLORS} from '@Styles/colors';
 import {ScaledSheet} from 'react-native-size-matters';
+import {Dimensions} from 'react-native';
+const {height, width} = Dimensions.get('window');
 
 export default ScaledSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 0.9,
+    width,
+    height: height / 1.7,
   },
   placeholder: {
     width: '250@s',
