@@ -3,6 +3,8 @@ export const typename = {
   comment: 'Comment',
   like: 'Like',
   user: 'User',
+  author: 'Author',
+  article: 'Article',
 };
 
 export const fragmentsField = {
@@ -10,4 +12,6 @@ export const fragmentsField = {
   comment: 'CoreCommentFields',
   like: 'coreLikeFields',
   user: 'coreUserFields',
+  author: 'coreAuthorFields',
+  article: 'coreArticleFields',
 };

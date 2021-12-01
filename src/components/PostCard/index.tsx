@@ -1,5 +1,5 @@
 import React from 'react';
-import {Post, Post as PostInterface} from '@GraphQL/query';
+import {Article, Post, Post as PostInterface} from '@GraphQL/query';
 import {Text, Image, View} from 'react-native';
 import {LikeButton} from '@Components/LikeButton';
 import {IconContainer} from '@Components/IconContainer';
@@ -10,7 +10,7 @@ import styles from './styles';
 import {useToggleButton} from '@Hooks/useToggle';
 
 interface PostProps {
-  item: PostInterface;
+  item: Article;
   handleNavigate(id: string): void;
   handleWatchListItems(item: Post): void;
 }
@@ -24,15 +24,20 @@ export const PostCard: React.FC<PostProps> = ({
   const {value: isWatched, toggleButton: toggleWatchButton} = useToggleButton();
 
   const onWatchList = () => {
-    toggleWatchButton();
-    handleWatchListItems(item);
+    // toggleWatchButton();
+    // handleWatchListItems(item);
   };
+  console.log(item, 'item');
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <View style={styles.flex}>
-          <Image source={{uri: img}} resizeMode="cover" style={styles.avatar} />
-          <Text style={styles.username}> {item.username}</Text>
+          <Image
+            source={{uri: item.author.image.url}}
+            resizeMode="cover"
+            style={styles.avatar}
+          />
+          <Text style={styles.username}> {item.author.username}</Text>
         </View>
         <IconContainer
           style={styles.iconContainer}
@@ -42,11 +47,11 @@ export const PostCard: React.FC<PostProps> = ({
         </IconContainer>
       </View>
       <View>
-        <Text style={styles.desc}>{item.body}</Text>
+        <Text style={styles.desc}>{item.description}</Text>
       </View>
       <View style={styles.likeContainer}>
         <LikeButton
-          likes={120}
+          likes={item.likes}
           isLiked={isLiked}
           toggleButton={toggleLikeButton}
         />
@@ -59,6 +64,3 @@ export const PostCard: React.FC<PostProps> = ({
     </View>
   );
 };
-
-const img =
-  'https://media.istockphoto.com/photos/portrait-of-smiling-handsome-man-in-blue-tshirt-standing-with-crossed-picture-id1045886560?k=6&m=1045886560&s=612x612&w=0&h=hXrxai1QKrfdqWdORI4TZ-M0ceCVakt4o6532vHaS3I=';

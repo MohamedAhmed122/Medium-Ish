@@ -1,18 +1,12 @@
 import {ScaledSheet} from 'react-native-size-matters';
-import {COLORS} from '@Styles/index';
 
 export default ScaledSheet.create({
-  activePost: {
-    borderColor: COLORS.primary,
-  },
-  inactivePost: {
-    borderColor: COLORS.white,
-  },
   postImgContainer: {
     borderWidth: 4,
     margin: '1@s',
     borderRadius: 50,
     padding: 7,
+    marginLeft: 5,
   },
   img: {
     width: '60@s',
