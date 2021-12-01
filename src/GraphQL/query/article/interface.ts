@@ -1,3 +1,4 @@
+import {Author} from '@GraphQL/query';
 export interface Article {
   id: string;
   description: string;
@@ -8,14 +9,15 @@ export interface Article {
     id: string;
     name: string;
   };
-  author: {
-    username: string;
-    image: {
-      url: string;
-    };
-  };
+  author: Author;
 }
 
 export interface Articles {
   articles: Article[];
+}
+
+export interface ArticleDetail extends Article {
+  richDescription: {
+    html: string;
+  };
 }

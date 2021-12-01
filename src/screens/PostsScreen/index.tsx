@@ -11,10 +11,10 @@ import {PostCard} from '@Components/PostCard';
 // GRAPHQL
 import {Post, useGetAuthors, useGetArticles} from '@GraphQL/query';
 // RENDER
-import {FlatList, ScrollView} from 'react-native';
+import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
 
-import {useToggleButton} from '@Hooks/useToggle';
+// import {useToggleButton} from '@Hooks/useToggle';
 import {watchListVar} from '@GraphQL/Apollo/cache';
 import {watchListResolver} from '@Utils/cart';
 import styles from './styles';
@@ -26,7 +26,7 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
   const {articles, articleError, articleLoading} = useGetArticles();
   console.log(articles, articleError, articleLoading, 'here');
 
-  const {value: isVisible, toggleButton: handleToggleModal} = useToggleButton();
+  // const {value: isVisible, toggleButton: handleToggleModal} = useToggleButton();
 
   const handleNavigate = (id: string): void => {
     navigation.navigate(PostParams.PostDetail, {id});

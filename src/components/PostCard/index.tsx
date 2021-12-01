@@ -1,5 +1,5 @@
 import React from 'react';
-import {Article, Post, Post as PostInterface} from '@GraphQL/query';
+import {Article, Post} from '@GraphQL/query';
 import {Text, Image, View} from 'react-native';
 import {LikeButton} from '@Components/LikeButton';
 import {IconContainer} from '@Components/IconContainer';
@@ -18,7 +18,7 @@ interface PostProps {
 export const PostCard: React.FC<PostProps> = ({
   item,
   handleNavigate,
-  handleWatchListItems,
+  // handleWatchListItems,
 }) => {
   const {value: isLiked, toggleButton: toggleLikeButton} = useToggleButton();
   const {value: isWatched, toggleButton: toggleWatchButton} = useToggleButton();
@@ -27,7 +27,6 @@ export const PostCard: React.FC<PostProps> = ({
     // toggleWatchButton();
     // handleWatchListItems(item);
   };
-  console.log(item, 'item');
   return (
     <View style={styles.container}>
       <View style={styles.main}>
