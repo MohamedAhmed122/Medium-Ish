@@ -1,16 +1,22 @@
+import {fragmentsField} from '@GraphQL/types';
+import {CORE_COMMENT_FIELDS} from '@GraphQL/fragments';
 import {gql} from '@apollo/client';
 
 export const CREATE_COMMENT = gql`
-  mutation createComment($id: ID!, $comment: String!, $username: String!) {
-    updateArticle(
-      data: {comment: {create: {comment: $comment, username: $username}}}
-      where: {id: $id}
-    ) {
-      comment {
-        id
-        username
-        comment
+  mutation createComment(
+    $articleId: ID!
+    $comment: String!
+    $username: String!
+  ) {
+    createComment(
+      data: {
+        article: {connect: {id: $articleId}}
+        comment: $comment
+        username: $username
       }
+    ) {
+      ...${fragmentsField.comment}
     }
   }
+  ${CORE_COMMENT_FIELDS}
 `;

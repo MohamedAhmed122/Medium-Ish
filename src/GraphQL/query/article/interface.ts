@@ -1,3 +1,4 @@
+import {Comment} from '..';
 import {Author} from '@GraphQL/query';
 export interface Article {
   id: string;
@@ -10,6 +11,7 @@ export interface Article {
     name: string;
   };
   author: Author;
+  comments: Comment[];
 }
 
 export interface Articles {

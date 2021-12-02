@@ -1,18 +1,12 @@
 export const typename = {
-  post: 'Post',
   comment: 'Comment',
-  like: 'Like',
-  user: 'User',
   author: 'Author',
   article: 'Article',
 };
 
 export const fragmentsField = {
-  post: 'CorePostFields',
-  comment: 'CoreCommentFields',
-  like: 'coreLikeFields',
-  user: 'coreUserFields',
   author: 'coreAuthorFields',
   authorDetail: 'coreAuthorDetailFields',
   article: 'coreArticleFields',
+  comment: 'CoreCommentFields',
 };

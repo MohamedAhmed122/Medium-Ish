@@ -10,6 +10,7 @@ import {
   Screen,
   //  AppLoading, Error, Empty
 } from '@Commons/index';
+import {useGetArticleById} from '@GraphQL/query';
 // import {PostDetail, Comment, CommentList} from './components';
 // import {FlatList} from 'react-native';
 
@@ -21,8 +22,10 @@ interface PostDetailsProps {
 export const PostDetails: React.FC<PostDetailsProps> = ({route}) => {
   const {id} = route.params;
   // const {post, loading, error} = useGetPost(id);
+  const {data, loading, error} = useGetArticleById(id);
+  console.log(data?.article.description, loading, error, 'here---');
 
-  console.log(id);
+  console.log(id, 'here');
 
   return (
     <Screen>

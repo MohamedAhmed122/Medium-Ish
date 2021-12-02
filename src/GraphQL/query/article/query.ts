@@ -1,5 +1,9 @@
 import {gql} from 'graphql-tag';
-import {CORE_ARTICLE_FIELDS, CORE_AUTHORS_FIELDS} from '@GraphQL/fragments';
+import {
+  CORE_ARTICLE_FIELDS,
+  CORE_AUTHORS_FIELDS,
+  CORE_COMMENT_FIELDS,
+} from '@GraphQL/fragments';
 import {fragmentsField} from '@GraphQL/types';
 
 export const GET_ARTICLES = gql`
@@ -17,18 +21,22 @@ export const GET_ARTICLES = gql`
 
 export const GET_SINGLE_ARTICLE = gql`
     query getArticleById($id: ID!){
-        article (where :{id : $id}) {
-            ...${fragmentsField.article}
-            richDescription{
-                html
-            }
-            author{
-                ...${fragmentsField.author}
-            }
+      article (where :{id : $id}) {
+        ...${fragmentsField.article}
+        richDescription{
+          html
         }
+        author{
+          ...${fragmentsField.author}
+        }
+        comment {
+          ...${fragmentsField.comment}
+        }
+      }
     }
     ${CORE_ARTICLE_FIELDS}
     ${CORE_AUTHORS_FIELDS}
+    ${CORE_COMMENT_FIELDS}
 `;
 
 export const GET_ARTICLES_BY_AUTHOR_ID = gql`
