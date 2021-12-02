@@ -14,16 +14,13 @@ export const CORE_AUTHORS_FIELDS = gql`
   }
 `;
 
-// export const CORE_AUTHOR_DETAIL_FIELDS = gql`
-//   fragment ${fragmentsField.author} on ${typename.author} {
-//     id
-//     username
-//     color {
-//       hex
-//     }
-//     image {
-//       id
-//       url
-//     }
-//   }
-// `;
+export const CORE_AUTHOR_DETAIL_FIELDS = gql`
+  fragment ${fragmentsField.authorDetail} on ${typename.author} {
+    email
+    hideEmail
+    location{
+        latitude
+        longitude
+    }
+  }
+`;

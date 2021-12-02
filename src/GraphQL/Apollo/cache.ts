@@ -4,7 +4,6 @@ import {Post} from '@GraphQL/query';
 
 const watchListVar: ReactiveVar<Post[] | any> = makeVar([]);
 
-// TODO: Test the New GRAPHQL APIs
 // TODO: ADD the First Screens
 
 const cache = new InMemoryCache({
@@ -35,3 +34,5 @@ const cache = new InMemoryCache({
 });
 
 export {cache, watchListVar};
+// from top to bottom -> rebase
+// from bottom to top -> merge

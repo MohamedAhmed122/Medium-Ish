@@ -13,5 +13,6 @@ export const fragmentsField = {
   like: 'coreLikeFields',
   user: 'coreUserFields',
   author: 'coreAuthorFields',
+  authorDetail: 'coreAuthorDetailFields',
   article: 'coreArticleFields',
 };

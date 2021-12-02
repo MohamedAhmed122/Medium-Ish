@@ -1,4 +1,3 @@
-/* eslint-disable curly */
 import React from 'react';
 // TYPES
 import {RouteProp} from '@react-navigation/core';
@@ -6,11 +5,13 @@ import {
   PostParamsList,
   PostParams,
 } from '../../navigation/AppNavigation/interface';
-// RENDER
-import {useGetPost} from '@GraphQL/query/post/useGetPost';
-import {Screen, AppLoading, Error, Empty} from '@Commons/index';
-import {PostDetail, Comment, CommentList} from './components';
-import {FlatList} from 'react-native';
+
+import {
+  Screen,
+  //  AppLoading, Error, Empty
+} from '@Commons/index';
+// import {PostDetail, Comment, CommentList} from './components';
+// import {FlatList} from 'react-native';
 
 // import styles from './styles'
 
@@ -19,14 +20,13 @@ interface PostDetailsProps {
 }
 export const PostDetails: React.FC<PostDetailsProps> = ({route}) => {
   const {id} = route.params;
-  const {post, loading, error} = useGetPost(id);
+  // const {post, loading, error} = useGetPost(id);
 
-  if (loading) return <AppLoading />;
-  if (error || !post) return <Error />;
+  console.log(id);
 
   return (
     <Screen>
-      <FlatList
+      {/* <FlatList
         ListHeaderComponent={() => (
           <>
             <PostDetail post={post.getPost} />
@@ -39,7 +39,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({route}) => {
         data={post.getPost.comments}
         keyExtractor={item => item.id}
         renderItem={({item}) => <CommentList comment={item} />}
-      />
+      /> */}
     </Screen>
   );
 };
