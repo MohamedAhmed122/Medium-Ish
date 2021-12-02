@@ -99,3 +99,5 @@ export const DELETE_ARTICLE = gql`
     }
   }
 `;
+
+// article:"ckwofi8j415xi0a37tecpx5rf"

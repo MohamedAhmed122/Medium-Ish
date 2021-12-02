@@ -20,4 +20,18 @@ export interface ArticleDetail extends Article {
   richDescription: {
     html: string;
   };
+  author: Author;
 }
+
+// TODO: richDescription type
+export interface CreateArticleParam {
+  authorId: string;
+  username: string;
+  categoryId: string;
+  title: string;
+  description: string;
+  richDescription: any;
+}
+
+export interface UpdateArticleParam
+  extends Omit<CreateArticleParam, 'username' | 'categoryId'> {}

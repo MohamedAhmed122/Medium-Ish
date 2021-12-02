@@ -6,3 +6,7 @@ export interface PickerItem {
   icon: Nullable<string>;
   color: string;
 }
+
+export interface ParamId {
+  id: string;
+}
