@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 
 export const validationRegisterSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
+  name: Yup.string().required().min(4).label('Name'),
   username: Yup.string().required().min(4).label('Username'),
   password: Yup.string().required().min(6).label('Password'),
   confirmPassword: Yup.string().oneOf(

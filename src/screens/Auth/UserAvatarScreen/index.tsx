@@ -1,8 +1,10 @@
+/* eslint-disable curly */
 import React, {useState} from 'react';
 // TYPES
 import {AuthParamList, AuthParams} from '@Navigation/AuthNavigator/interface';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {Seed, Status} from '@Types/Avatar';
+import {Image as ImagePickerProps} from 'react-native-image-crop-picker';
 // UTILS
 import {pickImage} from '@Utils/PickImage';
 import {getAvatarUri, getRandomNumber} from '@Utils/utils';
@@ -11,16 +13,25 @@ import {RenderAvatarChoicesButtons, RenderAvatarPickers} from './components';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';
+import {useUpdateAvatar} from '@GraphQL/query';
+import {useReactiveVar} from '@apollo/client';
+import {currentAuthor} from '@GraphQL/Apollo/cache';
 
 interface AvatarScreenProps {
   navigation: StackNavigationProp<AuthParamList, AuthParams.UserAvatar>;
 }
 
 export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
+  // LOCAL STATE
   const [status, setStatus] = useState<Status>(Status.GenerateAvatar);
   const [seed, setSeed] = useState<Seed>('avataaars');
   const [random, setRandom] = useState<number>(1);
-  const [image, setImage] = useState<string>('');
+  const [image, setImage] = useState<ImagePickerProps>();
+
+  // GLOBAL VAR
+  const currentUser = useReactiveVar(currentAuthor);
+
+  const {updateAvatar, updateAvatarLoading} = useUpdateAvatar(navigation);
 
   const changeSeed = (type: Seed): void => setSeed(type);
 
@@ -28,8 +39,14 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
 
   const uri = getAvatarUri(seed, random);
 
-  const handleProcessed = (): void => {
-    navigation.navigate(AuthParams.UserBio);
+  const handleProcessedAvatar = (): void => {
+    updateAvatar({
+      variables: {id: currentUser.id, imageUrl: uri},
+    });
+  };
+
+  const handleProcessedUploadPhoto = () => {
+    if (!image) return;
   };
 
   const onChoiceAvatar = (): void =>
@@ -44,7 +61,12 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
 
   const handlePickImage = async () => {
     const value = await pickImage();
-    value && setImage(value.path);
+    console.log(value);
+    // uri:
+    // Platform.OS === 'android'
+    //   ? file.uri
+    //   : file.uri.replace('file://', ''),
+    value && setImage(value);
   };
 
   return (
@@ -60,9 +82,14 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
           changeSeed,
           randomize,
           uri,
-          handleProcessed,
+          handleProcessed: handleProcessedAvatar,
+          updateAvatarLoading,
         }}
-        image={{image, handlePickImage}}
+        image={{
+          image,
+          handlePickImage,
+          handleProcessed: handleProcessedUploadPhoto,
+        }}
       />
       <RenderAvatarChoicesButtons
         status={status}

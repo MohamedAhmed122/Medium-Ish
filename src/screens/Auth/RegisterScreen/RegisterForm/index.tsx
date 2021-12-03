@@ -24,12 +24,18 @@ export const RegisterForm: React.FC<RegisterProps> = ({
           password: '',
           confirmPassword: '',
           email: '',
+          name: '',
         }}
-        validationSchema={null}>
+        validationSchema={validationSchema}>
+        <AppInputField name="name" placeholder="Name" />
         <AppInputField name="email" placeholder="Email" />
         <AppInputField name="username" placeholder="Username" />
-        <AppInputField name="password" placeholder="Password" />
-        <AppInputField name="confirmPassword" placeholder="Confirm Password" />
+        <AppInputField name="password" placeholder="Password" secureTextEntry />
+        <AppInputField
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          secureTextEntry
+        />
         <AppSubmitButton
           title="Register"
           color={COLORS.secondary}

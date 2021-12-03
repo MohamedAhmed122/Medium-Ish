@@ -7,21 +7,22 @@ import {AuthParamList, AuthParams} from '@Navigation/AuthNavigator/interface';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {RegisterForm} from './RegisterForm';
+import {useInitiateAuthor} from '@GraphQL/query';
+
 // import styles from './styles'
 
 interface RegisterScreenProps {
   navigation: StackNavigationProp<AuthParamList, AuthParams.Register>;
 }
 export const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
-  // const {registerUser, loading} = useRegisterUser(navigation);
+  const {loading, registerUser} = useInitiateAuthor(navigation);
 
   const handleSubmit = (values: initialFormValues): void => {
     const newValue = values as RegisterValue;
-    console.log(newValue);
-    navigation.navigate(AuthParams.UserAvatar);
-    // registerUser({
-    //   variables: newValue,
-    // });
+
+    registerUser({
+      variables: newValue,
+    });
   };
 
   const handleGoBack = () => navigation.goBack();
@@ -29,7 +30,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
   return (
     <Screen>
       <Header handleGoBack={handleGoBack} title={'Welcome, to Medium-Ish'} />
-      <RegisterForm handleSubmit={handleSubmit} loading={false} />
+      <RegisterForm handleSubmit={handleSubmit} loading={loading} />
     </Screen>
   );
 };

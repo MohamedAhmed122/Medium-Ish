@@ -7,6 +7,7 @@ export interface LoginValue {
 }
 export interface RegisterValue extends LoginValue {
   email: string;
+  name: string;
   confirmPassword: string;
 }
 

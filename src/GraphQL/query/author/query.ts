@@ -1,5 +1,5 @@
 // import { CORE_ARTICLE_FIELDS } from './../../fragments/article/index';
-import {gql} from '@apollo/client';
+import {gql} from 'graphql-tag';
 import {fragmentsField} from '@GraphQL/types';
 import {
   CORE_AUTHORS_FIELDS,
@@ -47,9 +47,9 @@ export const INITIATE_AUTHOR = gql`
 
 // UPDATE -> Initiation/Add  Author Avatar
 export const UPDATE_AUTHOR_AVATAR = gql`
-  mutation updateAuthorAvatar($id: ID!, $imageURL: String!) {
-    updateAuthor(data: {imageUrl: $imageURL}, where: {id: $id}) {
-      imageURL
+  mutation updateAuthorAvatar($id: ID!, $imageUrl: String!) {
+    updateAuthor(data: {imageUrl: $imageUrl}, where: {id: $id}) {
+      imageUrl
     }
   }
 `;

@@ -1,10 +1,7 @@
 import {ReactiveVar} from '@apollo/client';
-import {Post} from '@GraphQL/query';
+// import {Post} from '@GraphQL/query';
 
-export const watchListResolver = (
-  watchItem: ReactiveVar<Post[]>,
-  item: Post,
-) => {
+export const watchListResolver = (watchItem: ReactiveVar<any[]>, item: any) => {
   const existingCartItem = watchItem().find(
     cartItem => cartItem.id === item.id,
   );

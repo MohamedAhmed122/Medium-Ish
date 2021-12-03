@@ -9,7 +9,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {UserList} from './UserList';
 import {PostCard} from '@Components/PostCard';
 // GRAPHQL
-import {Post, useGetAuthors, useGetArticles} from '@GraphQL/query';
+import {useGetAuthors, useGetArticles} from '@GraphQL/query';
 // RENDER
 import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
@@ -32,7 +32,7 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
     navigation.navigate(PostParams.PostDetail, {id});
   };
 
-  const handleWatchListItems = (item: Post): void =>
+  const handleWatchListItems = (item: any): void =>
     watchListVar && watchListResolver(watchListVar, item);
 
   if (loading || !authors) return <AppLoading />;

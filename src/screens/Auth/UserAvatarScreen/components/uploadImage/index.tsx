@@ -1,13 +1,17 @@
 import React from 'react';
-import {COLORS} from '@Styles/colors';
 import {Image, TouchableOpacity, View} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
-import styles from './styles';
 import {IF, AppButton, AnimatableView} from '@Commons/index';
+import Icon from 'react-native-vector-icons/AntDesign';
+
+import {Image as ImagePickerProps} from 'react-native-image-crop-picker';
+
+import {COLORS} from '@Styles/colors';
+import styles from './styles';
 
 export interface UploadImageProps {
   handlePickImage(): void;
-  image: string;
+  image?: ImagePickerProps;
+  handleProcessed(): void;
 }
 
 export const UploadImage: React.FC<UploadImageProps> = ({
@@ -17,7 +21,7 @@ export const UploadImage: React.FC<UploadImageProps> = ({
   return (
     <AnimatableView style={styles.container}>
       <IF condition={Boolean(image)}>
-        <Image source={{uri: image}} style={styles.placeholder} />
+        <Image source={{uri: image?.path}} style={styles.placeholder} />
       </IF>
       <IF condition={!image}>
         <TouchableOpacity style={styles.placeholder} onPress={handlePickImage}>

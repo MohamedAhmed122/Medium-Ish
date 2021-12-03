@@ -12,12 +12,14 @@ export interface GenerateAvatarProps {
   randomize(): void;
   handleProcessed(): void;
   uri: string;
+  updateAvatarLoading: boolean;
 }
 export const GenerateAvatar: React.FC<GenerateAvatarProps> = ({
   uri,
   changeSeed,
   randomize,
   handleProcessed,
+  updateAvatarLoading,
 }) => {
   return (
     <AnimatableView>
@@ -40,6 +42,7 @@ export const GenerateAvatar: React.FC<GenerateAvatarProps> = ({
           color={COLORS.secondary}
           title="processed "
           onPress={handleProcessed}
+          loading={updateAvatarLoading}
         />
       </View>
     </AnimatableView>

@@ -9,6 +9,8 @@ import {Header} from '@Components/Header';
 import {FromBio} from './FromBio';
 
 import {COLORS} from '@Styles/colors';
+import {useReactiveVar} from '@apollo/client';
+import {currentAuthor} from '@GraphQL/Apollo/cache';
 
 // import styles from './styles'
 
@@ -17,6 +19,10 @@ interface UserBioScreenProps {
 }
 
 export const UserBioScreen: React.FC<UserBioScreenProps> = ({navigation}) => {
+  // GLOBAL VAR
+  const currentUser = useReactiveVar(currentAuthor);
+  console.log(currentUser, 'currentUser');
+
   const navigateBack = (): void => navigation.goBack();
   const handleSubmit = (value: initialFormValues) => {
     const newValue = value as BioValues;

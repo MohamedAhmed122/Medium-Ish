@@ -1,5 +1,5 @@
 // Author
-export * from './author/useGetAuthors';
+export * from './author/hooks';
 export * from './author/query';
 export * from './author/interface';
 

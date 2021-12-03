@@ -43,7 +43,7 @@ export interface AuthorLocation {
 export interface InitiateAuthorParams extends Omit<InitiateAuthor, 'id'> {}
 
 export interface UpdateAvatarParams extends ParamId {
-  imageURL: string;
+  imageUrl: string;
 }
 
 export interface UpdateImageParams extends ParamId {
