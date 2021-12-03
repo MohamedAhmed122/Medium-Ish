@@ -29,7 +29,7 @@ export const GET_SINGLE_ARTICLE = gql`
         author{
           ...${fragmentsField.author}
         }
-        comment {
+        comments {
           ...${fragmentsField.comment}
         }
       }
