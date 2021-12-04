@@ -1,4 +1,5 @@
-import {Comment} from '..';
+import {Comment} from './../../comment/interface';
+
 import {Author} from '@GraphQL/query';
 export interface Article {
   id: string;

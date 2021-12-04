@@ -1,9 +1,17 @@
+import {Article} from '@GraphQL/query';
 import {ParamId} from '@Types/Common';
-import {Article} from '..';
+
+// Navigation
+import {AuthParamList, AuthParams} from '@Navigation/AuthNavigator/interface';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 export type ImageType = {url: string};
 export type ColorType = {hex: string};
 export type LocationType = {latitude: number; longitude: number};
+export type Navigation = StackNavigationProp<
+  AuthParamList,
+  AuthParams.Register
+>;
 
 export interface Author {
   id: string;
