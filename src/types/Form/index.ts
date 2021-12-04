@@ -1,3 +1,4 @@
+import {PickerItem} from '../Common';
 import {FormikErrors, FormikTouched} from 'formik';
 import {Nullable} from '../Common';
 
@@ -20,7 +21,7 @@ export interface CreatePostValue {
 
 export interface BioValues {
   bio: string;
-  color: string;
+  color: Nullable<PickerItem>;
 }
 
 export type initialFormValues = Readonly<

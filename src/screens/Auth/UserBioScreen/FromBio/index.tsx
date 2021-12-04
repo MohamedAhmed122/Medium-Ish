@@ -11,12 +11,13 @@ import {initialFormValues} from '@Types/Form';
 
 interface Props {
   handleSubmit(values: initialFormValues): void;
+  loading: boolean;
 }
 
-export const FromBio: React.FC<Props> = ({handleSubmit}) => {
+export const FromBio: React.FC<Props> = ({handleSubmit, loading}) => {
   return (
     <AppForm
-      initialValues={{bio: '', color: ''}}
+      initialValues={{bio: '', color: null}}
       onSubmit={handleSubmit}
       validationSchema={null}>
       <AppInputField
@@ -30,7 +31,7 @@ export const FromBio: React.FC<Props> = ({handleSubmit}) => {
         placeholder="Favorite Color"
         inverted={true}
       />
-      <AppSubmitButton title="Submit" style={styles.button} />
+      <AppSubmitButton title="Submit" style={styles.button} loading={loading} />
     </AppForm>
   );
 };

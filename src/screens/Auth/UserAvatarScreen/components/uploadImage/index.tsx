@@ -12,11 +12,14 @@ export interface UploadImageProps {
   handlePickImage(): void;
   image?: ImagePickerProps;
   handleProcessed(): void;
+  loading: boolean;
 }
 
 export const UploadImage: React.FC<UploadImageProps> = ({
   image,
   handlePickImage,
+  loading,
+  handleProcessed,
 }) => {
   return (
     <AnimatableView style={styles.container}>
@@ -32,8 +35,9 @@ export const UploadImage: React.FC<UploadImageProps> = ({
       <View style={styles.buttonContainer}>
         <AppButton
           title="processed"
-          onPress={() => {}}
+          onPress={handleProcessed}
           color={COLORS.secondary}
+          loading={loading}
         />
       </View>
     </AnimatableView>

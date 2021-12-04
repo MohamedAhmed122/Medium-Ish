@@ -13,7 +13,7 @@ import {RenderAvatarChoicesButtons, RenderAvatarPickers} from './components';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';
-import {useUpdateAvatar} from '@GraphQL/query';
+import {useUpdateAvatar, useUploadImage} from '@GraphQL/query';
 import {useReactiveVar} from '@apollo/client';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
 
@@ -33,20 +33,32 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
 
   const {updateAvatar, updateAvatarLoading} = useUpdateAvatar(navigation);
 
+  const {uploadImageLoading, data, uploadImage} = useUploadImage(navigation);
+
   const changeSeed = (type: Seed): void => setSeed(type);
 
   const randomize = (): void => setRandom(getRandomNumber());
 
   const uri = getAvatarUri(seed, random);
 
+  console.log(data, 'data');
+
   const handleProcessedAvatar = (): void => {
     updateAvatar({
       variables: {id: currentUser.id, imageUrl: uri},
     });
   };
+  console.log(image);
 
   const handleProcessedUploadPhoto = () => {
     if (!image) return;
+    uploadImage({
+      variables: {
+        fileName: image.filename || `${Date.now()}.jpg`,
+        id: currentUser.id,
+        handle: image.path.replace('file://', ''),
+      },
+    });
   };
 
   const onChoiceAvatar = (): void =>
@@ -64,8 +76,8 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
     console.log(value);
     // uri:
     // Platform.OS === 'android'
-    //   ? file.uri
-    //   : file.uri.replace('file://', ''),
+    //   ? image?.sourceURL
+    //   : image?.sourceURL.replace('file://', ''),
     value && setImage(value);
   };
 
@@ -89,6 +101,7 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
           image,
           handlePickImage,
           handleProcessed: handleProcessedUploadPhoto,
+          loading: uploadImageLoading,
         }}
       />
       <RenderAvatarChoicesButtons

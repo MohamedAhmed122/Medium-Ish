@@ -10,6 +10,7 @@ export interface Author {
   username: string;
   color: ColorType;
   image: ImageType;
+  imageUrl: string;
 }
 
 export interface InitiateAuthor {
@@ -26,7 +27,7 @@ export interface AuthorDetail extends Author {
   article: Article;
 }
 
-export interface AuthorAvatar {
+export interface AuthorUploadImage {
   image: ImageType;
 }
 

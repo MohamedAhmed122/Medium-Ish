@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {RootNavigation} from '@Navigation/AppNavigation/interface';
-import {Navigators} from '@Navigation/index';
 import {BioValues, initialFormValues} from '@Types/Form';
 
 import {Screen} from '@Commons/Screen';
@@ -11,6 +10,7 @@ import {FromBio} from './FromBio';
 import {COLORS} from '@Styles/colors';
 import {useReactiveVar} from '@apollo/client';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
+import {useAddBio} from '@GraphQL/query';
 
 // import styles from './styles'
 
@@ -21,23 +21,26 @@ interface UserBioScreenProps {
 export const UserBioScreen: React.FC<UserBioScreenProps> = ({navigation}) => {
   // GLOBAL VAR
   const currentUser = useReactiveVar(currentAuthor);
-  console.log(currentUser, 'currentUser');
+
+  const {addBio, loading} = useAddBio(navigation);
 
   const navigateBack = (): void => navigation.goBack();
   const handleSubmit = (value: initialFormValues) => {
     const newValue = value as BioValues;
-    console.log(newValue);
 
-    navigation.reset({
-      index: 0,
-      routes: [{name: Navigators.App.TabNavigation}],
+    addBio({
+      variables: {
+        hex: newValue.color?.color || COLORS.primary,
+        bio: newValue.bio,
+        id: currentUser.id,
+      },
     });
   };
 
   return (
     <Screen>
       <Header title="Bio" handleGoBack={navigateBack} color={COLORS.primary} />
-      <FromBio handleSubmit={handleSubmit} />
+      <FromBio handleSubmit={handleSubmit} loading={loading} />
     </Screen>
   );
 };

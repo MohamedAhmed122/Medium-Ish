@@ -43,7 +43,7 @@ export const AppPicker: React.FC<Props> = ({
               <View
                 style={[
                   styles.colorView,
-                  {backgroundColor: selectedItem.color},
+                  {backgroundColor: selectedItem?.color},
                 ]}
               />
             )}

@@ -11,6 +11,7 @@ export const CORE_AUTHORS_FIELDS = gql`
     image {
       url
     }
+    imageUrl
   }
 `;
 

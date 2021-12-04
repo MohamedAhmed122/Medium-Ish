@@ -19,7 +19,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
 
   const handleSubmit = (values: initialFormValues): void => {
     const newValue = values as RegisterValue;
-
+    navigation.navigate(AuthParams.UserAvatar);
     registerUser({
       variables: newValue,
     });

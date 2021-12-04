@@ -70,7 +70,7 @@ export const UPDATE_AUTHOR_IMAGE = gql`
 
 // UPDATE -> Initiation/Add  Author info
 export const UPDATE_AUTHOR_INFO = gql`
-  mutation updateAuthorInfo($id: ID!, $hex: String!, $bio: String!) {
+  mutation updateAuthorInfo($id: ID!, $hex: Hex!, $bio: String!) {
     updateAuthor(data: {bio: $bio, color: {hex: $hex}}, where: {id: $id}) {
       bio
       color {
