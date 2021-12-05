@@ -4,7 +4,7 @@ import {AppText} from '@Commons/AppText';
 import {COLORS} from '@Styles/colors';
 
 interface Props {
-  message: string;
+  message?: string;
 }
 
 export const Empty: React.FC<Props> = ({

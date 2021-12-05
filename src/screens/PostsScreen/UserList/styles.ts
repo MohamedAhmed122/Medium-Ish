@@ -9,9 +9,9 @@ export default ScaledSheet.create({
     marginLeft: 5,
   },
   img: {
-    width: '60@s',
-    height: '60@s',
-    borderRadius: '30@s',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
   },
   // activePost: {
   //   width: '12@s',

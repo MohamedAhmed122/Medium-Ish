@@ -36,5 +36,12 @@ export interface CreateArticleParam {
   richDescription: any;
 }
 
+export interface SearchArticle {
+  id: string;
+  title: string;
+  createdAt: Date;
+  author: Author;
+}
+
 export interface UpdateArticleParam
   extends Omit<CreateArticleParam, 'username' | 'categoryId'> {}

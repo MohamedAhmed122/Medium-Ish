@@ -8,5 +8,5 @@ export const fragmentsField = {
   author: 'coreAuthorFields',
   authorDetail: 'coreAuthorDetailFields',
   article: 'coreArticleFields',
-  comment: 'CoreCommentFields',
+  comment: 'coreCommentFields',
 };

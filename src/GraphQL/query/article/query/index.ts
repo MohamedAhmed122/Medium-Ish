@@ -5,3 +5,4 @@ export * from './getAuthorArticles';
 export * from './getSingleArticle';
 export * from './likeArticle';
 export * from './updateArticle';
+export * from './searchArticle';
