@@ -7,21 +7,20 @@ import {AppInput, Screen, ItemSeparator, Empty} from '@Commons/index';
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
 import {useSearchArticles} from '@GraphQL/query';
+import {FeaturedFlatList} from '@Components/FeaturedFlatList';
 
 interface SearchScreenProps {}
 export const SearchScreen: React.FC<SearchScreenProps> = () => {
   const [title, setTitle] = useState<string>('');
   const {data: articles, loading} = useSearchArticles(title);
-  console.log(loading);
-
-  // if (loading) return <AppLoading />;
 
   return (
     <Screen>
       <AppInput value={title} onChangeText={setTitle} placeholder="Search">
         <AntDesign name="search1" color={COLORS.darkGray} size={22} />
       </AppInput>
-      <FlatList
+      <FeaturedFlatList
+        loading={loading}
         ListHeaderComponentStyle={styles.listHeaderComponentStyle}
         contentContainerStyle={styles.contentContainerStyle}
         keyExtractor={item => item.id}

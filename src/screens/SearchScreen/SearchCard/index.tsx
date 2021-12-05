@@ -6,7 +6,6 @@ import {SearchArticle} from '@GraphQL/query';
 import styles from './styles';
 import {UserImage} from '@Components/UserImage';
 import {AppLoading} from '@Commons/AppLoading';
-import {Empty} from '@Commons/Empty';
 
 interface Props {
   item: SearchArticle;
