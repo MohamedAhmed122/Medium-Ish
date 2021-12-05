@@ -1,27 +1,20 @@
-/* eslint-disable curly */
 import React from 'react';
-import {Image, TouchableOpacity, View} from 'react-native';
-import {AppText} from '@Commons/AppText';
+import {TouchableOpacity, View} from 'react-native';
 import {SearchArticle} from '@GraphQL/query';
-import styles from './styles';
 import {UserImage} from '@Components/UserImage';
-import {AppLoading} from '@Commons/AppLoading';
+import {AppResizedText, AppText} from '@Commons/index';
+
+import styles from './styles';
 
 interface Props {
   item: SearchArticle;
-  loading: boolean;
 }
-export const SearchCard: React.FC<Props> = ({item, loading}) => {
-  const {title, author} = item;
-
-  if (loading) return <AppLoading />;
-
-  // return <Empty />;
+export const SearchCard: React.FC<Props> = ({item}) => {
+  const {title, author, description} = item;
 
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.row}>
-        <Image source={{uri: img}} />
         <UserImage
           resizeMode="cover"
           style={styles.img}
@@ -35,14 +28,20 @@ export const SearchCard: React.FC<Props> = ({item, loading}) => {
           <AppText style={styles.date} fontFamily="Roboto-Bold">
             12.10.2021
           </AppText>
+          <AppResizedText
+            style={styles.title}
+            fontFamily="Roboto-Regular"
+            text={title}
+            substring={35}
+          />
         </View>
       </View>
-      <AppText style={styles.desc} fontFamily="Roboto-Regular">
-        {title?.length > 95 ? title?.substring(0, 95 - 3) + '.....' : title}
-      </AppText>
+      <AppResizedText
+        text={description}
+        fontFamily="Roboto-Light"
+        substring={95}
+        style={styles.desc}
+      />
     </TouchableOpacity>
   );
 };
-
-const img =
-  'https://media.istockphoto.com/photos/portrait-of-smiling-handsome-man-in-blue-tshirt-standing-with-crossed-picture-id1045886560?k=6&m=1045886560&s=612x612&w=0&h=hXrxai1QKrfdqWdORI4TZ-M0ceCVakt4o6532vHaS3I=';

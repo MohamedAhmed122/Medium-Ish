@@ -39,6 +39,7 @@ export interface CreateArticleParam {
 export interface SearchArticle {
   id: string;
   title: string;
+  description: string;
   createdAt: Date;
   author: Author;
 }

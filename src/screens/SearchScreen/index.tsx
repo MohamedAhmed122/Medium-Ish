@@ -1,13 +1,12 @@
-/* eslint-disable curly */
 import React, {useState} from 'react';
-import {FlatList} from 'react-native';
+
 import {SearchCard} from './SearchCard';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {AppInput, Screen, ItemSeparator, Empty} from '@Commons/index';
 import {COLORS} from '@Styles/colors';
-import styles from './styles';
 import {useSearchArticles} from '@GraphQL/query';
 import {FeaturedFlatList} from '@Components/FeaturedFlatList';
+import styles from './styles';
 
 interface SearchScreenProps {}
 export const SearchScreen: React.FC<SearchScreenProps> = () => {
@@ -25,7 +24,7 @@ export const SearchScreen: React.FC<SearchScreenProps> = () => {
         contentContainerStyle={styles.contentContainerStyle}
         keyExtractor={item => item.id}
         data={articles?.articles}
-        renderItem={({item}) => <SearchCard item={item} loading={loading} />}
+        renderItem={({item}) => <SearchCard item={item} />}
         ItemSeparatorComponent={ItemSeparator}
         ListEmptyComponent={Empty}
       />

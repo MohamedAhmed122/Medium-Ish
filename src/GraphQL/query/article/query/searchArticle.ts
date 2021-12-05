@@ -8,6 +8,7 @@ export const SEARCH_ARTICLES = gql`
         id
         title
         createdAt
+        description
         author{
             ...${fragmentsField.author}
         }

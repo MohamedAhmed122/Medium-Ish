@@ -9,6 +9,7 @@ export {Empty} from './Empty';
 export {AppText} from './AppText';
 export {ItemSeparator} from './ItemSeparator';
 export {AnimatableView} from './AnimatableView';
+export {AppResizedText} from './AppResizedText';
 // Condition
 export {IF} from './Condition/IF';
 export {Choose} from './Condition/Choose';

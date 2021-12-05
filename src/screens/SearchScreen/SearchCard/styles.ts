@@ -29,8 +29,12 @@ export default ScaledSheet.create({
   date: {
     color: COLORS.secondary,
   },
-  desc: {
+  title: {
     lineHeight: 23,
     marginTop: '5@vs',
+  },
+  desc: {
+    lineHeight: 21,
+    marginTop: '10@vs',
   },
 });
