@@ -6,6 +6,8 @@ import {ApolloProvider} from '@apollo/client';
 import {client} from '@GraphQL/Apollo';
 import Toast from 'react-native-toast-message';
 
+// FIXME: Bug in the WatchList
+
 export default function App() {
   return (
     <ApolloProvider client={client}>

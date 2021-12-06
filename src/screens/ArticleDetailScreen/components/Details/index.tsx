@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, Dimensions, View} from 'react-native';
-// import CommentList from '../../components/CommentList';
+
 import RenderHtml from 'react-native-render-html';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
-import {ArticleDetail} from '@GraphQL/query';
+import {ArticleDetail as DetailedArticle} from '@GraphQL/query';
 import {UserImage} from '@Components/UserImage';
 import {AppBadge} from '@Commons/AppBadge';
 import {AppText} from '@Commons/AppText';
@@ -13,10 +13,10 @@ import {AppText} from '@Commons/AppText';
 const {width} = Dimensions.get('window');
 
 interface Props {
-  article: ArticleDetail;
+  article: DetailedArticle;
 }
 
-export const PostDetail: React.FC<Props> = ({article}) => {
+export const Details: React.FC<Props> = ({article}) => {
   const {author, description, richDescription, category, title} = article;
   console.log(richDescription);
 

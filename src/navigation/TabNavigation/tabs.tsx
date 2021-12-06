@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {TabParams} from './interface';
-import {PostNavigator} from '../PostNavigator';
+import {ArticleNavigator} from '../ArticleNavigator';
 import {CreatePost} from '@Screens/CreatePostScreen';
 import {UserWatchListScreen} from '@Screens/UserWatchListScreen';
 import {SettingScreen} from '@Screens/SettingsScreen';
@@ -18,8 +18,8 @@ import {TabBarIcon} from '@Components/TabBar';
 export const tabs = [
   {
     id: 1,
-    component: PostNavigator,
-    name: TabParams.Post,
+    component: ArticleNavigator,
+    name: TabParams.Article,
     options: {
       title: 'POSTS',
       tabBarIcon: ({color}: {color: string}) => (

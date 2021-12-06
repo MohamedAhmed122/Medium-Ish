@@ -9,15 +9,15 @@ import {
 
 import {AppLoading, Screen, Error, Empty} from '@Commons/index';
 import {useGetArticleById} from '@GraphQL/query';
-import {PostDetail, Comment, CommentList} from './components';
+import {Details, Comment, CommentList} from './components';
 import {FlatList} from 'react-native';
 
 import styles from './styles';
 
-interface PostDetailsProps {
+interface ArticleDetailProps {
   route: RouteProp<PostParamsList, PostParams.PostDetail>;
 }
-export const PostDetails: React.FC<PostDetailsProps> = ({route}) => {
+export const ArticleDetail: React.FC<ArticleDetailProps> = ({route}) => {
   const {id} = route.params;
 
   const {data, loading, error} = useGetArticleById(id);
@@ -30,7 +30,7 @@ export const PostDetails: React.FC<PostDetailsProps> = ({route}) => {
       <FlatList
         ListHeaderComponent={() => (
           <>
-            <PostDetail article={data.article} />
+            <Details article={data.article} />
             <Comment />
           </>
         )}

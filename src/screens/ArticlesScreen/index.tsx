@@ -2,12 +2,12 @@
 import React from 'react';
 // TYPES
 import {
-  PostParamsList,
-  PostParams,
-} from '../../navigation/AppNavigation/interface';
+  ArticleParams,
+  ArticleParamList,
+} from '@Navigation/ArticleNavigator/interface';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {UserList} from './UserList';
-import {PostCard} from '@Components/PostCard';
+import {ArticleCard} from '@Components/ArticleCard';
 // GRAPHQL
 import {useGetAuthors, useGetArticles, Article} from '@GraphQL/query';
 import {watchListVar} from '@GraphQL/Apollo/cache';
@@ -15,17 +15,20 @@ import {watchListVar} from '@GraphQL/Apollo/cache';
 import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
 
-import {watchListResolver} from '@Utils/cart';
+import {watchListResolver} from '@Utils/watchListReslover';
 import styles from './styles';
 interface PostsProps {
-  navigation: NativeStackNavigationProp<PostParamsList, PostParams.Posts>;
+  navigation: NativeStackNavigationProp<
+    ArticleParamList,
+    ArticleParams.Articles
+  >;
 }
 export const Posts: React.FC<PostsProps> = ({navigation}) => {
   const {loading, authors} = useGetAuthors();
   const {articles, articleError, articleLoading} = useGetArticles();
 
   const handleNavigate = (id: string): void => {
-    navigation.navigate(PostParams.PostDetail, {id});
+    navigation.navigate(ArticleParams.ArticleDetail, {id});
   };
 
   const handleWatchListItems = (item: Article): void =>
@@ -56,7 +59,7 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
         data={articles.articles}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <PostCard
+          <ArticleCard
             item={item}
             handleNavigate={handleNavigate}
             handleWatchListItems={handleWatchListItems}

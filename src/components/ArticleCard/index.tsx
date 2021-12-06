@@ -13,13 +13,13 @@ import {UserImage} from '@Components/UserImage';
 
 import styles from './styles';
 
-interface PostProps {
+interface Props {
   item: Article;
   handleNavigate(id: string): void;
   handleWatchListItems(item: Article): void;
 }
 
-export const PostCard: React.FC<PostProps> = ({
+export const ArticleCard: React.FC<Props> = ({
   item,
   handleNavigate,
   handleWatchListItems,

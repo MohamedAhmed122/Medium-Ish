@@ -8,10 +8,10 @@ import {ActiveTab} from '@Types/UserList';
 import {Screen} from '@Commons/Screen';
 import {Tab, Header} from './components';
 import {FlatList} from 'react-native';
-import {PostCard} from '@Components/PostCard';
+import {ArticleCard} from '@Components/ArticleCard';
 import {useReactiveVar} from '@apollo/client';
 import {watchListVar} from '@GraphQL/Apollo/cache';
-import {watchListResolver} from '@Utils/cart';
+import {watchListResolver} from '@Utils/watchListReslover';
 import {Article} from '@GraphQL/query';
 import {Empty} from '@Commons/Empty';
 
@@ -27,8 +27,8 @@ export const UserWatchListScreen: React.FC<UserWatchListProps> = ({
   const watchList = useReactiveVar(watchListVar);
 
   const handleNavigate = () =>
-    navigation.navigate(Navigators.Tab.Post, {
-      screen: Navigators.PostStack.PostDetail,
+    navigation.navigate(Navigators.Tab.Article, {
+      screen: Navigators.ArticleStack.ArticleDetail,
       params: {id: '618fd2de5fd7ce77dfdd44f2'},
     });
 
@@ -54,7 +54,7 @@ export const UserWatchListScreen: React.FC<UserWatchListProps> = ({
         data={watchList}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <PostCard
+          <ArticleCard
             item={item}
             handleNavigate={handleNavigate}
             handleWatchListItems={handleWatchList}
