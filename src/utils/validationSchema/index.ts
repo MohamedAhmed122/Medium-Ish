@@ -12,7 +12,7 @@ export const validationRegisterSchema = Yup.object().shape({
 });
 
 export const validationLoginSchema = Yup.object().shape({
-  username: Yup.string().required().min(4).label('Email'),
+  username: Yup.string().required().min(4).label('Username'),
   password: Yup.string().required().min(6).label('Password'),
 });
 

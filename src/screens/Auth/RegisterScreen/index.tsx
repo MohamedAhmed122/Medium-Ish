@@ -26,11 +26,16 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
   };
 
   const handleGoBack = () => navigation.goBack();
+  const handleNavigate = () => navigation.navigate(AuthParams.Login);
 
   return (
     <Screen>
       <Header handleGoBack={handleGoBack} title={'Welcome, to Medium-Ish'} />
-      <RegisterForm handleSubmit={handleSubmit} loading={loading} />
+      <RegisterForm
+        handleSubmit={handleSubmit}
+        loading={loading}
+        handleNavigate={handleNavigate}
+      />
     </Screen>
   );
 };

@@ -17,6 +17,7 @@ import {Error, AppLoading, Screen} from '@Commons/index';
 
 import {watchListResolver} from '@Utils/watchListReslover';
 import styles from './styles';
+
 interface PostsProps {
   navigation: NativeStackNavigationProp<
     ArticleParamList,

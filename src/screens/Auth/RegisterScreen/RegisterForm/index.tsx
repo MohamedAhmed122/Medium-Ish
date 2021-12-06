@@ -2,18 +2,22 @@ import React from 'react';
 import {initialFormValues} from '@Types/Form';
 import {validationRegisterSchema as validationSchema} from '@Utils/validationSchema';
 import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
+import {AuthText} from '@Components/AuthText';
 
 import {COLORS} from '@Styles/colors';
+import styles from './styles';
 
 interface RegisterProps {
   handleSubmit(values: initialFormValues): void;
   loading: boolean;
+  handleNavigate(): void;
 }
 
 export const RegisterForm: React.FC<RegisterProps> = ({
   handleSubmit,
   loading,
+  handleNavigate,
 }) => {
   return (
     <View style={styles.loginContainer}>
@@ -41,18 +45,13 @@ export const RegisterForm: React.FC<RegisterProps> = ({
           color={COLORS.secondary}
           loading={loading}
         />
+
+        <AuthText
+          style={styles.authText}
+          text="You already have an account!, Login"
+          handleNavigate={handleNavigate}
+        />
       </AppForm>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  loginContainer: {
-    marginTop: 15,
-  },
-  text: {
-    textAlign: 'center',
-    fontSize: 18,
-    color: COLORS.secondary,
-  },
-});

@@ -1,8 +1,13 @@
 import React from 'react';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {AuthParamList, AuthParams} from '@Navigation/AuthNavigator/interface';
+
+import {useLoginAuthor} from '@GraphQL/query';
+
+import {RootNavigation} from '@Navigation/AppNavigation/interface';
+import {AuthParams} from '@Navigation/AuthNavigator/interface';
+
 import {LoginValue, initialFormValues} from '@Types/Form';
 import {LoginForm} from './LoginForm';
+
 import {Screen} from '@Commons/index';
 import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';
@@ -10,12 +15,16 @@ import {COLORS} from '@Styles/colors';
 // import styles from './styles'
 
 interface LoginScreenProps {
-  navigation: StackNavigationProp<AuthParamList, AuthParams.Login>;
+  navigation: RootNavigation;
 }
 export const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
+  const {loading, loginAuthor} = useLoginAuthor(navigation);
+
   const handleLoginSubmit = (value: initialFormValues) => {
     const newValues = value as LoginValue;
-    console.log(newValues);
+    loginAuthor({
+      variables: {username: newValues.username},
+    });
   };
 
   const handleGoBack = () => navigation.goBack();
@@ -33,6 +42,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
       <LoginForm
         handleSubmit={handleLoginSubmit}
         handleNavigateToRegister={handleNavigateToRegister}
+        loading={loading}
       />
     </Screen>
   );

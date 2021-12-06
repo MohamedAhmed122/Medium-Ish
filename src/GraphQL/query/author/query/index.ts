@@ -3,3 +3,4 @@ export * from './getSingleAuthor';
 export * from './initiateAuthor';
 export * from './updateAuthor';
 export * from './uploadImage';
+export * from './loginAuthor';
