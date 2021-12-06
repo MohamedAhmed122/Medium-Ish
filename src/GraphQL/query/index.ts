@@ -10,4 +10,5 @@ export * from './article/types';
 
 // Comment
 export * from './comment/query';
-export * from './comment/interface';
+export * from './comment/types';
+export * from './comment/hooks';

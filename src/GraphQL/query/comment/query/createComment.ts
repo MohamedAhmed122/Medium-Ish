@@ -4,18 +4,22 @@ import {gql} from '@apollo/client';
 
 export const CREATE_COMMENT = gql`
   mutation createComment(
-    $articleId: ID!
+    $id: ID!
     $comment: String!
     $username: String!
+    $imageUrl: String!
   ) {
     createComment(
       data: {
-        article: {connect: {id: $articleId}}
+        article: {connect: {id: $id}}
         comment: $comment
         username: $username
       }
-    ) {
-      ...${fragmentsField.comment}
+    ){
+        createComment{
+
+        ...${fragmentsField.comment}
+        }
     }
   }
   ${CORE_COMMENT_FIELDS}

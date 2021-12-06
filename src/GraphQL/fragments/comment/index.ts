@@ -6,5 +6,6 @@ export const CORE_COMMENT_FIELDS = gql`
     id
     username
     comment
+    imageUrl
   }
 `;

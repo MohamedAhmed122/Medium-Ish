@@ -1,5 +1,5 @@
 /* eslint-disable curly */
-import React from 'react';
+import React, {useState} from 'react';
 // TYPES
 import {RouteProp} from '@react-navigation/core';
 import {
@@ -13,14 +13,31 @@ import {Details, Comment, CommentList} from './components';
 import {FlatList} from 'react-native';
 
 import styles from './styles';
+import {useCreateArticle} from '@GraphQL/query';
+import {useReactiveVar} from '@apollo/client';
+import {currentAuthor} from '@GraphQL/Apollo/cache';
 
 interface ArticleDetailProps {
   route: RouteProp<PostParamsList, PostParams.PostDetail>;
 }
 export const ArticleDetail: React.FC<ArticleDetailProps> = ({route}) => {
+  const [comment, setComment] = useState<string>('');
   const {id} = route.params;
-
+  const currentUser = useReactiveVar(currentAuthor);
+  const {createComment} = useCreateArticle();
   const {data, loading, error} = useGetArticleById(id);
+
+  const handleCreateComment = () => {
+    data &&
+      createComment({
+        variables: {
+          username: currentUser.username,
+          imageUrl: currentUser.imageUrl || '',
+          id: data.article.id,
+          comment,
+        },
+      });
+  };
 
   if (loading) return <AppLoading />;
   if (error || !data) return <Error />;
@@ -31,7 +48,11 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({route}) => {
         ListHeaderComponent={() => (
           <>
             <Details article={data.article} />
-            <Comment />
+            <Comment
+              comment={comment}
+              setComment={setComment}
+              handleCreateComment={handleCreateComment}
+            />
           </>
         )}
         ListEmptyComponent={Empty}

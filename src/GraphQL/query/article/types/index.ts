@@ -1,4 +1,4 @@
-import {Comment} from './../../comment/interface';
+import {Comment} from '@GraphQL/query';
 import {HTMLSource} from 'react-native-render-html';
 
 import {Author} from '@GraphQL/query';
