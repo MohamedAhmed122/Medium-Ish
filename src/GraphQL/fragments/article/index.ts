@@ -8,6 +8,7 @@ export const CORE_ARTICLE_FIELDS = gql`
     slug
     likes
     title
+    isOnWatchList @client
     category{
       id
       name

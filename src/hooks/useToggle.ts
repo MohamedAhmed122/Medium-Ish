@@ -5,8 +5,10 @@ interface UseToggleButton {
   toggleButton(): void;
 }
 
-export const useToggleButton = (): UseToggleButton => {
-  const [value, setValue] = useState<boolean>(false);
+export const useToggleButton = (
+  initialValue: boolean | undefined = false,
+): UseToggleButton => {
+  const [value, setValue] = useState<boolean>(initialValue);
 
   const toggleButton = (): void => setValue(!value);
 

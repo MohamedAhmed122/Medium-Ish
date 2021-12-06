@@ -1,42 +1,55 @@
 import React from 'react';
-import {Article, Post} from '@GraphQL/query';
-import {Text, Image, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
+
+import {Article} from '@GraphQL/query';
+import {useToggleButton} from '@Hooks/useToggle';
+
 import {LikeButton} from '@Components/LikeButton';
 import {IconContainer} from '@Components/IconContainer';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {AppBadge} from '@Commons/index';
+import {AppBadge, AppResizedText, AppText} from '@Commons/index';
 import {COLORS} from '@Styles/index';
+import {UserImage} from '@Components/UserImage';
+
 import styles from './styles';
-import {useToggleButton} from '@Hooks/useToggle';
 
 interface PostProps {
   item: Article;
   handleNavigate(id: string): void;
-  handleWatchListItems(item: Post): void;
+  handleWatchListItems(item: Article): void;
 }
 
 export const PostCard: React.FC<PostProps> = ({
   item,
   handleNavigate,
-  // handleWatchListItems,
+  handleWatchListItems,
 }) => {
+  const {author, description, category, title, id, likes} = item;
+
   const {value: isLiked, toggleButton: toggleLikeButton} = useToggleButton();
-  const {value: isWatched, toggleButton: toggleWatchButton} = useToggleButton();
+  const {value: isWatched, toggleButton: toggleWatchButton} = useToggleButton(
+    item.isOnWatchList,
+  );
 
   const onWatchList = () => {
-    // toggleWatchButton();
-    // handleWatchListItems(item);
+    toggleWatchButton();
+    handleWatchListItems(item);
   };
+
+  // console.log(item, 'hh');
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => handleNavigate(id)}>
       <View style={styles.main}>
         <View style={styles.flex}>
-          <Image
-            source={{uri: item.author.image.url}}
+          <UserImage
             resizeMode="cover"
             style={styles.avatar}
+            imageUrl={author.imageUrl}
+            image={author.image}
           />
-          <Text style={styles.username}> {item.author.username}</Text>
+          <Text style={styles.username}> {author.username}</Text>
         </View>
         <IconContainer
           style={styles.iconContainer}
@@ -46,20 +59,22 @@ export const PostCard: React.FC<PostProps> = ({
         </IconContainer>
       </View>
       <View>
-        <Text style={styles.desc}>{item.description}</Text>
+        <AppText style={styles.desc}>{title}</AppText>
+        <AppResizedText
+          substring={100}
+          text={description}
+          style={styles.desc}
+          fontFamily="Roboto-Light"
+        />
       </View>
       <View style={styles.likeContainer}>
+        <AppBadge title={category.name} color={COLORS.secondary} />
         <LikeButton
-          likes={item.likes}
+          likes={likes}
           isLiked={isLiked}
           toggleButton={toggleLikeButton}
         />
-        <AppBadge
-          onPress={() => handleNavigate(item.id)}
-          title="View"
-          color={COLORS.secondary}
-        />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };

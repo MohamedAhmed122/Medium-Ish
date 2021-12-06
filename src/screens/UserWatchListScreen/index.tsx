@@ -12,7 +12,7 @@ import {PostCard} from '@Components/PostCard';
 import {useReactiveVar} from '@apollo/client';
 import {watchListVar} from '@GraphQL/Apollo/cache';
 import {watchListResolver} from '@Utils/cart';
-import {Post} from '@GraphQL/query';
+import {Article} from '@GraphQL/query';
 import {Empty} from '@Commons/Empty';
 
 // import styles from './styles'
@@ -34,7 +34,7 @@ export const UserWatchListScreen: React.FC<UserWatchListProps> = ({
 
   console.log(watchListVar());
 
-  const handleWatchList = (item: Post): void =>
+  const handleWatchList = (item: Article): void =>
     watchListVar && watchListResolver(watchListVar, item);
 
   const GetActiveTitle = () =>

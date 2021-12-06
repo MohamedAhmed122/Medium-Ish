@@ -1,7 +1,7 @@
 import {InMemoryCache, makeVar, ReactiveVar} from '@apollo/client';
-import {InitiateAuthor} from '@GraphQL/query';
+import {InitiateAuthor, Article} from '@GraphQL/query';
 
-const watchListVar: ReactiveVar<never[]> = makeVar([]);
+const watchListVar: ReactiveVar<Article[] | any> = makeVar([]);
 const currentAuthor: ReactiveVar<InitiateAuthor | any> = makeVar({});
 
 // TODO: ADD the First Screens
@@ -22,19 +22,19 @@ const cache = new InMemoryCache({
         },
       },
     },
-    // Post: {
-    //   fields: {
-    //     isInCart: {
-    //       read(_, {readField}) {
-    //         const id = readField('id');
+    Article: {
+      fields: {
+        isOnWatchList: {
+          read(_, {readField}) {
+            const id = readField('id');
 
-    //         return watchListVar().find((item: Post) => item.id === id)
-    //           ? true
-    //           : false;
-    //       },
-    //     },
-    //   },
-    // },
+            return watchListVar().find((item: Article) => item.id === id)
+              ? true
+              : false;
+          },
+        },
+      },
+    },
   },
 });
 

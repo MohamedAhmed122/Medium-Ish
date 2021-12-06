@@ -26,24 +26,27 @@ export default ScaledSheet.create({
     justifyContent: 'space-between',
   },
   iconContainer: {
+    position: 'absolute',
+    right: 0,
     marginRight: '10@s',
     width: 45,
     height: 45,
   },
   avatar: {
-    width: '100@s',
-    height: '100@s',
-    borderRadius: '50@s',
+    width: '60@s',
+    height: '60@s',
+    borderRadius: '30@s',
     margin: '10@s',
   },
   username: {
-    fontSize: 25,
+    fontSize: 21,
     color: COLORS.primary,
   },
   desc: {
     fontSize: 18,
     width: '90%',
     marginLeft: '5%',
+    marginBottom: 10,
   },
   likeContainer: {
     flexDirection: 'row',

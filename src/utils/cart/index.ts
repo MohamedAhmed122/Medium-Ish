@@ -1,13 +1,18 @@
 import {ReactiveVar} from '@apollo/client';
-// import {Post} from '@GraphQL/query';
+import {Article} from '@GraphQL/query';
+// import { Post, Article } from '@GraphQL/query';
 
-export const watchListResolver = (watchItem: ReactiveVar<any[]>, item: any) => {
+export const watchListResolver = (
+  watchItem: ReactiveVar<Article[]>,
+  item: Article,
+) => {
   const existingCartItem = watchItem().find(
     cartItem => cartItem.id === item.id,
   );
   if (existingCartItem) {
     watchItem(watchItem().filter(cartItem => cartItem.id !== item.id));
   } else {
-    watchItem([item, ...watchItem()]);
+    const newItem = {...item, isOnWatchList: true};
+    watchItem([newItem, ...watchItem()]);
   }
 };

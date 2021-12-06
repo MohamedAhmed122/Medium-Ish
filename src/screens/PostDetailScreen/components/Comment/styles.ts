@@ -2,13 +2,12 @@ import {ScaledSheet} from 'react-native-size-matters';
 import {COLORS} from '@Styles/colors';
 
 export default ScaledSheet.create({
-  comment: {
-    width: '90%',
-  },
   CommentContainer: {
     borderTopColor: COLORS.gray,
     borderTopWidth: 2,
-    paddingTop: 29,
+  },
+  comment: {
+    width: '90%',
   },
   title: {
     fontWeight: 'bold',
@@ -25,5 +24,6 @@ export default ScaledSheet.create({
   commentInput: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 20,
   },
 });

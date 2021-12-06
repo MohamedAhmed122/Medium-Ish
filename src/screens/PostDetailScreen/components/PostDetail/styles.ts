@@ -22,12 +22,17 @@ export default ScaledSheet.create({
     fontSize: 20,
     color: COLORS.secondary,
   },
+  title: {
+    fontSize: 19,
+    marginBottom: 10,
+  },
   body: {
-    width: '90%',
-    marginLeft: '5%',
-    margin: 10,
-    fontSize: 21,
-    // textAlign: 'start',
-    lineHeight: 30,
+    fontSize: 16,
+  },
+  descContainer: {
+    marginHorizontal: 20,
+  },
+  badge: {
+    marginBottom: 10,
   },
 });

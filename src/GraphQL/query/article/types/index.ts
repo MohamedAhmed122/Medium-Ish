@@ -1,4 +1,5 @@
 import {Comment} from './../../comment/interface';
+import {HTMLSource} from 'react-native-render-html';
 
 import {Author} from '@GraphQL/query';
 export interface Article {
@@ -7,6 +8,7 @@ export interface Article {
   slug: string;
   likes: number;
   title: string;
+  isOnWatchList: boolean;
   category: {
     id: string;
     name: string;
@@ -20,9 +22,7 @@ export interface Articles {
 }
 
 export interface ArticleDetail extends Article {
-  richDescription: {
-    html: string;
-  };
+  richDescription: HTMLSource;
   author: Author;
 }
 

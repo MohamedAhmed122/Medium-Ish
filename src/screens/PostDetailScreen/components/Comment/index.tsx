@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 // import CommentList from '../../components/CommentList';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -11,7 +11,6 @@ export const Comment = () => {
   const [value, setValue] = useState<string>('');
   return (
     <View style={styles.CommentContainer}>
-      <Text style={styles.title}>Write Comment</Text>
       <View style={styles.commentInput}>
         <View style={styles.comment}>
           <AppInput

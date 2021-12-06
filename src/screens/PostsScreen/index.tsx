@@ -9,13 +9,12 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {UserList} from './UserList';
 import {PostCard} from '@Components/PostCard';
 // GRAPHQL
-import {useGetAuthors, useGetArticles} from '@GraphQL/query';
+import {useGetAuthors, useGetArticles, Article} from '@GraphQL/query';
+import {watchListVar} from '@GraphQL/Apollo/cache';
 // RENDER
 import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
 
-// import {useToggleButton} from '@Hooks/useToggle';
-import {watchListVar} from '@GraphQL/Apollo/cache';
 import {watchListResolver} from '@Utils/cart';
 import styles from './styles';
 interface PostsProps {
@@ -24,15 +23,12 @@ interface PostsProps {
 export const Posts: React.FC<PostsProps> = ({navigation}) => {
   const {loading, authors} = useGetAuthors();
   const {articles, articleError, articleLoading} = useGetArticles();
-  console.log(articles, articleError, articleLoading, 'here');
-
-  // const {value: isVisible, toggleButton: handleToggleModal} = useToggleButton();
 
   const handleNavigate = (id: string): void => {
     navigation.navigate(PostParams.PostDetail, {id});
   };
 
-  const handleWatchListItems = (item: any): void =>
+  const handleWatchListItems = (item: Article): void =>
     watchListVar && watchListResolver(watchListVar, item);
 
   if (loading || !authors) return <AppLoading />;
