@@ -39,11 +39,6 @@ export interface AuthorUploadImage {
   image: ImageType;
 }
 
-export interface AuthorBio {
-  bio: string;
-  color: ColorType;
-}
-
 export interface AuthorLocation {
   location: LocationType;
 }

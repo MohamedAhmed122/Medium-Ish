@@ -1,5 +1,4 @@
 import {useMutation} from '@apollo/client';
-import {currentAuthor} from '@GraphQL/Apollo/cache';
 import {UPDATE_AUTHOR_AVATAR} from '../query';
 
 import {UpdateAvatarParams, Navigation} from '../types';
@@ -17,13 +16,8 @@ export const useUpdateAvatar = (navigation: Navigation) => {
     UpdateAvatarParams
   >(UPDATE_AUTHOR_AVATAR, {
     errorPolicy: 'ignore',
-    onCompleted: author => {
-      console.log('YES');
+    onCompleted: () => {
       navigation.navigate(AuthParams.UserBio);
-      currentAuthor({
-        ...currentAuthor(),
-        imageUrl: author.updateAuthor.imageUrl,
-      });
     },
     onError: er => {
       console.log(er);

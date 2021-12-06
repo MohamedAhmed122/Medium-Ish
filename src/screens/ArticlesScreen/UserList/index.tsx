@@ -9,7 +9,6 @@ interface Props {
   item: Author;
 }
 export const UserList: React.FC<Props> = ({item}) => {
-  console.log(item.imageUrl);
   return (
     <TouchableOpacity>
       <View style={[styles.postImgContainer, {borderColor: item.color?.hex}]}>

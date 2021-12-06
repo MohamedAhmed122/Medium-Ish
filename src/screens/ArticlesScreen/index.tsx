@@ -10,14 +10,14 @@ import {UserList} from './UserList';
 import {ArticleCard} from '@Components/ArticleCard';
 // GRAPHQL
 import {useGetAuthors, useGetArticles, Article} from '@GraphQL/query';
-import {watchListVar} from '@GraphQL/Apollo/cache';
+import {currentAuthor, watchListVar} from '@GraphQL/Apollo/cache';
 // RENDER
 import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
 
 import {watchListResolver} from '@Utils/watchListReslover';
 import styles from './styles';
-
+import {useReactiveVar} from '@apollo/client';
 interface PostsProps {
   navigation: NativeStackNavigationProp<
     ArticleParamList,
@@ -27,6 +27,9 @@ interface PostsProps {
 export const Posts: React.FC<PostsProps> = ({navigation}) => {
   const {loading, authors} = useGetAuthors();
   const {articles, articleError, articleLoading} = useGetArticles();
+
+  const current = useReactiveVar(currentAuthor);
+  console.log(current, 'current');
 
   const handleNavigate = (id: string): void => {
     navigation.navigate(ArticleParams.ArticleDetail, {id});

@@ -1,3 +1,5 @@
+import {fragmentsField} from '@GraphQL/types';
+import {CORE_AUTHORS_FIELDS} from '@GraphQL/fragments';
 import {gql} from 'graphql-tag';
 
 // UPDATE -> Initiation/Add  Author Avatar
@@ -13,12 +15,10 @@ export const UPDATE_AUTHOR_AVATAR = gql`
 export const UPDATE_AUTHOR_INFO = gql`
   mutation updateAuthorInfo($id: ID!, $hex: Hex!, $bio: String!) {
     updateAuthor(data: {bio: $bio, color: {hex: $hex}}, where: {id: $id}) {
-      bio
-      color {
-        hex
-      }
+     ...${fragmentsField.author}
     }
   }
+  ${CORE_AUTHORS_FIELDS}
 `;
 
 // UPDATE ->  Initiation/Add  Author Location
