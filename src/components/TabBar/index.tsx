@@ -8,7 +8,7 @@ import {COLORS} from '@Styles/colors';
 import {
   TabParams,
   TabRootNavigation,
-} from '@Navigation/TabNavigation/interface';
+} from '@Navigation/tab-navigation/interface';
 
 export const TabBarIcon: React.FC = () => {
   const navigation = useNavigation<TabRootNavigation>();

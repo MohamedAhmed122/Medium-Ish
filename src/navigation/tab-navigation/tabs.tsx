@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {TabParams} from './interface';
-import {ArticleNavigator} from '../ArticleNavigator';
+import {ArticleNavigator} from '../article-stack';
 import {CreatePost} from '@Screens/CreatePostScreen';
 import {UserWatchListScreen} from '@Screens/UserWatchListScreen';
 // import {SettingScreen} from '@Screens/SettingsScreen';

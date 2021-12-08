@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, View} from 'react-native';
-import {RootNavigation} from '@Navigation/AppNavigation/interface';
+import {RootNavigation} from '@Navigation/app-navigation/interface';
 import {Navigators} from '@Navigation/index';
 import {Screen} from '@Commons/Screen';
 import {AppButton, AppText} from '@Commons/index';

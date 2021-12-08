@@ -2,8 +2,8 @@ import React from 'react';
 
 import {useLoginAuthor} from '@GraphQL/query';
 
-import {RootNavigation} from '@Navigation/AppNavigation/interface';
-import {AuthParams} from '@Navigation/AuthNavigator/interface';
+import {RootNavigation} from '@Navigation/app-navigation/interface';
+import {AuthParams} from '@Navigation/auth-stack/interface';
 
 import {LoginValue, initialFormValues} from '@Types/Form';
 import {LoginForm} from './LoginForm';

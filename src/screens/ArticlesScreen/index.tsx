@@ -4,7 +4,7 @@ import React from 'react';
 import {
   ArticleParams,
   ArticleParamList,
-} from '@Navigation/ArticleNavigator/interface';
+} from '@Navigation/article-stack/interface';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {UserList} from './UserList';
 import {ArticleCard} from '@Components/ArticleCard';

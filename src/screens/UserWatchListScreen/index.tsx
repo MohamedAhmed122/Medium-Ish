@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 // TYPES
 import {Navigators} from '@Navigation/index';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {TabParamList, TabParams} from '@Navigation/TabNavigation/interface';
+import {TabParamList, TabParams} from '@Navigation/tab-navigation/interface';
 import {ActiveTab} from '@Types/UserList';
 // RENDER
 import {Screen} from '@Commons/Screen';

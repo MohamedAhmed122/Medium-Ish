@@ -3,8 +3,8 @@ import {
   NavigatorScreenParams,
   CompositeNavigationProp,
 } from '@react-navigation/native';
-import {AuthParamList} from './../AuthNavigator/interface';
-import {TabParamList} from './../TabNavigation/interface';
+import {AuthParamList} from '../auth-stack/interface';
+import {TabParamList} from '../tab-navigation/interface';
 
 export type NO_PARAMS = undefined;
 

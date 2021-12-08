@@ -1,7 +1,7 @@
 /* eslint-disable curly */
 import React, {useState} from 'react';
 // TYPES
-import {AuthParamList, AuthParams} from '@Navigation/AuthNavigator/interface';
+import {AuthParamList, AuthParams} from '@Navigation/auth-stack/interface';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {Seed, Status} from '@Types/Avatar';
 import {Image as ImagePickerProps} from 'react-native-image-crop-picker';

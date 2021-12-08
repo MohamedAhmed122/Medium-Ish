@@ -2,7 +2,7 @@ import {ParamId, Nullable} from '@Types/Common';
 import {Article} from '@GraphQL/query';
 
 // Navigation
-import {AuthParamList, AuthParams} from '@Navigation/AuthNavigator/interface';
+import {AuthParamList, AuthParams} from '@Navigation/auth-stack/interface';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 export type ImageType = {url: string};

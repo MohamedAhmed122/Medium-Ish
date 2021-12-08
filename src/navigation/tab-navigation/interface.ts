@@ -1,7 +1,7 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import {NavigatorScreenParams} from '@react-navigation/native';
 
-import {ArticleParamList} from '@Navigation/ArticleNavigator/interface';
+import {ArticleParamList} from '@Navigation/article-stack/interface';
 
 export type NO_PARAMS = undefined;
 

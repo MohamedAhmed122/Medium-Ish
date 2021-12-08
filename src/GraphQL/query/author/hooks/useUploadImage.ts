@@ -3,7 +3,7 @@ import {useMutation} from '@apollo/client';
 import {UPDATE_AUTHOR_IMAGE} from '../query';
 
 import {AuthorUploadImage, Navigation, UpdateImageParams} from '../types';
-import {AuthParams} from '@Navigation/AuthNavigator/interface';
+import {AuthParams} from '@Navigation/auth-stack/interface';
 
 export const useUploadImage = (navigation: Navigation) => {
   const [uploadImage, {loading, data}] = useMutation<

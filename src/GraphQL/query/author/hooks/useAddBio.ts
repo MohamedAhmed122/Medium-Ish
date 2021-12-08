@@ -4,7 +4,7 @@ import {UPDATE_AUTHOR_INFO} from '../query';
 
 import {UpdateAuthorInfoParams, Author} from '../types';
 import {Navigators} from '@Navigation/index';
-import {RootNavigation} from '@Navigation/AppNavigation/interface';
+import {RootNavigation} from '@Navigation/app-navigation/interface';
 
 export const useAddBio = (navigation: RootNavigation) => {
   const [addBio, {loading}] = useMutation<

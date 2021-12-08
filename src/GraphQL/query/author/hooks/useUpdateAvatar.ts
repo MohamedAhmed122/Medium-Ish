@@ -2,7 +2,7 @@ import {useMutation} from '@apollo/client';
 import {UPDATE_AUTHOR_AVATAR} from '../query';
 
 import {UpdateAvatarParams, Navigation} from '../types';
-import {AuthParams} from '@Navigation/AuthNavigator/interface';
+import {AuthParams} from '@Navigation/auth-stack/interface';
 
 interface UploadAvatar {
   updateAuthor: {

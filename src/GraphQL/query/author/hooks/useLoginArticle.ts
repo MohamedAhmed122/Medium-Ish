@@ -4,7 +4,7 @@ import {LOGIN_AUTHOR} from '@GraphQL/query';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
 
 import {Navigators} from '@Navigation/index';
-import {RootNavigation} from '@Navigation/AppNavigation/interface';
+import {RootNavigation} from '@Navigation/app-navigation/interface';
 
 import Toast from 'react-native-toast-message';
 

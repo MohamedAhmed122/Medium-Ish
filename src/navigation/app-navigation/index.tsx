@@ -4,8 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //TYPES
 import {AppNavigationParams, AppNavigationParamList} from './interface';
 // Navigation
-import {TabNavigation} from '../TabNavigation';
-import {AuthNavigator} from '../AuthNavigator';
+import {TabNavigation} from '../tab-navigation';
+import {AuthNavigator} from '../auth-stack';
 import {WelcomeScreen} from '@Screens/WelcomeScreen';
 
 const Stack = createNativeStackNavigator<AppNavigationParamList>();

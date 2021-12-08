@@ -3,7 +3,7 @@ import {currentAuthor} from '@GraphQL/Apollo/cache';
 import {INITIATE_AUTHOR} from '../query';
 
 import {InitiateAuthorParams, InitiateAuthor, Navigation} from '../types';
-import {AuthParams} from '@Navigation/AuthNavigator/interface';
+import {AuthParams} from '@Navigation/auth-stack/interface';
 
 export const useInitiateAuthor = (navigation: Navigation) => {
   const [registerUser, {loading, data, error}] = useMutation<

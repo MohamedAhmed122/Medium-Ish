@@ -5,7 +5,7 @@ import {RouteProp} from '@react-navigation/core';
 import {
   PostParamsList,
   PostParams,
-} from '../../navigation/AppNavigation/interface';
+} from '../../navigation/app-navigation/interface';
 
 import {AppLoading, Screen, Error, Empty} from '@Commons/index';
 import {useGetArticleById, useCreateComment} from '@GraphQL/query';

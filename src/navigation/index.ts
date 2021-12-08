@@ -1,8 +1,8 @@
-export {AppNavigation} from './AppNavigation';
-import {AppNavigationParams} from './AppNavigation/interface';
-import {AuthParams} from './AuthNavigator/interface';
-import {ArticleParams} from './ArticleNavigator/interface';
-import {TabParams} from './TabNavigation/interface';
+export {AppNavigation} from './app-navigation';
+import {AppNavigationParams} from './app-navigation/interface';
+import {AuthParams} from './auth-stack/interface';
+import {ArticleParams} from './article-stack/interface';
+import {TabParams} from './tab-navigation/interface';
 
 export const Navigators = {
   App: AppNavigationParams,

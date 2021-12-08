@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {RootNavigation} from '@Navigation/AppNavigation/interface';
+import {RootNavigation} from '@Navigation/app-navigation/interface';
 import {BioValues, initialFormValues} from '@Types/Form';
 
 import {Screen} from '@Commons/Screen';
