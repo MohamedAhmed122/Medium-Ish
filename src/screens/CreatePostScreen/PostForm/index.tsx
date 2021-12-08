@@ -33,8 +33,11 @@ export const PostForm = () => {
         name="additionalDescription"
         placeholder="More Description"
       />
-      <AppPickerField name="categories" items={categories} />
-      {/* <AppInputField name="categories" placeholder="Categories" /> */}
+      <AppPickerField
+        name="categories"
+        items={categories}
+        placeholder="Categories"
+      />
       <AppSubmitButton title="Create Post" />
     </AppForm>
   );
