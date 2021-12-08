@@ -29,7 +29,7 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
   const {articles, articleError, articleLoading} = useGetArticles();
 
   const current = useReactiveVar(currentAuthor);
-  console.log(current, 'current');
+  console.log(current, 'current-');
 
   const handleNavigate = (id: string): void => {
     navigation.navigate(ArticleParams.ArticleDetail, {id});

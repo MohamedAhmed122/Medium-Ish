@@ -1,12 +1,16 @@
-import {CREATE_COMMENT} from './../query/createComment';
+import {CREATE_COMMENT} from '@GraphQL/query';
 import {useMutation} from '@apollo/client';
 import {Comment} from '@GraphQL/query';
 
-export const useCreateArticle = () => {
-  const [createComment, {data, loading, error}] = useMutation<
+export const useCreateComment = () => {
+  const [createComment, {loading}] = useMutation<
     {createComment: Comment},
     Comment
-  >(CREATE_COMMENT);
-  console.log(data, loading, error);
-  return {data, loading, createComment};
+  >(CREATE_COMMENT, {
+    onError: err => {
+      console.log(err);
+    },
+  });
+
+  return {commentLoading: loading, createComment};
 };

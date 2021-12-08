@@ -1,22 +1,21 @@
 import React from 'react';
 import {View} from 'react-native';
-// import CommentList from '../../components/CommentList';
+
+import {SendCommentProps, SendComment} from './SendComment';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {AppInput} from '@Commons/index';
-import {COLORS} from '@Styles/colors';
 import styles from './styles';
 
 interface Props {
   comment: string;
   setComment(comment: string): void;
-  handleCreateComment(): void;
+  sendComment: SendCommentProps;
 }
 
 export const Comment: React.FC<Props> = ({
   comment,
   setComment,
-  handleCreateComment,
+  sendComment,
 }) => {
   return (
     <View style={styles.CommentContainer}>
@@ -34,13 +33,7 @@ export const Comment: React.FC<Props> = ({
             />
           </AppInput>
         </View>
-        <Ionicons
-          name="send"
-          color={COLORS.secondary}
-          size={25}
-          style={styles.send}
-          onPress={handleCreateComment}
-        />
+        <SendComment {...sendComment} />
       </View>
     </View>
   );

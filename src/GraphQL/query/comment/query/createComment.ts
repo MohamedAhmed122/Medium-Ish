@@ -13,13 +13,11 @@ export const CREATE_COMMENT = gql`
       data: {
         article: {connect: {id: $id}}
         comment: $comment
+        imageUrl: $imageUrl
         username: $username
       }
-    ){
-        createComment{
-
-        ...${fragmentsField.comment}
-        }
+    ) {
+      ...${fragmentsField.comment}
     }
   }
   ${CORE_COMMENT_FIELDS}
