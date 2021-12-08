@@ -4,14 +4,14 @@ import {TabParams} from './interface';
 import {ArticleNavigator} from '../ArticleNavigator';
 import {CreatePost} from '@Screens/CreatePostScreen';
 import {UserWatchListScreen} from '@Screens/UserWatchListScreen';
-import {SettingScreen} from '@Screens/SettingsScreen';
+// import {SettingScreen} from '@Screens/SettingsScreen';
 import {SearchScreen} from '@Screens/SearchScreen';
+import {AuthorProfile} from '@Screens/Author';
 
 // ICONS && STYLES
 import {scale} from 'react-native-size-matters';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {TabBarIcon} from '@Components/TabBar';
 
@@ -67,12 +67,12 @@ export const tabs = [
 
   {
     id: 5,
-    component: SettingScreen,
-    name: TabParams.Settings,
+    component: AuthorProfile,
+    name: TabParams.AuthorProfile,
     options: {
-      title: 'SETTINGS',
+      title: 'PROFILE',
       tabBarIcon: ({color}: {color: string}) => (
-        <Ionicons name="settings-sharp" size={scale(29)} color={color} />
+        <MaterialIcons name="person-pin" size={scale(29)} color={color} />
       ),
     },
   },

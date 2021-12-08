@@ -104,3 +104,31 @@ export const colors = [
   {label: '#4A87FF', id: 15, icon: null, color: '#4A87FF'},
   {label: '#E3560B', id: 16, icon: null, color: '#E3560B'},
 ];
+
+export const authorInfo = [
+  {
+    id: '1',
+    title: 'Articles',
+    icon: 'article',
+  },
+  {
+    id: '2',
+    title: 'Location',
+    icon: 'add-location',
+  },
+  {
+    id: '4',
+    title: 'Edit',
+    icon: 'border-color',
+  },
+  {
+    id: '3',
+    title: 'Share',
+    icon: 'share',
+  },
+  {
+    id: '5',
+    title: 'Logout',
+    icon: 'logout',
+  },
+];

@@ -18,6 +18,7 @@ export const CORE_AUTHORS_FIELDS = gql`
 export const CORE_AUTHOR_DETAIL_FIELDS = gql`
   fragment ${fragmentsField.authorDetail} on ${typename.author} {
     email
+    bio
     hideEmail
     location{
         latitude

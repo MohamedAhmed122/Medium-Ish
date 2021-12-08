@@ -1,5 +1,5 @@
+import {ParamId, Nullable} from '@Types/Common';
 import {Article} from '@GraphQL/query';
-import {ParamId} from '@Types/Common';
 
 // Navigation
 import {AuthParamList, AuthParams} from '@Navigation/AuthNavigator/interface';
@@ -31,8 +31,9 @@ export interface InitiateAuthor {
 export interface AuthorDetail extends Author {
   email: string;
   hideEmail: string;
-  location: LocationType;
-  article: Article;
+  bio: Nullable<string>;
+  location: Nullable<LocationType>;
+  article: Article | [];
 }
 
 export interface AuthorUploadImage {

@@ -10,14 +10,14 @@ export enum TabParams {
   Search = 'Search',
   CreatePost = 'CreatePost',
   UserList = 'UserList',
-  Settings = 'Settings',
+  AuthorProfile = 'AuthorProfile',
 }
 export type TabParamList = {
   ArticleTab: NavigatorScreenParams<ArticleParamList>;
   Search: NO_PARAMS;
   CreatePost: NO_PARAMS;
   UserList: NO_PARAMS;
-  Settings: NO_PARAMS;
+  AuthorProfile: NO_PARAMS;
 };
 
 export type TabRootNavigation = StackNavigationProp<TabParamList, TabParams>;
