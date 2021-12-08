@@ -7,11 +7,17 @@ import {AppText} from '@Commons/AppText';
 import {UserImage} from '@Components/UserImage';
 import styles from './styles';
 
-interface Props {
+export interface HeaderProps {
   author: AuthorDetail;
+  handleEdit(): void;
+  shareProfile(): void;
 }
 
-export const Header: React.FC<Props> = ({author}) => {
+export const Header: React.FC<HeaderProps> = ({
+  author,
+  shareProfile,
+  handleEdit,
+}) => {
   const {image, imageUrl, username, email, color} = author;
   return (
     <View style={[styles.container, {backgroundColor: color.hex}]}>
@@ -20,8 +26,13 @@ export const Header: React.FC<Props> = ({author}) => {
       </AppText>
       <View style={styles.profileContainer}>
         <View style={styles.iconsContainer}>
-          <Icon size={25} name="sharealt" color={color.hex} />
-          <Icon size={25} name="edit" color={color.hex} />
+          <Icon
+            size={25}
+            name="sharealt"
+            color={color.hex}
+            onPress={shareProfile}
+          />
+          <Icon size={25} name="edit" color={color.hex} onPress={handleEdit} />
         </View>
         <UserImage image={image} imageUrl={imageUrl} style={styles.image} />
         <AppText fontFamily="Roboto-Light" style={styles.text}>

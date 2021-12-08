@@ -9,33 +9,27 @@ import {AuthorDetail} from '@GraphQL/query';
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
 
-interface RowContainerProps {
+export interface RowContainerProps extends Omit<RowProps, 'item'> {
   items: UserItems[];
-  author: AuthorDetail;
-  onPress(type: string): void;
 }
 
-export const RowContainer: React.FC<RowContainerProps> = ({
-  author,
-  items,
-  onPress,
-}) => {
+export const RowContainer: React.FC<RowContainerProps> = ({items, ...row}) => {
   return (
     <View style={styles.container}>
       {items.map(item => (
-        <Row key={item.id} item={item} author={author} onPress={onPress} />
+        <Row key={item.id} item={item} {...row} />
       ))}
     </View>
   );
 };
 
-interface Props {
+export interface RowProps {
   author: AuthorDetail;
   item: UserItems;
-  onPress(type: string): void;
+  onPress(str: string): void;
 }
 
-const Row: React.FC<Props> = ({author, item, onPress}) => {
+const Row: React.FC<RowProps> = ({author, item, onPress}) => {
   const {color} = author;
   return (
     <TouchableOpacity style={styles.row} onPress={() => onPress(item.title)}>

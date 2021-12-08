@@ -13,7 +13,7 @@ import {
 
 const Stack = createNativeStackNavigator<AuthorParamList>();
 
-export const AuthNavigator = () => {
+export const AuthorNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{

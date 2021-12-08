@@ -1,3 +1,4 @@
+import {AuthorParamList} from './../author-stack/interface';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {NavigatorScreenParams} from '@react-navigation/native';
 
@@ -10,14 +11,14 @@ export enum TabParams {
   Search = 'Search',
   CreatePost = 'CreatePost',
   UserList = 'UserList',
-  AuthorProfile = 'AuthorProfile',
+  Author = 'Author',
 }
 export type TabParamList = {
   ArticleTab: NavigatorScreenParams<ArticleParamList>;
   Search: NO_PARAMS;
   CreatePost: NO_PARAMS;
   UserList: NO_PARAMS;
-  AuthorProfile: NO_PARAMS;
+  Author: NavigatorScreenParams<AuthorParamList>;
 };
 
 export type TabRootNavigation = StackNavigationProp<TabParamList, TabParams>;

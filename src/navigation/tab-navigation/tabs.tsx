@@ -6,7 +6,7 @@ import {CreatePost} from '@Screens/CreatePostScreen';
 import {UserWatchListScreen} from '@Screens/UserWatchListScreen';
 // import {SettingScreen} from '@Screens/SettingsScreen';
 import {SearchScreen} from '@Screens/SearchScreen';
-import {AuthorProfile} from '@Screens/Author';
+import {AuthorNavigator} from '@Navigation/author-stack';
 
 // ICONS && STYLES
 import {scale} from 'react-native-size-matters';
@@ -67,8 +67,8 @@ export const tabs = [
 
   {
     id: 5,
-    component: AuthorProfile,
-    name: TabParams.AuthorProfile,
+    component: AuthorNavigator,
+    name: TabParams.Author,
     options: {
       title: 'PROFILE',
       tabBarIcon: ({color}: {color: string}) => (
