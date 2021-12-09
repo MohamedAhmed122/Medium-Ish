@@ -2,7 +2,7 @@ import React from 'react';
 
 import {TabParams} from './interface';
 import {ArticleNavigator} from '../article-stack';
-import {CreatePost} from '@Screens/CreatePostScreen';
+import {CreateArticle} from '@Screens/CreateArticleScreen';
 import {UserWatchListScreen} from '@Screens/UserWatchListScreen';
 // import {SettingScreen} from '@Screens/SettingsScreen';
 import {SearchScreen} from '@Screens/SearchScreen';
@@ -44,7 +44,7 @@ export const tabs = [
   },
   {
     id: 3,
-    component: CreatePost,
+    component: CreateArticle,
     name: TabParams.CreatePost,
     options: {
       title: '',

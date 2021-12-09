@@ -15,7 +15,7 @@ export interface RegisterValue extends LoginValue {
 export interface CreatePostValue {
   title: string;
   description: string;
-  additionalDescription: string;
+  // additionalDescription: string;
   categories: Nullable<string>;
 }
 

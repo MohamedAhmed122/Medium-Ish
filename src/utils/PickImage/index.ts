@@ -5,6 +5,7 @@ export const pickImage = async (): Promise<Image | undefined> => {
       width: 300,
       height: 400,
       cropping: true,
+      includeBase64: true,
     });
   } catch (error) {
     console.log(error);
