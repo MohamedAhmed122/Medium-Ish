@@ -1,5 +1,6 @@
 import {useMutation} from '@apollo/client';
 import {Article, CreateArticleParam, CREATE_ARTICLE} from '@GraphQL/query';
+import {errorHandler} from '@Utils/errorHandler';
 
 export const useCreateArticle = () => {
   const [createArticle, {loading, data, error}] = useMutation<
@@ -10,8 +11,8 @@ export const useCreateArticle = () => {
     onCompleted: () => {
       console.log('YES');
     },
-    onError: () => {
-      console.log('Error');
+    onError: ({networkError}) => {
+      errorHandler(networkError);
     },
   });
 

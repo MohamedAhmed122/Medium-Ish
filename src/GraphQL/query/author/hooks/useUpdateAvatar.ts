@@ -3,6 +3,7 @@ import {UPDATE_AUTHOR_AVATAR} from '../query';
 
 import {UpdateAvatarParams, Navigation} from '../types';
 import {AuthParams} from '@Navigation/auth-stack/interface';
+import {errorHandler} from '@Utils/errorHandler';
 
 interface UploadAvatar {
   updateAuthor: {
@@ -19,8 +20,8 @@ export const useUpdateAvatar = (navigation: Navigation) => {
     onCompleted: () => {
       navigation.navigate(AuthParams.UserBio);
     },
-    onError: er => {
-      console.log(er);
+    onError: ({networkError}) => {
+      errorHandler(networkError);
     },
   });
 

@@ -17,16 +17,13 @@ export function CreateArticle() {
 
   const currentUser = useReactiveVar(currentAuthor);
 
-  const {createArticle, loading, data, error} = useCreateArticle();
-
-  console.log(loading, data, error);
+  const {createArticle, loading} = useCreateArticle();
 
   const handleSubmit = (values: initialFormValues) => {
     const newValue = values as CreateArticleValue;
     !currentUser?.id
       ? toggleButton()
-      : currentUser &&
-        createArticle({
+      : createArticle({
           variables: {
             authorId: currentUser.id,
             username: currentUser.username,
@@ -40,7 +37,11 @@ export function CreateArticle() {
 
   return (
     <Screen scroll scrollContainerStyle={styles.container}>
-      <ArticleForm setTextEditor={setTextEditor} handleSubmit={handleSubmit} />
+      <ArticleForm
+        setTextEditor={setTextEditor}
+        handleSubmit={handleSubmit}
+        loading={loading}
+      />
       <AppModal isVisible={openModal} handleCloseModal={toggleButton} />
     </Screen>
   );

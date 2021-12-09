@@ -6,18 +6,21 @@ import {
   ArticleParamList,
 } from '@Navigation/article-stack/interface';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {UserList} from './UserList';
-import {ArticleCard} from '@Components/ArticleCard';
 // GRAPHQL
 import {useGetAuthors, useGetArticles, Article} from '@GraphQL/query';
-import {currentAuthor, watchListVar} from '@GraphQL/Apollo/cache';
+import {watchListVar} from '@GraphQL/Apollo/cache';
+// SOUND
+import {playSong} from '@Utils/playSound';
+import {useMediaPlayer} from '@Hooks/useMediaPlayer';
 // RENDER
+import {UserList} from './UserList';
+import {ArticleCard} from '@Components/ArticleCard';
 import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
-
 import {watchListResolver} from '@Utils/watchListReslover';
+
 import styles from './styles';
-import {useReactiveVar} from '@apollo/client';
+
 interface PostsProps {
   navigation: NativeStackNavigationProp<
     ArticleParamList,
@@ -26,10 +29,10 @@ interface PostsProps {
 }
 export const Posts: React.FC<PostsProps> = ({navigation}) => {
   const {loading, authors} = useGetAuthors();
-  const {articles, articleError, articleLoading} = useGetArticles();
 
-  const current = useReactiveVar(currentAuthor);
-  console.log(current, 'current-');
+  const {articles, articleError, articleLoading, refetch} = useGetArticles();
+
+  useMediaPlayer();
 
   const handleNavigate = (id: string): void => {
     navigation.navigate(ArticleParams.ArticleDetail, {id});
@@ -38,6 +41,11 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
   const handleWatchListItems = (item: Article): void =>
     watchListVar && watchListResolver(watchListVar, item);
 
+  const onRefresh = () => {
+    playSong();
+    refetch();
+  };
+
   if (loading || !authors) return <AppLoading />;
   if (articleLoading) return <AppLoading />;
   if (articleError || !articles) return <Error />;
@@ -45,6 +53,8 @@ export const Posts: React.FC<PostsProps> = ({navigation}) => {
   return (
     <Screen>
       <FlatList
+        onRefresh={onRefresh}
+        refreshing={articleLoading}
         ListHeaderComponentStyle={styles.header}
         ListHeaderComponent={() => (
           <>

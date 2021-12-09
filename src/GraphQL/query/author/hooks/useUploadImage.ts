@@ -1,9 +1,9 @@
 import {useMutation} from '@apollo/client';
-// import {currentAuthor} from '@GraphQL/Apollo/cache';
 import {UPDATE_AUTHOR_IMAGE} from '../query';
 
 import {AuthorUploadImage, Navigation, UpdateImageParams} from '../types';
 import {AuthParams} from '@Navigation/auth-stack/interface';
+import {errorHandler} from '@Utils/errorHandler';
 
 export const useUploadImage = (navigation: Navigation) => {
   const [uploadImage, {loading, data}] = useMutation<
@@ -15,8 +15,8 @@ export const useUploadImage = (navigation: Navigation) => {
       console.log('Yes');
       navigation.navigate(AuthParams.UserBio);
     },
-    onError: err => {
-      console.log(err);
+    onError: ({networkError}) => {
+      errorHandler(networkError);
     },
   });
 

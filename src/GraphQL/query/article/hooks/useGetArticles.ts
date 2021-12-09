@@ -1,16 +1,14 @@
 import {GET_ARTICLES} from '../query';
 import {Articles} from '../types';
-import {useQuery, ApolloError} from '@apollo/client';
-import {Nullable} from '@Types/Common';
+import {useQuery} from '@apollo/client';
 
-interface UseGetArticle {
-  articles: Nullable<Articles>;
-  articleError?: ApolloError;
-  articleLoading: boolean;
-}
+export const useGetArticles = () => {
+  const {data, error, loading, refetch} = useQuery<Articles>(GET_ARTICLES);
 
-export const useGetArticles = (): UseGetArticle => {
-  const {data, error, loading} = useQuery<Articles>(GET_ARTICLES);
-
-  return {articles: data, articleError: error, articleLoading: loading};
+  return {
+    articles: data,
+    articleError: error,
+    articleLoading: loading,
+    refetch,
+  };
 };

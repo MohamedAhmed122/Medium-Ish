@@ -30,7 +30,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({route}) => {
 
   const {createComment, commentLoading} = useCreateComment();
 
-  const {data, loading, error} = useGetArticleById(id);
+  const {data, loading, error, refetch} = useGetArticleById(id);
 
   const handleCreateComment = () => {
     !currentUser?.username
@@ -56,6 +56,8 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({route}) => {
   return (
     <Screen>
       <FlatList
+        onRefresh={refetch}
+        refreshing={loading}
         ListHeaderComponent={() => (
           <>
             <Details article={data.article} />

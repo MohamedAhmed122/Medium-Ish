@@ -1,6 +1,5 @@
 import {ApolloLink, HttpLink} from '@apollo/client';
 import {onError} from '@apollo/client/link/error';
-import Toast from 'react-native-toast-message';
 
 const baseURL = {
   dev: 'http://localhost:5000',
@@ -18,11 +17,6 @@ const errorLink: ApolloLink = onError(({graphQLErrors, networkError}) => {
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
       );
-      Toast.show({
-        type: 'error',
-        text1: 'Oops',
-        text2: message,
-      });
     });
   }
   if (networkError) {

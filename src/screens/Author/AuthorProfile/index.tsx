@@ -14,6 +14,7 @@ import {UserOptions} from '@Types/UserList';
 import {RootNavigation} from '@Navigation/app-navigation/interface';
 import {Navigators} from '@Navigation/index';
 import {AuthorParams} from '@Navigation/author-stack/interface';
+
 import UserNotFound from '@Components/UserNotFound';
 
 interface AuthorProfileProps {
@@ -22,7 +23,7 @@ interface AuthorProfileProps {
 
 export const AuthorProfile: React.FC<AuthorProfileProps> = ({navigation}) => {
   const currentUser = useReactiveVar(currentAuthor);
-  const {author, loading, error} = useGetAuthor(currentUser?.id);
+  const {author, loading, error, refetch} = useGetAuthor(currentUser?.id);
 
   const userLogout = () => {
     navigation.navigate(Navigators.App.Welcome);
@@ -62,6 +63,8 @@ export const AuthorProfile: React.FC<AuthorProfileProps> = ({navigation}) => {
         handleEdit,
         shareProfile,
       }}
+      refetch={refetch}
+      loading={loading}
       row={{
         items: authorInfo,
         onPress: handlePress,

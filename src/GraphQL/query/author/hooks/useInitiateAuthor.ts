@@ -4,6 +4,7 @@ import {INITIATE_AUTHOR} from '../query';
 
 import {InitiateAuthorParams, InitiateAuthor, Navigation} from '../types';
 import {AuthParams} from '@Navigation/auth-stack/interface';
+import {errorHandler} from '@Utils/errorHandler';
 
 export const useInitiateAuthor = (navigation: Navigation) => {
   const [registerUser, {loading, data, error}] = useMutation<
@@ -11,8 +12,8 @@ export const useInitiateAuthor = (navigation: Navigation) => {
     InitiateAuthorParams
   >(INITIATE_AUTHOR, {
     errorPolicy: 'ignore',
-    onError: er => {
-      console.log(er);
+    onError: ({networkError}) => {
+      errorHandler(networkError);
     },
     onCompleted: author => {
       console.log('YES');

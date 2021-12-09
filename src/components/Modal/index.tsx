@@ -8,26 +8,28 @@ import * as Animatable from 'react-native-animatable';
 import {RequestAuth} from './RequestAuth';
 
 import styles from './styles';
+import {useNavigation} from '@react-navigation/core';
 interface Props {
   handleCloseModal(): void;
   isVisible: boolean;
-  navigation: RootNavigation;
 }
 
-export const AppModal: React.FC<Props> = ({
-  handleCloseModal,
-  isVisible,
-  navigation,
-}) => {
-  const handleNavigateToLogin = () =>
+export const AppModal: React.FC<Props> = ({handleCloseModal, isVisible}) => {
+  const navigation = useNavigation<RootNavigation>();
+
+  const handleNavigateToLogin = () => {
     navigation.navigate(Navigators.App.AuthNavigation, {
       screen: Navigators.AuthStack.Login,
     });
+    handleCloseModal();
+  };
 
-  const handleNavigateToRegister = () =>
+  const handleNavigateToRegister = () => {
     navigation.navigate(Navigators.App.AuthNavigation, {
       screen: Navigators.AuthStack.Register,
     });
+    handleCloseModal();
+  };
 
   return (
     <Modal

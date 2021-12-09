@@ -14,9 +14,14 @@ import {initialFormValues} from '@Types/Form';
 interface Props {
   setTextEditor(html: string): void;
   handleSubmit(values: initialFormValues): void;
+  loading: boolean;
 }
 
-export const ArticleForm: React.FC<Props> = ({setTextEditor, handleSubmit}) => {
+export const ArticleForm: React.FC<Props> = ({
+  setTextEditor,
+  handleSubmit,
+  loading,
+}) => {
   return (
     <AppForm
       validationSchema={validationSchema}
@@ -39,7 +44,7 @@ export const ArticleForm: React.FC<Props> = ({setTextEditor, handleSubmit}) => {
         items={categories}
         placeholder="Categories"
       />
-      <AppSubmitButton title="Create Post" />
+      <AppSubmitButton title="Create Post" loading={loading} />
     </AppForm>
   );
 };

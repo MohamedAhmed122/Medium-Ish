@@ -1,19 +1,36 @@
 import React from 'react';
 
-import {Screen} from '@Commons/Screen';
 import {Header, HeaderProps} from './Header';
 import {RowContainer, RowContainerProps} from './Row';
+import {RefreshControl, ScrollView} from 'react-native';
+import {ParamId} from '@Types/Common';
+import {ApolloQueryResult} from '@apollo/client';
+import {AuthorDetail} from '@GraphQL/query';
 
 interface Props {
   header: HeaderProps;
   row: RowContainerProps;
+  loading: boolean;
+  refetch: (variables?: Partial<ParamId> | undefined) => Promise<
+    ApolloQueryResult<{
+      author: AuthorDetail;
+    }>
+  >;
 }
 
-export const AuthProfileView: React.FC<Props> = ({header, row}) => {
+export const AuthProfileView: React.FC<Props> = ({
+  header,
+  refetch,
+  row,
+  loading,
+}) => {
   return (
-    <Screen scroll>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={loading} onRefresh={refetch} />
+      }>
       <Header {...header} />
       <RowContainer {...row} />
-    </Screen>
+    </ScrollView>
   );
 };

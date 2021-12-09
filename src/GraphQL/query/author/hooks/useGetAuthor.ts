@@ -3,12 +3,12 @@ import {useQuery} from '@apollo/client';
 import {ParamId} from '@Types/Common';
 
 export const useGetAuthor = (id: string) => {
-  const {data, loading, error} = useQuery<{author: AuthorDetail}, ParamId>(
-    GET_SINGLE_AUTHOR,
-    {
-      variables: {id},
-    },
-  );
+  const {data, loading, error, refetch} = useQuery<
+    {author: AuthorDetail},
+    ParamId
+  >(GET_SINGLE_AUTHOR, {
+    variables: {id},
+  });
 
-  return {author: data, loading, error};
+  return {author: data, loading, error, refetch};
 };
