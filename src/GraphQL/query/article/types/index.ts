@@ -1,5 +1,5 @@
-import {Comment} from '@GraphQL/query';
-import {HTMLSource} from 'react-native-render-html';
+import {ColorType, Comment} from '@GraphQL/query';
+// import {HTMLSource} from 'react-native-render-html';
 
 import {Author} from '@GraphQL/query';
 export interface Article {
@@ -11,7 +11,8 @@ export interface Article {
   isOnWatchList: boolean;
   category: {
     id: string;
-    name: string;
+    label: string;
+    color: ColorType;
   };
   author: Author;
   comments: Comment[];
@@ -22,18 +23,17 @@ export interface Articles {
 }
 
 export interface ArticleDetail extends Article {
-  richDescription: HTMLSource;
+  richDescription: string;
   author: Author;
 }
 
-// TODO: richDescription type
 export interface CreateArticleParam {
   authorId: string;
   username: string;
   categoryId: string;
   title: string;
   description: string;
-  richDescription: any;
+  richDescription: string;
 }
 
 export interface SearchArticle {

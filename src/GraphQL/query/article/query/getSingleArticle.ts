@@ -10,9 +10,7 @@ export const GET_SINGLE_ARTICLE = gql`
     query getArticleById($id: ID!){
       article (where :{id : $id}) {
         ...${fragmentsField.article}
-        richDescription{
-          html
-        }
+        richDescription
         author{
           ...${fragmentsField.author}
         }

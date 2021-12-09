@@ -9,21 +9,22 @@ import {createPostValidationSchema as validationSchema} from '@Utils/validationS
 import {RichTextEditor} from '@Components/RichText';
 import {categories} from '@Assets/data';
 import styles from './styles';
+import {initialFormValues} from '@Types/Form';
 
 interface Props {
-  setTextEditor(obj: {html: string}): void;
+  setTextEditor(html: string): void;
+  handleSubmit(values: initialFormValues): void;
 }
 
-export const ArticleForm: React.FC<Props> = ({setTextEditor}) => {
+export const ArticleForm: React.FC<Props> = ({setTextEditor, handleSubmit}) => {
   return (
     <AppForm
       validationSchema={validationSchema}
-      onSubmit={() => {}}
+      onSubmit={handleSubmit}
       initialValues={{
         title: '',
         description: '',
-        // additionalDescription: '',
-        categories: null,
+        categories: categories[0],
       }}>
       <AppInputField name="title" placeholder="Post Title" />
       <AppInputField
@@ -32,12 +33,6 @@ export const ArticleForm: React.FC<Props> = ({setTextEditor}) => {
         name="description"
         placeholder="Post Description"
       />
-      {/* <AppInputField
-        multiline
-        inputContainerStyle={styles.textarea}
-        name="additionalDescription"
-        placeholder="More Description"
-      /> */}
       <RichTextEditor handleOnHtmlChange={setTextEditor} />
       <AppPickerField
         name="categories"

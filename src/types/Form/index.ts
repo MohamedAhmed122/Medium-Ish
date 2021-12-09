@@ -12,11 +12,11 @@ export interface RegisterValue extends LoginValue {
   confirmPassword: string;
 }
 
-export interface CreatePostValue {
+export interface CreateArticleValue {
   title: string;
   description: string;
   // additionalDescription: string;
-  categories: Nullable<string>;
+  categories: PickerItem;
 }
 
 export interface BioValues {
@@ -25,7 +25,7 @@ export interface BioValues {
 }
 
 export type initialFormValues = Readonly<
-  LoginValue | RegisterValue | CreatePostValue | BioValues
+  LoginValue | RegisterValue | CreateArticleValue | BioValues
 >;
 
 export interface UseFormikContext {

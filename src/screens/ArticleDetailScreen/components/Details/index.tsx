@@ -18,7 +18,7 @@ interface Props {
 
 export const Details: React.FC<Props> = ({article}) => {
   const {author, description, richDescription, category, title} = article;
-  console.log(richDescription);
+  const source = {html: richDescription || ''};
 
   return (
     <>
@@ -39,8 +39,8 @@ export const Details: React.FC<Props> = ({article}) => {
           {title}
         </AppText>
         <AppText style={styles.body}>{description}</AppText>
-        <RenderHtml source={richDescription} contentWidth={width - 40} />
-        <AppBadge style={styles.badge} title={category.name} />
+        <RenderHtml source={source} contentWidth={width - 40} />
+        <AppBadge style={styles.badge} title={category.label} />
       </View>
     </>
   );

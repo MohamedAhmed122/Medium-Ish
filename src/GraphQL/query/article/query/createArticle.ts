@@ -1,6 +1,7 @@
 import {gql} from 'graphql-tag';
 import {CORE_ARTICLE_FIELDS} from '@GraphQL/fragments/article';
 import {fragmentsField} from '@GraphQL/types';
+
 export const CREATE_ARTICLE = gql`
   mutation createArticle(
     $authorId: ID!
@@ -8,7 +9,7 @@ export const CREATE_ARTICLE = gql`
     $categoryId: ID!
     $title: String!
     $description: String!
-    $richDescription: RichText!
+    $richDescription: String!
   ) {
     createArticle(
       data: {

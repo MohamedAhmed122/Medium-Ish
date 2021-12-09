@@ -10,7 +10,7 @@ export default ScaledSheet.create({
   },
   modalContainer: {
     width,
-    height: height / 1.5,
+    height: height / 2.5,
     backgroundColor: 'white',
     borderRadius: 18,
   },

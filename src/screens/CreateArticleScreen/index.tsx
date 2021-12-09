@@ -1,14 +1,47 @@
 import React, {useState} from 'react';
 import {Screen} from '@Commons/Screen';
-
 import {ArticleForm} from './ArticleForm';
 
+import styles from './styles';
+import {CreateArticleValue, initialFormValues} from '@Types/Form';
+import {useReactiveVar} from '@apollo/client';
+import {currentAuthor} from '@GraphQL/Apollo/cache';
+import {AppModal} from '@Components/Modal';
+import {useToggleButton} from '@Hooks/useToggle';
+import {useCreateArticle} from '@GraphQL/query';
+
 export function CreateArticle() {
-  const [textEditor, setTextEditor] = useState<{html: string}>();
-  console.log(textEditor);
+  const [textEditor, setTextEditor] = useState<string>('');
+
+  const {value: openModal, toggleButton} = useToggleButton(false);
+
+  const currentUser = useReactiveVar(currentAuthor);
+
+  const {createArticle, loading, data, error} = useCreateArticle();
+
+  console.log(loading, data, error);
+
+  const handleSubmit = (values: initialFormValues) => {
+    const newValue = values as CreateArticleValue;
+    !currentUser?.id
+      ? toggleButton()
+      : currentUser &&
+        createArticle({
+          variables: {
+            authorId: currentUser.id,
+            username: currentUser.username,
+            categoryId: String(newValue.categories.id),
+            title: newValue.title,
+            description: newValue.description,
+            richDescription: textEditor,
+          },
+        });
+  };
+
   return (
-    <Screen scroll scrollContainerStyle={{marginTop: 20}}>
-      <ArticleForm setTextEditor={setTextEditor} />
+    <Screen scroll scrollContainerStyle={styles.container}>
+      <ArticleForm setTextEditor={setTextEditor} handleSubmit={handleSubmit} />
+      <AppModal isVisible={openModal} handleCloseModal={toggleButton} />
     </Screen>
   );
 }

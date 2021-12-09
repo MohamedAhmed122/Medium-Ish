@@ -11,7 +11,10 @@ export const CORE_ARTICLE_FIELDS = gql`
     isOnWatchList @client
     category{
       id
-      name
+      label
+      color{
+        hex
+      }
     }
    
   }

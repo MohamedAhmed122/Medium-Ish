@@ -7,13 +7,14 @@ import styles from './styles';
 import {COLORS} from '@Styles/colors';
 
 interface Props {
-  handleOnHtmlChange(obj: {html: string}): void;
+  handleOnHtmlChange(html: string): void;
 }
 
 export const RichTextEditor: React.FC<Props> = ({handleOnHtmlChange}) => {
   const richText = useRef<any>();
+  console.log(richText.current, 'ref');
 
-  const handleChange = (html: string) => handleOnHtmlChange({html});
+  const handleChange = (html: string) => handleOnHtmlChange(html);
 
   const onPressAddImage = async () => {
     const image = await pickImage();
@@ -26,7 +27,6 @@ export const RichTextEditor: React.FC<Props> = ({handleOnHtmlChange}) => {
     <View style={styles.container}>
       <RichToolbar
         style={[styles.containerStyle, styles.topToolBar]}
-        // flatContainerStyle={styles.flatStyle}
         editor={richText}
         selectedIconTint={COLORS.secondary}
         disabledIconTint={COLORS.gray}

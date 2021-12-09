@@ -68,7 +68,7 @@ export const ArticleCard: React.FC<Props> = ({
         />
       </View>
       <View style={styles.likeContainer}>
-        <AppBadge title={category.name} color={COLORS.secondary} />
+        <AppBadge title={category.label} color={category.color.hex} />
         <LikeButton
           likes={likes}
           isLiked={isLiked}
