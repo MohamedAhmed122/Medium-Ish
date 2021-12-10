@@ -3,7 +3,8 @@ import {initialFormValues} from '@Types/Form';
 import {validationRegisterSchema as validationSchema} from '@Utils/validationSchema';
 import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
 import {View} from 'react-native';
-import {AuthText} from '@Components/AuthText';
+import {AppButton} from '@Commons/AppButton';
+// import {AuthText} from '@Components/AuthText';
 
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
@@ -45,12 +46,12 @@ export const RegisterForm: React.FC<RegisterProps> = ({
           color={COLORS.secondary}
           loading={loading}
         />
-
-        <AuthText
+        {/* <AuthText
           style={styles.authText}
-          text="You already have an account!, Login"
+          text="You already have an account"
           handleNavigate={handleNavigate}
-        />
+        /> */}
+        <AppButton title="Login" onPress={handleNavigate} />
       </AppForm>
     </View>
   );

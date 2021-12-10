@@ -12,6 +12,7 @@ export const CORE_ARTICLE_FIELDS = gql`
     category{
       id
       label
+      icon
       color{
         hex
       }

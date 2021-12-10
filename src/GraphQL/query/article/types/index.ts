@@ -12,6 +12,7 @@ export interface Article {
   category: {
     id: string;
     label: string;
+    icon: string;
     color: ColorType;
   };
   author: Author;
