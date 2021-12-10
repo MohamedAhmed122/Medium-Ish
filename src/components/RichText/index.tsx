@@ -12,7 +12,6 @@ interface Props {
 
 export const RichTextEditor: React.FC<Props> = ({handleOnHtmlChange}) => {
   const richText = useRef<any>();
-  console.log(richText.current, 'ref');
 
   const handleChange = (html: string) => handleOnHtmlChange(html);
 

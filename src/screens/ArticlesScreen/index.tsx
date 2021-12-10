@@ -13,9 +13,9 @@ import {watchListVar} from '@GraphQL/Apollo/cache';
 import {playSong} from '@Utils/playSound';
 import {useMediaPlayer} from '@Hooks/useMediaPlayer';
 // RENDER
+import {FlatList} from 'react-native';
 import {UserList} from './UserList';
 import {ArticleCard} from '@Components/ArticleCard';
-import {FlatList} from 'react-native';
 import {Error, AppLoading, Screen} from '@Commons/index';
 import {watchListResolver} from '@Utils/watchListReslover';
 

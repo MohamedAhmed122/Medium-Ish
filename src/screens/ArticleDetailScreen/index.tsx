@@ -12,11 +12,12 @@ import {useGetArticleById, useCreateComment} from '@GraphQL/query';
 import {Details, Comment, CommentList} from './components';
 import {FlatList} from 'react-native';
 
-import styles from './styles';
+import {playSong} from '@Utils/playSound';
 import {useReactiveVar} from '@apollo/client';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
 import {AppModal} from '@Components/Modal';
 import {getAvatarUri} from '@Utils/utils';
+import styles from './styles';
 
 interface ArticleDetailProps {
   route: RouteProp<PostParamsList, PostParams.PostDetail>;
@@ -46,6 +47,11 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({route}) => {
     setComment('');
   };
 
+  const onRefresh = () => {
+    playSong();
+    refetch();
+  };
+
   const handleCloseModal = useCallback(() => {
     setOpenModal(false);
   }, []);
@@ -56,7 +62,7 @@ export const ArticleDetail: React.FC<ArticleDetailProps> = ({route}) => {
   return (
     <Screen>
       <FlatList
-        onRefresh={refetch}
+        onRefresh={onRefresh}
         refreshing={loading}
         ListHeaderComponent={() => (
           <>
