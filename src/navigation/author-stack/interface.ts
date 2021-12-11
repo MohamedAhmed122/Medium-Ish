@@ -1,3 +1,5 @@
+import {Author} from '@GraphQL/query';
+
 export type NO_PARAMS = undefined;
 
 export enum AuthorParams {
@@ -8,7 +10,7 @@ export enum AuthorParams {
 }
 export type AuthorParamList = {
   AuthorProfile: NO_PARAMS;
-  EditProfile: {id: string};
+  EditProfile: {author: Author};
   AuthorArticles: {id: string};
   AuthorLocation: {id: string};
 };

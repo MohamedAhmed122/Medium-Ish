@@ -9,7 +9,7 @@ export default function UserNotFound() {
   const {value, toggleButton} = useToggleButton(true);
   return (
     <View>
-      <AppText style={styles.text}>You Must Sign Inn to Processed </AppText>
+      <AppText style={styles.text}>You Must Sign In to Processed </AppText>
       <AppButton title="Sign In" onPress={toggleButton} />
       <AppModal isVisible={value} handleCloseModal={toggleButton} />
     </View>

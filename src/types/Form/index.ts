@@ -1,6 +1,7 @@
 import {PickerItem} from '../Common';
 import {FormikErrors, FormikTouched} from 'formik';
 import {Nullable} from '../Common';
+import {Author} from '@GraphQL/query';
 
 export interface LoginValue {
   username: string;
@@ -12,10 +13,14 @@ export interface RegisterValue extends LoginValue {
   confirmPassword: string;
 }
 
+export interface EditProfileValue
+  extends Omit<Author, 'image' | 'imageUrl' | 'id' | 'color'> {
+  color: string;
+}
+
 export interface CreateArticleValue {
   title: string;
   description: string;
-  // additionalDescription: string;
   categories: PickerItem;
 }
 
@@ -25,7 +30,7 @@ export interface BioValues {
 }
 
 export type initialFormValues = Readonly<
-  LoginValue | RegisterValue | CreateArticleValue | BioValues
+  LoginValue | RegisterValue | CreateArticleValue | BioValues | EditProfileValue
 >;
 
 export interface UseFormikContext {

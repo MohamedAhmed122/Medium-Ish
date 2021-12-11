@@ -15,6 +15,7 @@ export type Navigation = StackNavigationProp<
 
 export interface Author {
   id: string;
+  name: string;
   username: string;
   color: ColorType;
   image: ImageType;

@@ -33,8 +33,8 @@ export const AuthorProfile: React.FC<AuthorProfileProps> = ({navigation}) => {
   };
 
   const handleEdit = () =>
-    navigation.navigate(AuthorParams.AuthorLocation, {
-      id: author?.author.id,
+    navigation.navigate(AuthorParams.EditProfile, {
+      author: author?.author,
     });
 
   const handlePress = (title: string) => {
@@ -49,9 +49,7 @@ export const AuthorProfile: React.FC<AuthorProfileProps> = ({navigation}) => {
       case UserOptions.Edit:
         return handleEdit();
       case UserOptions.Location:
-        return navigation.navigate(AuthorParams.AuthorLocation, {
-          id: author?.author.id,
-        });
+        return navigation.navigate(AuthorParams.AuthorLocation);
       case UserOptions.Share:
         return shareProfile();
       default:

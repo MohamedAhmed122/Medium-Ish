@@ -12,6 +12,7 @@ export const CORE_AUTHORS_FIELDS = gql`
       url
     }
     imageUrl
+    name
   }
 `;
 
