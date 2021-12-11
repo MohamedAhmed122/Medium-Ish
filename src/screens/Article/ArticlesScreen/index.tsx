@@ -21,13 +21,13 @@ import {watchListResolver} from '@Utils/watchListReslover';
 
 import styles from './styles';
 
-interface PostsProps {
+interface ArticleProps {
   navigation: NativeStackNavigationProp<
     ArticleParamList,
     ArticleParams.Articles
   >;
 }
-export const Posts: React.FC<PostsProps> = ({navigation}) => {
+export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   const {loading, authors} = useGetAuthors();
 
   const {articles, articleError, articleLoading, refetch} = useGetArticles();

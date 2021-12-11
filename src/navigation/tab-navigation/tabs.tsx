@@ -2,7 +2,7 @@ import React from 'react';
 
 import {TabParams} from './interface';
 import {ArticleNavigator} from '../article-stack';
-import {CreateArticle} from '@Screens/CreateArticleScreen';
+import {CreateArticle} from '@Screens/Article';
 import {UserWatchListScreen} from '@Screens/UserWatchListScreen';
 // import {SettingScreen} from '@Screens/SettingsScreen';
 import {SearchScreen} from '@Screens/SearchScreen';

@@ -3,9 +3,9 @@ import React, {useCallback, useState} from 'react';
 // TYPES
 import {RouteProp} from '@react-navigation/core';
 import {
-  PostParamsList,
-  PostParams,
-} from '../../navigation/app-navigation/interface';
+  ArticleParamList,
+  ArticleParams,
+} from '@Navigation/article-stack/interface';
 
 import {AppLoading, Screen, Error, Empty} from '@Commons/index';
 import {useGetArticleById, useCreateComment} from '@GraphQL/query';
@@ -20,7 +20,7 @@ import {getAvatarUri} from '@Utils/utils';
 import styles from './styles';
 
 interface ArticleDetailProps {
-  route: RouteProp<PostParamsList, PostParams.PostDetail>;
+  route: RouteProp<ArticleParamList, ArticleParams.ArticleDetail>;
 }
 export const ArticleDetail: React.FC<ArticleDetailProps> = ({route}) => {
   const [comment, setComment] = useState<string>('');

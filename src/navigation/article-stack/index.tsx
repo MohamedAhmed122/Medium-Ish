@@ -4,8 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //TYPES
 import {ArticleParams, ArticleParamList} from './interface';
 //SCREENS
-import {Posts} from '@Screens/ArticlesScreen';
-import {ArticleDetail} from '@Screens/ArticleDetailScreen';
+import {ArticlesScreen, ArticleDetail} from '@Screens/Article';
 
 const Stack = createNativeStackNavigator<ArticleParamList>();
 
@@ -15,7 +14,7 @@ export const ArticleNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name={ArticleParams.Articles} component={Posts} />
+      <Stack.Screen name={ArticleParams.Articles} component={ArticlesScreen} />
       <Stack.Screen
         name={ArticleParams.ArticleDetail}
         component={ArticleDetail}
