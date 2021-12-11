@@ -9,6 +9,7 @@ import {
   AuthorLocation,
   AuthorProfile,
   EditProfile,
+  EditImage,
 } from '@Screens/Author';
 
 const Stack = createNativeStackNavigator<AuthorParamList>();
@@ -32,6 +33,7 @@ export const AuthorNavigator = () => {
         name={AuthorParams.AuthorLocation}
         component={AuthorLocation}
       />
+      <Stack.Screen name={AuthorParams.EditImage} component={EditImage} />
     </Stack.Navigator>
   );
 };

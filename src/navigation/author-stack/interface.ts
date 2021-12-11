@@ -7,10 +7,12 @@ export enum AuthorParams {
   EditProfile = 'EditProfile',
   AuthorArticles = 'AuthorArticles',
   AuthorLocation = 'AuthorLocation',
+  EditImage = 'EditImage',
 }
 export type AuthorParamList = {
   AuthorProfile: NO_PARAMS;
   EditProfile: {author: Author};
   AuthorArticles: {id: string};
   AuthorLocation: {id: string};
+  EditImage: NO_PARAMS;
 };

@@ -1,20 +1,17 @@
 import {useMutation} from '@apollo/client';
 import {UPDATE_AUTHOR_IMAGE} from '../query';
 
-import {AuthorUploadImage, Navigation, UpdateImageParams} from '../types';
-import {AuthParams} from '@Navigation/auth-stack/interface';
+import {AuthorUploadImage, UpdateImageParams} from '../types';
+
 import {errorHandler} from '@Utils/errorHandler';
 
-export const useUploadImage = (navigation: Navigation) => {
+export const useUploadImage = () => {
   const [uploadImage, {loading, data}] = useMutation<
     {updateAuthor: AuthorUploadImage},
     UpdateImageParams
   >(UPDATE_AUTHOR_IMAGE, {
     errorPolicy: 'ignore',
-    onCompleted: () => {
-      console.log('Yes');
-      navigation.navigate(AuthParams.UserBio);
-    },
+
     onError: ({networkError}) => {
       errorHandler(networkError);
     },

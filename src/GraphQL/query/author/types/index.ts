@@ -20,11 +20,11 @@ export interface Author {
   color: ColorType;
   image: ImageType;
   imageUrl: string;
+  email: string;
 }
 
 export interface InitiateAuthor {
   id: string;
-  email: string;
   name: string;
   username: string;
 }

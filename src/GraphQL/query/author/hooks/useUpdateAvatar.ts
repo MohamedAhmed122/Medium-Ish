@@ -1,8 +1,7 @@
 import {useMutation} from '@apollo/client';
 import {UPDATE_AUTHOR_AVATAR} from '../query';
 
-import {UpdateAvatarParams, Navigation} from '../types';
-import {AuthParams} from '@Navigation/auth-stack/interface';
+import {UpdateAvatarParams} from '../types';
 import {errorHandler} from '@Utils/errorHandler';
 
 interface UploadAvatar {
@@ -11,19 +10,18 @@ interface UploadAvatar {
   };
 }
 
-export const useUpdateAvatar = (navigation: Navigation) => {
-  const [updateAvatar, {loading}] = useMutation<
+export const useUpdateAvatar = () => {
+  console.log('uri');
+  const [updateAvatar, {loading, error, data}] = useMutation<
     UploadAvatar,
     UpdateAvatarParams
   >(UPDATE_AUTHOR_AVATAR, {
     errorPolicy: 'ignore',
-    onCompleted: () => {
-      navigation.navigate(AuthParams.UserBio);
-    },
+
     onError: ({networkError}) => {
       errorHandler(networkError);
     },
   });
-
+  console.log(loading, error, data);
   return {updateAvatar, updateAvatarLoading: loading};
 };

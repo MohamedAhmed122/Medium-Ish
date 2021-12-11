@@ -6,7 +6,7 @@ import {ApolloProvider} from '@apollo/client';
 import {client} from '@GraphQL/Apollo';
 import Toast from 'react-native-toast-message';
 
-// FIXME: Bug in the WatchList
+// FIXME: Bug in the WatchList restructure
 
 export default function App() {
   return (
