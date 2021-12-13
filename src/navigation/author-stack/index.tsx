@@ -7,7 +7,7 @@ import {AuthorParams, AuthorParamList} from './interface';
 import {
   AuthorArticlesScreen,
   AuthorLocationScreen,
-  AuthorProfileScreen,
+  AuthorSettingScreen,
   EditProfileScreen,
   EditImageScreen,
 } from '@Screens/Author';
@@ -21,8 +21,8 @@ export const AuthorNavigator = () => {
         headerShown: false,
       }}>
       <Stack.Screen
-        name={AuthorParams.AuthorProfile}
-        component={AuthorProfileScreen}
+        name={AuthorParams.AuthorSettings}
+        component={AuthorSettingScreen}
       />
       <Stack.Screen
         name={AuthorParams.EditProfile}

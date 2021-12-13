@@ -1,4 +1,4 @@
-export * from './AuthorProfileScreen';
+export * from './AuthorSettingScreen';
 export * from './EditProfileScreen';
 export * from './AuthorArticlesScreen';
 export * from './AuthorLocationScreen';

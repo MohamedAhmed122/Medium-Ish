@@ -17,11 +17,11 @@ import {AuthorParams} from '@Navigation/author-stack/interface';
 
 import UserNotFound from '@Components/UserNotFound';
 
-interface AuthorProfileProps {
+interface AuthorSettingProps {
   navigation: RootNavigation;
 }
 
-export const AuthorProfileScreen: React.FC<AuthorProfileProps> = ({
+export const AuthorSettingScreen: React.FC<AuthorSettingProps> = ({
   navigation,
 }) => {
   const currentUser = useReactiveVar(currentAuthor);
