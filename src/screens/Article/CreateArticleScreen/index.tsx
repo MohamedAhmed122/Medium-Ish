@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {Screen} from '@Commons/Screen';
-import {ArticleForm} from './ArticleForm';
 
-import styles from './styles';
-import {CreateArticleValue, initialFormValues} from '@Types/Form';
 import {useReactiveVar} from '@apollo/client';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
-import {AppModal} from '@Components/Modal';
-import {useToggleButton} from '@Hooks/useToggle';
 import {useCreateArticle} from '@GraphQL/query';
+
+import {CreateArticleValue, initialFormValues} from '@Types/Form';
+
+import {useToggleButton} from '@Hooks/useToggle';
+import {Screen} from '@Commons/Screen';
+import {ArticleForm} from './ArticleForm';
+import {AppModal} from '@Components/Modal';
 
 export function CreateArticle() {
   const [textEditor, setTextEditor] = useState<string>('');
@@ -36,7 +37,7 @@ export function CreateArticle() {
   };
 
   return (
-    <Screen scroll scrollContainerStyle={styles.container}>
+    <Screen scroll>
       <ArticleForm
         setTextEditor={setTextEditor}
         handleSubmit={handleSubmit}

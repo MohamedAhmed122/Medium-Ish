@@ -33,7 +33,7 @@ export interface AuthorDetail extends Author {
   email: string;
   hideEmail: string;
   location: LocationType;
-  article: Article;
+  article: Article[];
   bio: string;
 }
 

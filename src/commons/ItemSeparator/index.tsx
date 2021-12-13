@@ -1,5 +1,5 @@
-import {COLORS} from '@Styles/colors';
 import React from 'react';
+import {COLORS} from '@Styles/colors';
 import {StyleSheet, View} from 'react-native';
 
 interface Props {

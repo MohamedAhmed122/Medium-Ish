@@ -15,6 +15,7 @@ export const Screen: React.FC<ScreenProps> = ({
   if (scroll) {
     return (
       <ScrollView style={[styles.screen, scrollContainerStyle]}>
+        <SafeAreaView style={styles.scrollScreen} />
         {children}
       </ScrollView>
     );

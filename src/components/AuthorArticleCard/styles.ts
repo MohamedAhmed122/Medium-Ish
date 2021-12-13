@@ -8,7 +8,8 @@ const MARGIN = 20;
 export default ScaledSheet.create({
   container: {
     backgroundColor: COLORS.orange,
-    margin: MARGIN,
+    marginVertical: MARGIN / 2,
+    marginHorizontal: MARGIN,
     borderRadius: 10,
     flexDirection: 'row',
   },

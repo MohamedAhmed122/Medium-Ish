@@ -10,6 +10,7 @@ import {
   AuthorSettingScreen,
   EditProfileScreen,
   EditImageScreen,
+  AuthorProfileScreen,
 } from '@Screens/Author';
 
 const Stack = createNativeStackNavigator<AuthorParamList>();
@@ -35,6 +36,10 @@ export const AuthorNavigator = () => {
       <Stack.Screen
         name={AuthorParams.AuthorLocation}
         component={AuthorLocationScreen}
+      />
+      <Stack.Screen
+        name={AuthorParams.AuthorProfile}
+        component={AuthorProfileScreen}
       />
       <Stack.Screen name={AuthorParams.EditImage} component={EditImageScreen} />
     </Stack.Navigator>

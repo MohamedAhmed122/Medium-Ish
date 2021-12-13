@@ -1,11 +1,10 @@
 /* eslint-disable curly */
 import React from 'react';
 // TYPES
-import {
-  ArticleParams,
-  ArticleParamList,
-} from '@Navigation/article-stack/interface';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {Navigators} from '@Navigation/index';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {TabParamList, TabParams} from '@Navigation/tab-navigation/interface';
+
 // GRAPHQL
 import {useGetAuthors, useGetArticles, Article} from '@GraphQL/query';
 import {watchListVar} from '@GraphQL/Apollo/cache';
@@ -22,10 +21,8 @@ import {watchListResolver} from '@Utils/watchListReslover';
 import styles from './styles';
 
 interface ArticleProps {
-  navigation: NativeStackNavigationProp<
-    ArticleParamList,
-    ArticleParams.Articles
-  >;
+  navigation: StackNavigationProp<TabParamList, TabParams>;
+  // navigation: any;
 }
 export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   const {loading, authors} = useGetAuthors();
@@ -35,9 +32,20 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   useMediaPlayer();
 
   const handleNavigate = (id: string): void => {
-    navigation.navigate(ArticleParams.ArticleDetail, {id});
+    // navigation.navigate(ArticleParams.ArticleDetail, {id});
+    navigation.navigate(Navigators.Tab.Article, {
+      screen: Navigators.ArticleStack.ArticleDetail,
+      params: {id},
+    });
   };
 
+  const handleNavigateToProfile = (id: string) => {
+    console.log('HERE');
+    navigation.navigate(Navigators.Tab.Author, {
+      screen: Navigators.AuthorStack.AuthorProfile,
+      params: {id},
+    });
+  };
   const handleWatchListItems = (item: Article): void =>
     watchListVar && watchListResolver(watchListVar, item);
 
@@ -64,7 +72,12 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
                 horizontal
                 keyExtractor={item => item.id}
                 data={authors.authors}
-                renderItem={({item}) => <UserList item={item} />}
+                renderItem={({item}) => (
+                  <UserList
+                    item={item}
+                    handleNavigateToProfile={handleNavigateToProfile}
+                  />
+                )}
                 ListEmptyComponent={AppLoading}
               />
             )}
