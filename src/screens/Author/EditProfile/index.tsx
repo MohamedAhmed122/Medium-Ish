@@ -10,6 +10,7 @@ import {EditProfileFrom, EditProfileImage} from './components';
 import {EditProfileValue, initialFormValues} from '@Types/Form';
 import {Header} from '@Components/Header';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {useEditAuthorData} from '@GraphQL/query';
 
 interface EditProfileProps {
   route: RouteProp<AuthorParamList, AuthorParams.EditProfile>;
@@ -22,9 +23,19 @@ export const EditProfile: React.FC<EditProfileProps> = ({
 }) => {
   const {author} = route.params;
 
+  const {editProfile, loading} = useEditAuthorData();
+
   const handleSubmit = (values: initialFormValues) => {
     const newValue = values as EditProfileValue;
-    console.log(newValue);
+    editProfile({
+      variables: {
+        id: author.id,
+        name: newValue.name,
+        email: newValue.email,
+        bio: newValue.bio,
+        hex: newValue.color?.color || author?.color?.hex,
+      },
+    });
   };
 
   const onNavigateToEditImage = () =>
@@ -39,7 +50,7 @@ export const EditProfile: React.FC<EditProfileProps> = ({
       />
       <EditProfileFrom
         handleSubmit={handleSubmit}
-        loading={false}
+        loading={loading}
         author={author}
       />
     </Screen>

@@ -7,4 +7,9 @@ export default ScaledSheet.create({
   contentContainerStyle: {
     paddingBottom: 40,
   },
+  textArea: {
+    height: 90,
+    alignItems: 'flex-start',
+    borderRadius: 10,
+  },
 });

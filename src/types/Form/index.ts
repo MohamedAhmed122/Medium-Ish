@@ -16,6 +16,7 @@ export interface EditProfileValue {
   email: string;
   name: string;
   color: Nullable<PickerItem>;
+  bio: string;
 }
 
 export interface CreateArticleValue {

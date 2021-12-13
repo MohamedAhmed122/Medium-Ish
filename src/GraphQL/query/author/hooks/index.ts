@@ -5,3 +5,4 @@ export * from './useUpdateAvatar';
 export * from './useUploadImage';
 export * from './useLoginArticle';
 export * from './useGetAuthor';
+export * from './useEditAuthorData';

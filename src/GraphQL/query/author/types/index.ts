@@ -1,5 +1,5 @@
-import {ParamId, Nullable} from '@Types/Common';
 import {Article} from '@GraphQL/query';
+import {ParamId} from '@Types/Common';
 
 // Navigation
 import {AuthParamList, AuthParams} from '@Navigation/auth-stack/interface';
@@ -15,16 +15,16 @@ export type Navigation = StackNavigationProp<
 
 export interface Author {
   id: string;
-  name: string;
   username: string;
   color: ColorType;
   image: ImageType;
   imageUrl: string;
-  email: string;
+  name: string;
 }
 
 export interface InitiateAuthor {
   id: string;
+  email: string;
   name: string;
   username: string;
 }
@@ -32,13 +32,18 @@ export interface InitiateAuthor {
 export interface AuthorDetail extends Author {
   email: string;
   hideEmail: string;
-  bio: Nullable<string>;
-  location: Nullable<LocationType>;
-  article: Article | [];
+  location: LocationType;
+  article: Article;
+  bio: string;
 }
 
 export interface AuthorUploadImage {
   image: ImageType;
+}
+
+export interface AuthorBio {
+  bio: string;
+  color: ColorType;
 }
 
 export interface AuthorLocation {

@@ -1,7 +1,7 @@
 import React from 'react';
 // TYPES
 import {initialFormValues} from '@Types/Form';
-import {Author} from '@GraphQL/query';
+import {AuthorDetail} from '@GraphQL/query';
 // FORM
 import {
   AppForm,
@@ -14,13 +14,12 @@ import {editAuthorValidationSchema as validationSchema} from '@Utils/validationS
 import {View} from 'react-native';
 import {COLORS} from '@Styles/colors';
 import {colors} from '@Assets/data';
-
-// import styles from './styles';
+import styles from './styles';
 
 interface EditProfileFromProps {
   handleSubmit(value: initialFormValues): void;
   loading: boolean;
-  author: Author;
+  author: AuthorDetail;
 }
 
 export const EditProfileFrom: React.FC<EditProfileFromProps> = ({
@@ -28,8 +27,10 @@ export const EditProfileFrom: React.FC<EditProfileFromProps> = ({
   loading,
   author,
 }) => {
-  const {name, color, email} = author;
+  const {name, color, email, bio} = author;
+
   const userFavoriteColor = colors.find(c => c.color === color.hex);
+
   return (
     <View>
       <AppForm
@@ -38,10 +39,17 @@ export const EditProfileFrom: React.FC<EditProfileFromProps> = ({
           email: email || '',
           name: name || '',
           color: userFavoriteColor || null,
+          bio: bio || '',
         }}
         validationSchema={validationSchema}>
         <AppInputField name="email" placeholder="Email" />
         <AppInputField name="name" placeholder="Name" />
+        <AppInputField
+          name="bio"
+          placeholder="Bio"
+          inputContainerStyle={styles.textArea}
+          multiline
+        />
         <AppPickerField
           name="color"
           items={colors}

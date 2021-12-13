@@ -161,7 +161,7 @@ export const colors = [
   {label: '#F29E38', id: 10, icon: null, color: '#F29E38'},
   {label: '#9c9c9c', id: 11, icon: null, color: '#9c9c9c'},
   {label: '#55C1D9', id: 12, icon: null, color: '#55C1D9'},
-  {label: '#000', id: 13, icon: null, color: '#000'},
+  {label: '#000000', id: 13, icon: null, color: '#000000'},
   {label: '#D10DFF', id: 14, icon: null, color: '#D10DFF'},
   {label: '#4A87FF', id: 15, icon: null, color: '#4A87FF'},
   {label: '#E3560B', id: 16, icon: null, color: '#E3560B'},

@@ -22,7 +22,7 @@ export const UPDATE_AUTHOR_INFO = gql`
 `;
 
 // UPDATE ->  Initiation/Add  Author Location
-export const UPDATE_AUTHOR_Location = gql`
+export const UPDATE_AUTHOR_LOCATION = gql`
   mutation updateAuthorInfo($id: ID!, $latitude: Int!, $longitude: Int!) {
     updateAuthor(
       data: {location: {latitude: $latitude, longitude: $longitude}}
@@ -32,6 +32,24 @@ export const UPDATE_AUTHOR_Location = gql`
         latitude
         longitude
       }
+    }
+  }
+`;
+
+// UPDATE ->  Edit  Author Data
+export const UPDATE_AUTHOR_DATA = gql`
+  mutation updateAuthorInfo(
+    $id: ID!
+    $name: String
+    $email: String
+    $hex: Hex
+    $bio: String
+  ) {
+    updateAuthor(
+      data: {name: $name, email: $email, bio: $bio, color: {hex: $hex}}
+      where: {id: $id}
+    ) {
+      id
     }
   }
 `;
