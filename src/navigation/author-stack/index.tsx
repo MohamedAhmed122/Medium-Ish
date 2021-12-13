@@ -5,11 +5,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {AuthorParams, AuthorParamList} from './interface';
 //SCREENS
 import {
-  AuthorArticles,
-  AuthorLocation,
-  AuthorProfile,
-  EditProfile,
-  EditImage,
+  AuthorArticlesScreen,
+  AuthorLocationScreen,
+  AuthorProfileScreen,
+  EditProfileScreen,
+  EditImageScreen,
 } from '@Screens/Author';
 
 const Stack = createNativeStackNavigator<AuthorParamList>();
@@ -22,18 +22,21 @@ export const AuthorNavigator = () => {
       }}>
       <Stack.Screen
         name={AuthorParams.AuthorProfile}
-        component={AuthorProfile}
+        component={AuthorProfileScreen}
       />
-      <Stack.Screen name={AuthorParams.EditProfile} component={EditProfile} />
+      <Stack.Screen
+        name={AuthorParams.EditProfile}
+        component={EditProfileScreen}
+      />
       <Stack.Screen
         name={AuthorParams.AuthorArticles}
-        component={AuthorArticles}
+        component={AuthorArticlesScreen}
       />
       <Stack.Screen
         name={AuthorParams.AuthorLocation}
-        component={AuthorLocation}
+        component={AuthorLocationScreen}
       />
-      <Stack.Screen name={AuthorParams.EditImage} component={EditImage} />
+      <Stack.Screen name={AuthorParams.EditImage} component={EditImageScreen} />
     </Stack.Navigator>
   );
 };

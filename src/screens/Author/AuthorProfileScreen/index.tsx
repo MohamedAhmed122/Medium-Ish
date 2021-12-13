@@ -21,7 +21,9 @@ interface AuthorProfileProps {
   navigation: RootNavigation;
 }
 
-export const AuthorProfile: React.FC<AuthorProfileProps> = ({navigation}) => {
+export const AuthorProfileScreen: React.FC<AuthorProfileProps> = ({
+  navigation,
+}) => {
   const currentUser = useReactiveVar(currentAuthor);
   const {author, loading, error, refetch} = useGetAuthor(currentUser?.id);
 

@@ -19,7 +19,7 @@ interface AuthorArticlesProps {
   navigation: RootNavigation;
 }
 
-export const AuthorArticles: React.FC<AuthorArticlesProps> = ({
+export const AuthorArticlesScreen: React.FC<AuthorArticlesProps> = ({
   route,
   navigation,
 }) => {

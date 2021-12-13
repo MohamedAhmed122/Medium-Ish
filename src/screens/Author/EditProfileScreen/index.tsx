@@ -17,7 +17,7 @@ interface EditProfileProps {
   navigation: StackNavigationProp<AuthorParamList, AuthorParams.EditProfile>;
 }
 
-export const EditProfile: React.FC<EditProfileProps> = ({
+export const EditProfileScreen: React.FC<EditProfileProps> = ({
   route,
   navigation,
 }) => {

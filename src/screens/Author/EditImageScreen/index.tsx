@@ -25,7 +25,7 @@ interface EditImageProps {
   navigation: StackNavigationProp<AuthorParamList, AuthorParams.EditImage>;
 }
 
-export const EditImage: React.FC<EditImageProps> = ({navigation}) => {
+export const EditImageScreen: React.FC<EditImageProps> = ({navigation}) => {
   // LOCAL STATE
   const [status, setStatus] = useState<Status>(Status.GenerateAvatar);
   const [seed, setSeed] = useState<Seed>('avataaars');
