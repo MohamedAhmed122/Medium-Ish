@@ -42,7 +42,7 @@ export const EditProfileScreen: React.FC<EditProfileProps> = ({
     navigation.navigate(AuthorParams.EditImage);
 
   return (
-    <Screen>
+    <Screen scroll>
       <Header title="Edit Profile" handleGoBack={navigation.goBack} />
       <EditProfileImage
         author={author}

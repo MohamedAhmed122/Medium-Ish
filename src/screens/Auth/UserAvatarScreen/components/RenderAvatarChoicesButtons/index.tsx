@@ -21,10 +21,10 @@ export const RenderAvatarChoicesButtons: React.FC<Props> = ({
   return (
     <AnimatableView style={styles.container}>
       <TouchableOpacity onPress={onChoiceAvatar} style={styles.buttonContainer}>
-        <IF condition={status === Status.GenerateAvatar} style={styles.button}>
+        <IF condition={status === Status.GenerateAvatar}>
           <ChoicesButton icon title="Upload Photo" />
         </IF>
-        <IF condition={status === Status.UploadImage} style={styles.button}>
+        <IF condition={status === Status.UploadImage}>
           <ChoicesButton title="Create Avatar" />
         </IF>
       </TouchableOpacity>

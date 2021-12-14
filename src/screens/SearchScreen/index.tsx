@@ -16,7 +16,12 @@ export const SearchScreen: React.FC<SearchScreenProps> = () => {
   return (
     <Screen>
       <AppInput value={title} onChangeText={setTitle} placeholder="Search">
-        <AntDesign name="search1" color={COLORS.darkGray} size={22} />
+        <AntDesign
+          name="search1"
+          color={COLORS.darkGray}
+          size={22}
+          style={styles.icon}
+        />
       </AppInput>
       <FeaturedFlatList
         loading={loading}

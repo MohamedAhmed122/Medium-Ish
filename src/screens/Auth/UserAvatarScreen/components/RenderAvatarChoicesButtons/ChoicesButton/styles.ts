@@ -2,6 +2,11 @@ import {COLORS} from '@Styles/colors';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  button: {
+    flexDirection: 'row',
+    marginTop: 20,
+    alignItems: 'center',
+  },
   container: {
     backgroundColor: COLORS.lightGrey,
     paddingVertical: 17,

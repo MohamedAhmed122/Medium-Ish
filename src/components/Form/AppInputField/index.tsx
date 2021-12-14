@@ -49,6 +49,7 @@ export const AppInputField: React.FC<Props> = ({
 const styles = StyleSheet.create({
   error: {
     color: COLORS.danger,
-    margin: 10,
+    marginLeft: 24,
+    marginTop: 8,
   },
 });

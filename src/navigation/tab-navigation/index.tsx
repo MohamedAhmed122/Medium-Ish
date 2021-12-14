@@ -14,6 +14,7 @@ export const TabNavigation = () => {
         headerShown: false,
         tabBarInactiveTintColor: COLORS.lightGrey,
         tabBarActiveTintColor: COLORS.primary,
+        tabBarHideOnKeyboard: true,
       }}>
       {tabs.map(tab => (
         <Tab.Screen

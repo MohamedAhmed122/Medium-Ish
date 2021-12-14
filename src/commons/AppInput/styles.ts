@@ -8,7 +8,6 @@ const styles = ScaledSheet.create({
     backgroundColor: COLORS.gray,
     height: 50,
     borderRadius: '25@s',
-    padding: '10@s',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -17,6 +16,7 @@ const styles = ScaledSheet.create({
 
   inputText: {
     backgroundColor: 'transparent',
+    // height: '100%',
     width: 'auto',
     marginLeft: 20,
     color: COLORS.dark,

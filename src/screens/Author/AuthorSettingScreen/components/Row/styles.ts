@@ -3,7 +3,7 @@ import {ScaledSheet} from 'react-native-size-matters';
 
 export default ScaledSheet.create({
   container: {
-    marginTop: '120@vs',
+    marginTop: 150,
     width: '90%',
     marginLeft: '5%',
     backgroundColor: COLORS.white,

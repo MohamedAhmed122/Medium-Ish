@@ -29,7 +29,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
   const handleNavigate = () => navigation.navigate(AuthParams.Login);
 
   return (
-    <Screen>
+    <Screen scroll>
       <Header handleGoBack={handleGoBack} title={'Welcome, to Medium-Ish'} />
       <RegisterForm
         handleSubmit={handleSubmit}

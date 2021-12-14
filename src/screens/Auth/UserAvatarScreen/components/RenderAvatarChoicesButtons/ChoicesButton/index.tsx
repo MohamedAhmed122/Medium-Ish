@@ -14,7 +14,7 @@ interface Props {
 
 export const ChoicesButton: React.FC<Props> = ({icon, title}) => {
   return (
-    <>
+    <View style={styles.button}>
       <View style={styles.avatar}>
         {icon ? (
           <Icon name="camera" color={COLORS.darkGray} size={20} />
@@ -32,6 +32,6 @@ export const ChoicesButton: React.FC<Props> = ({icon, title}) => {
           {title}
         </AppText>
       </View>
-    </>
+    </View>
   );
 };

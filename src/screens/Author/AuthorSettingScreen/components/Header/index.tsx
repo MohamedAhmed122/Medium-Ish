@@ -35,10 +35,10 @@ export const Header: React.FC<HeaderProps> = ({
           <Icon size={25} name="edit" color={color.hex} onPress={handleEdit} />
         </View>
         <UserImage image={image} imageUrl={imageUrl} style={styles.image} />
-        <AppText fontFamily="Roboto-Light" style={styles.text}>
+        <AppText fontFamily="Roboto-Medium" style={styles.text}>
           {username}
         </AppText>
-        <AppText fontFamily="Roboto-Light" style={styles.text}>
+        <AppText fontFamily="Roboto-Medium" style={styles.text}>
           {email}
         </AppText>
       </View>

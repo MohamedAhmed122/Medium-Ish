@@ -10,18 +10,20 @@ interface UploadAvatar {
   };
 }
 
-export const useUpdateAvatar = () => {
+export const useUpdateAvatar = (onComplete: () => void) => {
   console.log('uri');
-  const [updateAvatar, {loading, error, data}] = useMutation<
+  const [updateAvatar, {loading}] = useMutation<
     UploadAvatar,
     UpdateAvatarParams
   >(UPDATE_AUTHOR_AVATAR, {
     errorPolicy: 'ignore',
-
+    onCompleted: () => {
+      onComplete();
+    },
     onError: ({networkError}) => {
       errorHandler(networkError);
     },
   });
-  console.log(loading, error, data);
+
   return {updateAvatar, updateAvatarLoading: loading};
 };

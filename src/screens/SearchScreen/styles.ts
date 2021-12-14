@@ -7,4 +7,8 @@ export default ScaledSheet.create({
   contentContainerStyle: {
     paddingBottom: 40,
   },
+  icon: {
+    marginLeft: 10,
+    paddingLeft: 20,
+  },
 });

@@ -39,7 +39,6 @@ export const AuthorSettingScreen: React.FC<AuthorSettingProps> = ({
       author: author?.author,
     });
 
-  console.log(author?.author, '--');
   const handlePress = (title: string) => {
     const type = title as UserOptions;
     switch (type) {

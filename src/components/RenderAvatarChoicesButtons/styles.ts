@@ -6,7 +6,7 @@ export default StyleSheet.create({
   },
   buttonContainer: {
     alignSelf: 'center',
-    position: 'absolute',
+    marginVertical: 18,
     bottom: 0,
     width: '90%',
     marginLeft: '5%',

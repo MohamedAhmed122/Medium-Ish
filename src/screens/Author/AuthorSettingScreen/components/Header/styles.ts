@@ -12,7 +12,7 @@ export default ScaledSheet.create({
   },
   profileContainer: {
     position: 'absolute',
-    height: '190@vs',
+    height: 230,
     width: '80%',
     marginLeft: '10%',
     backgroundColor: COLORS.white,
@@ -25,7 +25,6 @@ export default ScaledSheet.create({
     },
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-
     elevation: 6,
   },
   iconsContainer: {

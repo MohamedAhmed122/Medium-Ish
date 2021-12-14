@@ -31,9 +31,12 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
   // GLOBAL VAR
   const currentUser = useReactiveVar(currentAuthor);
 
-  const {updateAvatar, updateAvatarLoading} = useUpdateAvatar();
+  const OnUpdateAvatarCompleted = () => navigation.navigate(AuthParams.UserBio);
 
-  const {uploadImageLoading, data} = useUploadImage();
+  const {updateAvatar, updateAvatarLoading} = useUpdateAvatar(
+    OnUpdateAvatarCompleted,
+  );
+  const {uploadImageLoading} = useUploadImage();
 
   const changeSeed = (type: Seed): void => setSeed(type);
 
@@ -41,27 +44,15 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
 
   const uri = getAvatarUri(seed, random);
 
-  console.log(data, 'data');
-
   const handleProcessedAvatar = (): void => {
+    console.log('here');
     updateAvatar({
       variables: {id: currentUser.id, imageUrl: uri},
-      onCompleted: () => {
-        navigation.navigate(AuthParams.UserBio);
-      },
     });
   };
-  console.log(image);
 
   const handleProcessedUploadPhoto = () => {
     if (!image) return;
-    // uploadImage({
-    //   variables: {
-    //     fileName: image.filename || `${Date.now()}.jpg`,
-    //     id: currentUser.id,
-    //     handle: image.path.replace('file://', ''),
-    //   },
-    // });
   };
 
   const onChoiceAvatar = (): void =>
@@ -82,7 +73,7 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
   };
 
   return (
-    <Screen>
+    <Screen scroll>
       <Header
         title="Choose Avatar"
         color={COLORS.primary}

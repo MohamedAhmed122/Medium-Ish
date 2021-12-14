@@ -11,7 +11,7 @@ import {
 } from '@Components/Form';
 import {editAuthorValidationSchema as validationSchema} from '@Utils/validationSchema';
 // RENDER
-import {View} from 'react-native';
+import {AvoidingKeyboardView} from '@Commons/AvoidingKeyboardView';
 import {COLORS} from '@Styles/colors';
 import {colors} from '@Assets/data';
 import styles from './styles';
@@ -32,7 +32,7 @@ export const EditProfileFrom: React.FC<EditProfileFromProps> = ({
   const userFavoriteColor = colors.find(c => c.color === color.hex);
 
   return (
-    <View>
+    <AvoidingKeyboardView>
       <AppForm
         onSubmit={handleSubmit}
         initialValues={{
@@ -62,6 +62,6 @@ export const EditProfileFrom: React.FC<EditProfileFromProps> = ({
           color={COLORS.secondary}
         />
       </AppForm>
-    </View>
+    </AvoidingKeyboardView>
   );
 };

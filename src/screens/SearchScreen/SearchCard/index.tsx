@@ -38,7 +38,7 @@ export const SearchCard: React.FC<Props> = ({item}) => {
       </View>
       <AppResizedText
         text={description}
-        fontFamily="Roboto-Light"
+        fontFamily="Roboto-Medium"
         substring={95}
         style={styles.desc}
       />
