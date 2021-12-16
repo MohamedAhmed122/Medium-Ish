@@ -1,6 +1,6 @@
 import React from 'react';
 // GraphQL
-import {useRegisterUser} from '@GraphQL/query';
+import {useRegisterUser} from '@GraphQL/requests';
 // TYPES
 import {initialFormValues, RegisterValue} from '@Types/Form';
 import {ModalType} from '@Types/Modal';

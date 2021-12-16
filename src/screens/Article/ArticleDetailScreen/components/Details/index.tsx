@@ -5,7 +5,7 @@ import RenderHtml from 'react-native-render-html';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
-import {ArticleDetail as DetailedArticle} from '@GraphQL/query';
+import {ArticleDetail as DetailedArticle} from '@GraphQL/requests';
 import {UserImage} from '@Components/UserImage';
 import {AppBadge} from '@Commons/AppBadge';
 import {AppText} from '@Commons/AppText';

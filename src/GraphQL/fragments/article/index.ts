@@ -9,6 +9,7 @@ export const CORE_ARTICLE_FIELDS = gql`
     likes
     title
     isOnWatchList @client
+    watchList @client
     category{
       id
       label
@@ -18,5 +19,11 @@ export const CORE_ARTICLE_FIELDS = gql`
       }
     }
    
+  }
+`;
+
+export const ARTICLE_WATCH_LIST = gql`
+  fragment ${fragmentsField.watchList} on ${typename.article} {
+    watchList
   }
 `;

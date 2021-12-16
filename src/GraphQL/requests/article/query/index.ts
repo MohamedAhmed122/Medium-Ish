@@ -6,3 +6,4 @@ export * from './getSingleArticle';
 export * from './likeArticle';
 export * from './updateArticle';
 export * from './searchArticle';
+export * from './watchList';

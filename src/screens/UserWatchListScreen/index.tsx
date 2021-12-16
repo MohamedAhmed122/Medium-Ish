@@ -12,7 +12,7 @@ import {ArticleCard} from '@Components/ArticleCard';
 import {useReactiveVar} from '@apollo/client';
 import {watchListVar} from '@GraphQL/Apollo/cache';
 import {watchListResolver} from '@Utils/watchListReslover';
-import {Article} from '@GraphQL/query';
+import {Article} from '@GraphQL/requests';
 import {Empty} from '@Commons/Empty';
 
 // import styles from './styles'

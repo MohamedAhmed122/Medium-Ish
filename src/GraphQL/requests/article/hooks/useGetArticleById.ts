@@ -1,5 +1,5 @@
 import {useQuery} from '@apollo/client';
-import {GET_SINGLE_ARTICLE} from '@GraphQL/query';
+import {GET_SINGLE_ARTICLE} from '@GraphQL/requests';
 import {ParamId} from '@Types/Common';
 import {ArticleDetail} from '../types';
 

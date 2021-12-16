@@ -10,7 +10,7 @@ import {FromBio} from './FromBio';
 import {COLORS} from '@Styles/colors';
 import {useReactiveVar} from '@apollo/client';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
-import {useAddBio} from '@GraphQL/query';
+import {useAddBio} from '@GraphQL/requests';
 
 // import styles from './styles'
 

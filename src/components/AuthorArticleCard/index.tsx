@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Article} from '@GraphQL/query';
+import {Article} from '@GraphQL/requests';
 
 import {AppText} from '@Commons/AppText';
 import {TouchableOpacity, View} from 'react-native';

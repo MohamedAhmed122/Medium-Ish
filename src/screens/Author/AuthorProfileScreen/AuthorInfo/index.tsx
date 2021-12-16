@@ -2,7 +2,7 @@ import React from 'react';
 import {AppBadge} from '@Commons/AppBadge';
 import {AppText} from '@Commons/AppText';
 import {UserImage} from '@Components/UserImage';
-import {AuthorDetail} from '@GraphQL/query';
+import {AuthorDetail} from '@GraphQL/requests';
 import {View} from 'react-native';
 import styles from './styles';
 interface AuthorInfoProps {

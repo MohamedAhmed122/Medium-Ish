@@ -3,7 +3,7 @@ import {Text, View, Image} from 'react-native';
 import {COLORS} from '@Styles/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
-import {Comment} from '@GraphQL/query';
+import {Comment} from '@GraphQL/requests';
 
 interface Props {
   comment: Comment;

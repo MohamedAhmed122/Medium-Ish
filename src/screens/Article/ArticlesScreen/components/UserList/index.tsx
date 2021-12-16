@@ -1,5 +1,5 @@
 import React from 'react';
-import {Author} from '@GraphQL/query';
+import {Author} from '@GraphQL/requests';
 import {TouchableOpacity, View} from 'react-native';
 
 import styles from './styles';

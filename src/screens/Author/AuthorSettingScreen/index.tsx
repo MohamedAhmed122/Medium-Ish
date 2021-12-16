@@ -3,7 +3,7 @@ import React from 'react';
 
 import {useReactiveVar} from '@apollo/client';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
-import {useGetAuthor} from '@GraphQL/query';
+import {useGetAuthor} from '@GraphQL/requests';
 
 import {shareProfile} from '@Utils/share';
 

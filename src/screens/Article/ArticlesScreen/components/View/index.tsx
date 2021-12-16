@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 
-import {Article, Author} from '@GraphQL/query';
+import {Article, Author} from '@GraphQL/requests';
 
 import {AppLoading, Screen} from '@Commons/index';
 import {ArticleCard} from '@Components/ArticleCard';

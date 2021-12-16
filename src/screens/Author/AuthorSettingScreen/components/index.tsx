@@ -5,7 +5,7 @@ import {RowContainer, RowContainerProps} from './Row';
 import {RefreshControl, ScrollView} from 'react-native';
 import {ParamId} from '@Types/Common';
 import {ApolloQueryResult} from '@apollo/client';
-import {AuthorDetail} from '@GraphQL/query';
+import {AuthorDetail} from '@GraphQL/requests';
 
 interface Props {
   header: HeaderProps;

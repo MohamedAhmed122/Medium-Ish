@@ -6,7 +6,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {TabParamList, TabParams} from '@Navigation/tab-navigation/interface';
 
 // GRAPHQL
-import {useGetAuthors, useGetArticles, Article} from '@GraphQL/query';
+import {useGetAuthors, useGetArticles, Article} from '@GraphQL/requests';
 import {watchListVar} from '@GraphQL/Apollo/cache';
 // SOUND
 import {playSong} from '@Utils/playSound';

@@ -1,7 +1,7 @@
 import {ParamId} from '@Types/Common';
 import {errorHandler} from '@Utils/errorHandler';
 import {useMutation} from '@apollo/client';
-import {UpdateAuthorInfoParams, UPDATE_AUTHOR_DATA} from '@GraphQL/query';
+import {UpdateAuthorInfoParams, UPDATE_AUTHOR_DATA} from '@GraphQL/requests';
 
 interface AuthorDataParams extends UpdateAuthorInfoParams {
   name: string;

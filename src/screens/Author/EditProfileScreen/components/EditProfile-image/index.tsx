@@ -3,7 +3,7 @@ import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import {Author} from '@GraphQL/query';
+import {Author} from '@GraphQL/requests';
 
 import {UserImage} from '@Components/UserImage';
 

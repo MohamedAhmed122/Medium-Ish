@@ -1,16 +1,15 @@
 import {InMemoryCache, makeVar, ReactiveVar} from '@apollo/client';
-import {InitiateAuthor, Article} from '@GraphQL/query';
+
+import {InitiateAuthor, Article} from '@GraphQL/requests';
 
 const watchListVar: ReactiveVar<Article[] | any> = makeVar([]);
 const currentAuthor: ReactiveVar<InitiateAuthor | any> = makeVar({});
-
-// TODO: ADD the First Screens
 
 const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        cartItems: {
+        watchList: {
           read() {
             return watchListVar();
           },
@@ -37,6 +36,11 @@ const cache = new InMemoryCache({
     },
   },
 });
+
+// persistCache({
+//   cache,
+//   storage: new AsyncStorageWrapper(AsyncStorage),
+// });
 
 export {cache, watchListVar, currentAuthor};
 // from top to bottom -> rebase

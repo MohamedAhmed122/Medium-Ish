@@ -9,4 +9,5 @@ export const fragmentsField = {
   authorDetail: 'coreAuthorDetailFields',
   article: 'coreArticleFields',
   comment: 'coreCommentFields',
+  watchList: 'coreWatchListFields',
 };

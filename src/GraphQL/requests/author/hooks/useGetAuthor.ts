@@ -1,4 +1,4 @@
-import {GET_SINGLE_AUTHOR, AuthorDetail} from '@GraphQL/query';
+import {GET_SINGLE_AUTHOR, AuthorDetail} from '@GraphQL/requests';
 import {useQuery} from '@apollo/client';
 import {ParamId} from '@Types/Common';
 

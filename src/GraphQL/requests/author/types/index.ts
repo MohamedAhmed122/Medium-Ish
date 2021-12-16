@@ -1,4 +1,4 @@
-import {Article} from '@GraphQL/query';
+import {Article} from '@GraphQL/requests';
 import {ParamId} from '@Types/Common';
 
 // Navigation

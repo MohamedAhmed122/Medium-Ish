@@ -1,6 +1,6 @@
 import {useQuery} from '@apollo/client';
 
-import {Article, GET_ARTICLES_BY_AUTHOR_ID} from '@GraphQL/query';
+import {Article, GET_ARTICLES_BY_AUTHOR_ID} from '@GraphQL/requests';
 import {ParamId} from '@Types/Common';
 
 export const useGetAuthorArticles = (id: string) => {

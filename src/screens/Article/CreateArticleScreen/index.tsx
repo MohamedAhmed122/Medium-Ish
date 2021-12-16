@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import {useReactiveVar} from '@apollo/client';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
-import {useCreateArticle} from '@GraphQL/query';
+import {useCreateArticle} from '@GraphQL/requests';
 
 import {CreateArticleValue, initialFormValues} from '@Types/Form';
 

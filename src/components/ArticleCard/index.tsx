@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 
-import {Article} from '@GraphQL/query';
+import {Article} from '@GraphQL/requests';
 import {useToggleButton} from '@Hooks/useToggle';
 
 import {LikeButton} from '@Components/LikeButton';

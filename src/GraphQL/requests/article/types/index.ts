@@ -1,7 +1,7 @@
-import {ColorType, Comment} from '@GraphQL/query';
+import {ColorType, Comment} from '@GraphQL/requests';
 // import {HTMLSource} from 'react-native-render-html';
 
-import {Author} from '@GraphQL/query';
+import {Author} from '@GraphQL/requests';
 export interface Article {
   id: string;
   description: string;

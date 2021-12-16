@@ -7,7 +7,7 @@ import {
   AuthorParamList,
   AuthorParams,
 } from '@Navigation/author-stack/interface';
-import {useGetAuthorArticles} from '@GraphQL/query';
+import {useGetAuthorArticles} from '@GraphQL/requests';
 import {ArticleCard} from '@Components/AuthorArticleCard';
 import {FlatList} from 'react-native';
 // import {StackNavigationProp} from '@react-navigation/stack';

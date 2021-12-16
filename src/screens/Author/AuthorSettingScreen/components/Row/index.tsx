@@ -5,7 +5,7 @@ import {UserItems} from '@Types/UserList';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {IconContainer} from '@Components/IconContainer';
 import {AppText} from '@Commons/AppText';
-import {AuthorDetail} from '@GraphQL/query';
+import {AuthorDetail} from '@GraphQL/requests';
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
 

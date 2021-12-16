@@ -8,7 +8,7 @@ import {
 } from '@Navigation/article-stack/interface';
 
 import {AppLoading, Screen, Error, Empty} from '@Commons/index';
-import {useGetArticleById, useCreateComment} from '@GraphQL/query';
+import {useGetArticleById, useCreateComment} from '@GraphQL/requests';
 import {Details, Comment, CommentList} from './components';
 import {FlatList} from 'react-native';
 

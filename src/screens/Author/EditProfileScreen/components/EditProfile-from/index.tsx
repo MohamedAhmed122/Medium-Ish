@@ -1,7 +1,7 @@
 import React from 'react';
 // TYPES
 import {initialFormValues} from '@Types/Form';
-import {AuthorDetail} from '@GraphQL/query';
+import {AuthorDetail} from '@GraphQL/requests';
 // FORM
 import {
   AppForm,

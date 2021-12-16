@@ -1,5 +1,5 @@
 import {ReactiveVar} from '@apollo/client';
-import {Article} from '@GraphQL/query';
+import {Article} from '@GraphQL/requests';
 
 export const watchListResolver = (
   watchItem: ReactiveVar<Article[]>,

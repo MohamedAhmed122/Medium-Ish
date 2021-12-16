@@ -10,7 +10,7 @@ import {EditProfileFrom, EditProfileImage} from './components';
 import {EditProfileValue, initialFormValues} from '@Types/Form';
 import {Header} from '@Components/Header';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {useEditAuthorData} from '@GraphQL/query';
+import {useEditAuthorData} from '@GraphQL/requests';
 
 interface EditProfileProps {
   route: RouteProp<AuthorParamList, AuthorParams.EditProfile>;

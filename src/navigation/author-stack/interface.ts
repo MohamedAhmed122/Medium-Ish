@@ -1,4 +1,4 @@
-import {AuthorDetail} from '@GraphQL/query';
+import {AuthorDetail} from '@GraphQL/requests';
 
 export type NO_PARAMS = undefined;
 

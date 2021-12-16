@@ -1,6 +1,6 @@
-import {CREATE_COMMENT} from '@GraphQL/query';
+import {CREATE_COMMENT} from '@GraphQL/requests';
 import {useMutation} from '@apollo/client';
-import {Comment} from '@GraphQL/query';
+import {Comment} from '@GraphQL/requests';
 import {errorHandler} from '@Utils/errorHandler';
 
 export const useCreateComment = () => {

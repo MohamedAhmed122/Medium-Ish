@@ -7,7 +7,7 @@ import {
   AuthorParamList,
   AuthorParams,
 } from '@Navigation/author-stack/interface';
-import {useGetAuthor} from '@GraphQL/query';
+import {useGetAuthor} from '@GraphQL/requests';
 import {Header} from '@Components/Header';
 import {AuthorInfo} from './AuthorInfo';
 import {StackNavigationProp} from '@react-navigation/stack';

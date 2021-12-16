@@ -13,7 +13,7 @@ import {RenderAvatarChoicesButtons, RenderAvatarPickers} from './components';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';
-import {useUpdateAvatar, useUploadImage} from '@GraphQL/query';
+import {useUpdateAvatar, useUploadImage} from '@GraphQL/requests';
 import {useReactiveVar} from '@apollo/client';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
 

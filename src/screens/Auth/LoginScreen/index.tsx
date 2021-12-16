@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useLoginAuthor} from '@GraphQL/query';
+import {useLoginAuthor} from '@GraphQL/requests';
 
 import {RootNavigation} from '@Navigation/app-navigation/interface';
 import {AuthParams} from '@Navigation/auth-stack/interface';

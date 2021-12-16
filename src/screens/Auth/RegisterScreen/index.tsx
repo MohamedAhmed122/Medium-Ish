@@ -7,7 +7,7 @@ import {AuthParamList, AuthParams} from '@Navigation/auth-stack/interface';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {RegisterForm} from './RegisterForm';
-import {useInitiateAuthor} from '@GraphQL/query';
+import {useInitiateAuthor} from '@GraphQL/requests';
 
 // import styles from './styles'
 

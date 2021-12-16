@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {View} from 'react-native';
-import {AuthorDetail} from '@GraphQL/query';
+import {AuthorDetail} from '@GraphQL/requests';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {AppText} from '@Commons/AppText';
 import {UserImage} from '@Components/UserImage';

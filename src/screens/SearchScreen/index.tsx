@@ -4,7 +4,7 @@ import {SearchCard} from './SearchCard';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {AppInput, Screen, ItemSeparator, Empty} from '@Commons/index';
 import {COLORS} from '@Styles/colors';
-import {useSearchArticles} from '@GraphQL/query';
+import {useSearchArticles} from '@GraphQL/requests';
 import {FeaturedFlatList} from '@Components/FeaturedFlatList';
 import styles from './styles';
 

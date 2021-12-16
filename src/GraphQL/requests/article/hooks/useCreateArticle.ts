@@ -1,5 +1,5 @@
 import {useMutation} from '@apollo/client';
-import {Article, CreateArticleParam, CREATE_ARTICLE} from '@GraphQL/query';
+import {Article, CreateArticleParam, CREATE_ARTICLE} from '@GraphQL/requests';
 import {errorHandler} from '@Utils/errorHandler';
 
 export const useCreateArticle = () => {

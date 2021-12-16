@@ -1,6 +1,6 @@
 import {useLazyQuery} from '@apollo/client';
-import {Author} from '@GraphQL/query';
-import {LOGIN_AUTHOR} from '@GraphQL/query';
+import {Author} from '@GraphQL/requests';
+import {LOGIN_AUTHOR} from '@GraphQL/requests';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
 
 import {Navigators} from '@Navigation/index';
