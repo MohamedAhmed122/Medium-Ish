@@ -13,13 +13,13 @@ import {UserImage} from '@Components/UserImage';
 
 import styles from './styles';
 
-interface Props {
+export interface ArticleCardProps {
   item: Article;
   handleNavigate(id: string): void;
   handleWatchListItems(item: Article): void;
 }
 
-export const ArticleCard: React.FC<Props> = ({
+export const ArticleCard: React.FC<ArticleCardProps> = ({
   item,
   handleNavigate,
   handleWatchListItems,

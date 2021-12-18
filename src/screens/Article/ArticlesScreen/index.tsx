@@ -6,24 +6,33 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {TabParamList, TabParams} from '@Navigation/tab-navigation/interface';
 
 // GRAPHQL
-import {useGetAuthors, useGetArticles, Article} from '@GraphQL/requests';
-import {watchListVar} from '@GraphQL/Apollo/cache';
+import {
+  useGetAuthors,
+  useGetArticles,
+  Article,
+  useAddToWatchList,
+} from '@GraphQL/requests';
+
 // SOUND
 import {playSong} from '@Utils/playSound';
 import {useMediaPlayer} from '@Hooks/useMediaPlayer';
 
 import {Error, AppLoading, Empty} from '@Commons/index';
-import {watchListResolver} from '@Utils/watchListReslover';
+
 import {ArticlesView} from './components/View';
+import {useToggleButton} from '@Hooks/useToggle';
 
 interface ArticleProps {
   navigation: StackNavigationProp<TabParamList, TabParams>;
 }
 
 export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
+  const {value: openAuthorModal, toggleButton} = useToggleButton(false);
   const {authorLoading, authors} = useGetAuthors();
 
   const {articles, articleError, articleLoading, refetch} = useGetArticles();
+
+  const {addToWatchList} = useAddToWatchList();
 
   useMediaPlayer();
 
@@ -34,14 +43,11 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
     });
   };
 
-  const handleNavigateToProfile = (id: string) => {
-    navigation.navigate(Navigators.Tab.Author, {
-      screen: Navigators.AuthorStack.AuthorProfile,
-      params: {id},
+  const handleWatchListItems = (item: Article): void => {
+    addToWatchList({
+      variables: {articleId: item.id},
     });
   };
-  const handleWatchListItems = (item: Article): void =>
-    watchListVar && watchListResolver(watchListVar, item);
 
   const onRefresh = () => {
     playSong();
@@ -53,15 +59,22 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   if (articleError || !articles) return <Error />;
 
   return (
-    <ArticlesView
-      onRefresh={onRefresh}
-      handleWatchListItems={handleWatchListItems}
-      handleNavigateToProfile={handleNavigateToProfile}
-      articles={articles}
-      authors={authors}
-      authorLoading={authorLoading}
-      articleLoading={articleLoading}
-      handleNavigate={handleNavigate}
-    />
+    <>
+      <ArticlesView
+        articleProps={{
+          handleNavigate,
+          handleWatchListItems,
+        }}
+        userListProps={{
+          onPress: toggleButton,
+          openAuthorModal,
+        }}
+        onRefresh={onRefresh}
+        articles={articles}
+        authors={authors}
+        authorLoading={authorLoading}
+        articleLoading={articleLoading}
+      />
+    </>
   );
 };

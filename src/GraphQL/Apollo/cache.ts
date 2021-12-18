@@ -10,8 +10,8 @@ const cache = new InMemoryCache({
     Query: {
       fields: {
         watchList: {
-          read() {
-            return watchListVar();
+          read(watchList = false) {
+            return watchList;
           },
         },
         currentAuthor: {

@@ -4,21 +4,20 @@ import {FlatList} from 'react-native';
 import {Article, Author} from '@GraphQL/requests';
 
 import {AppLoading, Screen} from '@Commons/index';
-import {ArticleCard} from '@Components/ArticleCard';
+import {ArticleCard, ArticleCardProps} from '@Components/ArticleCard';
 import {FeaturedFlatList} from '@Components/FeaturedFlatList';
-import {UserList} from '../UserList';
+import {UserList, UserListProps} from '../UserList';
 
 import styles from './styles';
 
 interface ArticlesViewProps {
-  onRefresh(): void;
+  articleProps: Omit<ArticleCardProps, 'item'>;
+  userListProps: Omit<UserListProps, 'item'>;
   articleLoading: boolean;
-  authors: {authors: Author[]};
   authorLoading: boolean;
-  handleNavigateToProfile(id: string): void;
+  authors: {authors: Author[]};
   articles: {articles: Article[]};
-  handleNavigate(id: string): void;
-  handleWatchListItems(article: Article): void;
+  onRefresh(): void;
 }
 
 export const ArticlesView: React.FC<ArticlesViewProps> = ({
@@ -26,10 +25,9 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
   articleLoading,
   authors,
   authorLoading,
-  handleNavigateToProfile,
   articles,
-  handleNavigate,
-  handleWatchListItems,
+  articleProps,
+  userListProps,
 }) => {
   return (
     <Screen>
@@ -47,10 +45,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
                 keyExtractor={item => item.id}
                 data={authors.authors}
                 renderItem={({item}) => (
-                  <UserList
-                    item={item}
-                    handleNavigateToProfile={handleNavigateToProfile}
-                  />
+                  <UserList item={item} {...userListProps} />
                 )}
                 ListEmptyComponent={AppLoading}
               />
@@ -59,13 +54,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
         )}
         data={articles.articles}
         keyExtractor={item => item.id}
-        renderItem={({item}) => (
-          <ArticleCard
-            item={item}
-            handleNavigate={handleNavigate}
-            handleWatchListItems={handleWatchListItems}
-          />
-        )}
+        renderItem={({item}) => <ArticleCard item={item} {...articleProps} />}
       />
     </Screen>
   );
