@@ -11,8 +11,8 @@ export const useCreateArticle = () => {
     onCompleted: () => {
       console.log('YES');
     },
-    onError: ({networkError}) => {
-      errorHandler(networkError);
+    onError: err => {
+      errorHandler(err);
     },
   });
 

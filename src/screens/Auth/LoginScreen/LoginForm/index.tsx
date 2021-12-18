@@ -22,17 +22,23 @@ export const LoginForm: React.FC<LoginFormProps> = ({
 }) => {
   return (
     <View style={styles.loginContainer}>
-      <AppForm
-        onSubmit={handleSubmit}
-        initialValues={{username: '', password: ''}}
-        validationSchema={validationSchema}>
-        <AppInputField name="username" placeholder="Username" />
-        <AppInputField name="password" placeholder="Password" secureTextEntry />
-        <AppSubmitButton title="Login" loading={loading} />
-      </AppForm>
+      <View>
+        <AppForm
+          onSubmit={handleSubmit}
+          initialValues={{username: '', password: ''}}
+          validationSchema={validationSchema}>
+          <AppInputField name="username" placeholder="Username" />
+          <AppInputField
+            name="password"
+            placeholder="Password"
+            secureTextEntry
+          />
+          <AppSubmitButton title="Login" loading={loading} />
+        </AppForm>
+      </View>
       <AuthText
         style={styles.title}
-        text="You don't have an account, register"
+        text="Register"
         handleNavigate={handleNavigateToRegister}
       />
     </View>

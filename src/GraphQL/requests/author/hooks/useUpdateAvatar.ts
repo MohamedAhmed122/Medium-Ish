@@ -20,8 +20,8 @@ export const useUpdateAvatar = (onComplete: () => void) => {
     onCompleted: () => {
       onComplete();
     },
-    onError: ({networkError}) => {
-      errorHandler(networkError);
+    onError: err => {
+      errorHandler(err);
     },
   });
 

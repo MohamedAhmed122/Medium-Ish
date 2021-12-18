@@ -1,7 +1,7 @@
 import React from 'react';
-import {ScrollView, StyleProp, ViewStyle} from 'react-native';
+import {ScrollView, StyleProp, ViewStyle, SafeAreaView} from 'react-native';
+
 import styles from './styles';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 interface ScreenProps {
   scroll?: boolean;
@@ -14,7 +14,6 @@ export const Screen: React.FC<ScreenProps> = ({
   children,
 }) => {
   if (scroll) {
-    console.log('Scroll View');
     return (
       <ScrollView style={[styles.scrollScreen, scrollContainerStyle]}>
         <SafeAreaView style={styles.screen} />

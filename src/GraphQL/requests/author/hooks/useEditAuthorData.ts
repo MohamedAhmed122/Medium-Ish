@@ -14,8 +14,8 @@ export const useEditAuthorData = () => {
     AuthorDataParams
   >(UPDATE_AUTHOR_DATA, {
     errorPolicy: 'ignore',
-    onError: ({networkError}) => {
-      errorHandler(networkError);
+    onError: err => {
+      errorHandler(err);
     },
     onCompleted: () => {
       console.log('YES');

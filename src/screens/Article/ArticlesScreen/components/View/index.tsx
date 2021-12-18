@@ -1,12 +1,15 @@
 import React from 'react';
 import {FlatList} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {Article, Author} from '@GraphQL/requests';
 
-import {AppLoading, Screen} from '@Commons/index';
+import {AppLoading} from '@Commons/index';
 import {ArticleCard} from '@Components/ArticleCard';
 import {FeaturedFlatList} from '@Components/FeaturedFlatList';
 import {UserList} from '../UserList';
+
+import styles from './styles';
 
 interface ArticlesViewProps {
   onRefresh(): void;
@@ -30,11 +33,10 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
   handleWatchListItems,
 }) => {
   return (
-    <Screen>
+    <SafeAreaView style={styles.screen}>
       <FlatList
         onRefresh={onRefresh}
         refreshing={articleLoading}
-        // ListHeaderComponentStyle={styles.header}
         ListHeaderComponent={() => (
           <>
             {authors && (
@@ -65,6 +67,6 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
           />
         )}
       />
-    </Screen>
+    </SafeAreaView>
   );
 };

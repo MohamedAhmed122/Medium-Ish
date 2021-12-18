@@ -12,8 +12,8 @@ export const useUploadImage = () => {
   >(UPDATE_AUTHOR_IMAGE, {
     errorPolicy: 'ignore',
 
-    onError: ({networkError}) => {
-      errorHandler(networkError);
+    onError: err => {
+      errorHandler(err);
     },
   });
 

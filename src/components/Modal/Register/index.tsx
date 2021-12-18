@@ -28,7 +28,7 @@ export const RegisterModal: React.FC<RegisterProps> = ({setModalType}) => {
       variables: newValue,
     });
   };
-  console.log(user, loading, error);
+  console.log(user, loading, error, 'ssss');
   return (
     <Animatable.View
       style={styles.loginContainer}

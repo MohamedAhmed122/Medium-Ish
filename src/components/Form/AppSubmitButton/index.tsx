@@ -9,9 +9,8 @@ export const AppSubmitButton: React.FC<Props> = ({
   color,
   style,
   loading,
-  disabled,
 }) => {
-  const {handleSubmit} = useFormikContext();
+  const {handleSubmit, dirty, isValid, isSubmitting} = useFormikContext();
   return (
     <AppButton
       title={title}
@@ -19,7 +18,7 @@ export const AppSubmitButton: React.FC<Props> = ({
       style={style}
       onPress={handleSubmit}
       loading={loading}
-      disabled={disabled}
+      disabled={!dirty || !isValid || isSubmitting}
     />
   );
 };
