@@ -3,7 +3,7 @@ import {CORE_ARTICLE_FIELDS, CORE_AUTHORS_FIELDS} from '@GraphQL/fragments';
 import {fragmentsField} from '@GraphQL/types';
 
 export const GET_ARTICLES = gql`
-    query getArticles @persist {
+    query getArticles {
         articles{
             ...${fragmentsField.article}
             author{

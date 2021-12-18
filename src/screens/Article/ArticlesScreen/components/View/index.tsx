@@ -8,8 +8,6 @@ import {ArticleCard} from '@Components/ArticleCard';
 import {FeaturedFlatList} from '@Components/FeaturedFlatList';
 import {UserList} from '../UserList';
 
-import styles from './styles';
-
 interface ArticlesViewProps {
   onRefresh(): void;
   articleLoading: boolean;
@@ -36,7 +34,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
       <FlatList
         onRefresh={onRefresh}
         refreshing={articleLoading}
-        ListHeaderComponentStyle={styles.header}
+        // ListHeaderComponentStyle={styles.header}
         ListHeaderComponent={() => (
           <>
             {authors && (
