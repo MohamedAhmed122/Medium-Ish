@@ -4,10 +4,11 @@ export default StyleSheet.create({
   modal: {
     justifyContent: 'flex-end',
     margin: 0,
+    // backgroundColor: COLORS.white,
   },
   ModalContainer: {
     backgroundColor: COLORS.white,
-    height: '80%',
+    height: '75%',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },

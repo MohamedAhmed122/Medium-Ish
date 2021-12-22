@@ -30,32 +30,34 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
   userListProps,
 }) => {
   return (
-    <Screen>
-      <FlatList
-        onRefresh={onRefresh}
-        refreshing={articleLoading}
-        ListHeaderComponentStyle={styles.header}
-        ListHeaderComponent={() => (
-          <>
-            {authors && (
-              <FeaturedFlatList
-                loading={authorLoading}
-                showsHorizontalScrollIndicator={false}
-                horizontal
-                keyExtractor={item => item.id}
-                data={authors.authors}
-                renderItem={({item}) => (
-                  <UserList item={item} {...userListProps} />
-                )}
-                ListEmptyComponent={AppLoading}
-              />
-            )}
-          </>
-        )}
-        data={articles.articles}
-        keyExtractor={item => item.id}
-        renderItem={({item}) => <ArticleCard item={item} {...articleProps} />}
-      />
-    </Screen>
+    <>
+      <Screen>
+        <FlatList
+          onRefresh={onRefresh}
+          refreshing={articleLoading}
+          ListHeaderComponentStyle={styles.header}
+          ListHeaderComponent={() => (
+            <>
+              {authors && (
+                <FeaturedFlatList
+                  loading={authorLoading}
+                  showsHorizontalScrollIndicator={false}
+                  horizontal
+                  keyExtractor={item => item.id}
+                  data={authors.authors}
+                  renderItem={({item}) => (
+                    <UserList item={item} {...userListProps} />
+                  )}
+                  ListEmptyComponent={AppLoading}
+                />
+              )}
+            </>
+          )}
+          data={articles.articles}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => <ArticleCard item={item} {...articleProps} />}
+        />
+      </Screen>
+    </>
   );
 };

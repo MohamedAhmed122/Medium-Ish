@@ -1,5 +1,5 @@
 /* eslint-disable curly */
-import React from 'react';
+import React, {useState} from 'react';
 // TYPES
 import {Navigators} from '@Navigation/index';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -21,6 +21,7 @@ import {Error, AppLoading, Empty} from '@Commons/index';
 
 import {ArticlesView} from './components/View';
 import {useToggleButton} from '@Hooks/useToggle';
+import {AuthorProfileScreen} from '@Screens/Author';
 
 interface ArticleProps {
   navigation: StackNavigationProp<TabParamList, TabParams>;
@@ -28,6 +29,7 @@ interface ArticleProps {
 
 export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   const {value: openAuthorModal, toggleButton} = useToggleButton(false);
+  const [userId, setUserId] = useState<string | null>(null);
   const {authorLoading, authors} = useGetAuthors();
 
   const {articles, articleError, articleLoading, refetch} = useGetArticles();
@@ -49,6 +51,11 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
     });
   };
 
+  const onViewUserProfile = (id: string) => {
+    toggleButton();
+    setUserId(id);
+  };
+
   const onRefresh = () => {
     playSong();
     refetch();
@@ -66,14 +73,18 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
           handleWatchListItems,
         }}
         userListProps={{
-          onPress: toggleButton,
-          openAuthorModal,
+          onPress: onViewUserProfile,
         }}
         onRefresh={onRefresh}
         articles={articles}
         authors={authors}
         authorLoading={authorLoading}
         articleLoading={articleLoading}
+      />
+      <AuthorProfileScreen
+        ontoggleAuthorModal={toggleButton}
+        openAuthorModal={openAuthorModal}
+        id={userId}
       />
     </>
   );

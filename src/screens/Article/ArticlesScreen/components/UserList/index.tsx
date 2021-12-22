@@ -3,22 +3,16 @@ import {TouchableOpacity, View} from 'react-native';
 
 import {Author} from '@GraphQL/requests';
 import {UserImage} from '@Components/UserImage';
-import {AuthorProfileScreen} from '@Screens/Author';
 
 import styles from './styles';
 export interface UserListProps {
   item: Author;
-  onPress(): void;
-  openAuthorModal: boolean;
+  onPress(id: string): void;
 }
-export const UserList: React.FC<UserListProps> = ({
-  item,
-  onPress,
-  openAuthorModal,
-}) => {
+export const UserList: React.FC<UserListProps> = ({item, onPress}) => {
   return (
     <>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={() => onPress(item.id)}>
         <View style={[styles.postImgContainer, {borderColor: item.color?.hex}]}>
           <UserImage
             style={styles.img}
@@ -27,11 +21,6 @@ export const UserList: React.FC<UserListProps> = ({
           />
         </View>
       </TouchableOpacity>
-      <AuthorProfileScreen
-        ontoggleAuthorModal={onPress}
-        openAuthorModal={openAuthorModal}
-        id={item.id}
-      />
     </>
   );
 };

@@ -28,7 +28,8 @@ export const ViewAuthorProfile: React.FC<ViewAuthorProfileProps> = ({
       isVisible={openAuthorModal}
       onBackdropPress={onCloseModal}
       style={styles.modal}
-      swipeDirection={['up', 'left', 'right', 'down']}>
+      swipeDirection={['down']}
+      onSwipeComplete={onCloseModal}>
       <AnimatableView animation="slideInUp" style={styles.ModalContainer}>
         <FlatList
           ListHeaderComponent={() => (

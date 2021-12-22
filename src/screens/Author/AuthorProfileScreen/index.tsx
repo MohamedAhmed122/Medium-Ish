@@ -1,26 +1,21 @@
 /* eslint-disable curly */
 import React from 'react';
 
-import {
-  AuthorParamList,
-  AuthorParams,
-} from '@Navigation/author-stack/interface';
 import {TabParamList, TabParams} from '@Navigation/tab-navigation/interface';
 import {Navigators} from '@Navigation/index';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {useNavigation} from '@react-navigation/native';
 
 import {useGetAuthor} from '@GraphQL/requests';
 
 import {ViewAuthorProfile} from './components';
-import {AppLoading, Error} from '@Commons/index';
-import {RouteProp} from '@react-navigation/native';
+import {AppLoading} from '@Commons/index';
+import {Nullable} from '@Types/Common';
 
 interface AuthorProfileProps {
-  // route: RouteProp<AuthorParamList, AuthorParams.AuthorProfile>;
-  // navigation: StackNavigationProp<TabParamList, TabParams>;
   openAuthorModal: boolean;
   ontoggleAuthorModal(): void;
-  id: string;
+  id: Nullable<string>;
 }
 
 export const AuthorProfileScreen: React.FC<AuthorProfileProps> = ({
@@ -28,21 +23,20 @@ export const AuthorProfileScreen: React.FC<AuthorProfileProps> = ({
   ontoggleAuthorModal,
   id,
 }) => {
-  const {loading, author, error} = useGetAuthor(id);
+  const {loading, author} = useGetAuthor(id);
+  const navigation =
+    useNavigation<StackNavigationProp<TabParamList, TabParams>>();
 
   const onNavigateToArticleDetail = (articleId: string) => {
-    // navigation.navigate(Navigators.Tab.Article, {
-    //   screen: Navigators.ArticleStack.ArticleDetail,
-    //   params: {id: articleId},
-    // });
-  };
-  const handleGoBack = () => {
-    // navigation.goBack();
+    navigation.navigate(Navigators.Tab.Article, {
+      screen: Navigators.ArticleStack.ArticleDetail,
+      params: {id: articleId},
+    });
+    ontoggleAuthorModal();
   };
 
   if (loading) return <AppLoading />;
-  if (error || !author) return <Error />;
-
+  if (!author) return <></>;
   return (
     <ViewAuthorProfile
       onNavigateToArticleDetail={onNavigateToArticleDetail}
