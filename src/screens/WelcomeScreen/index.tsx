@@ -1,4 +1,5 @@
 import React from 'react';
+import t from '@Lib/i18n';
 import {Image, View} from 'react-native';
 import {RootNavigation} from '@Navigation/app-navigation/interface';
 import {Navigators} from '@Navigation/index';
@@ -32,12 +33,15 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({navigation}) => {
       <View style={styles.container}>
         <AppButton
           color={COLORS.secondary}
-          title="Continue as Guest"
+          title={t.welcome.welcomeBtn}
           onPress={handleAppNavigation}
         />
-        <AppButton title="Register" onPress={handleAuthNavigation} />
+        <AppButton
+          title={t.welcome.registerBtn}
+          onPress={handleAuthNavigation}
+        />
         <AppText fontFamily="Roboto-Medium" style={styles.title}>
-          Inspired by Medium ❤️
+          {t.welcome.inspire}❤️
         </AppText>
       </View>
     </Screen>

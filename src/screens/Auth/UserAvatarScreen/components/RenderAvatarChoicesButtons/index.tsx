@@ -1,13 +1,12 @@
 import React from 'react';
-
-import {Status} from '@Types/Avatar';
-
-import {AnimatableView, IF} from '@Commons/index';
 import {TouchableOpacity} from 'react-native';
 
-import styles from './styles';
-
+import {Status} from '@Types/Avatar';
+import {AnimatableView, IF} from '@Commons/index';
 import {ChoicesButton} from './ChoicesButton';
+
+import t from '@Lib/i18n';
+import styles from './styles';
 
 interface Props {
   status: Status;
@@ -22,10 +21,10 @@ export const RenderAvatarChoicesButtons: React.FC<Props> = ({
     <AnimatableView style={styles.container}>
       <TouchableOpacity onPress={onChoiceAvatar} style={styles.buttonContainer}>
         <IF condition={status === Status.GenerateAvatar}>
-          <ChoicesButton icon title="Upload Photo" />
+          <ChoicesButton icon title={t.uploadPhoto} />
         </IF>
         <IF condition={status === Status.UploadImage}>
-          <ChoicesButton title="Create Avatar" />
+          <ChoicesButton title={t.createAvatar} />
         </IF>
       </TouchableOpacity>
     </AnimatableView>

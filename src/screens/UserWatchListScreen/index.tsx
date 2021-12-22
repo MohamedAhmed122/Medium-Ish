@@ -14,8 +14,7 @@ import {watchListVar} from '@GraphQL/Apollo/cache';
 import {watchListResolver} from '@Utils/watchListReslover';
 import {Article} from '@GraphQL/requests';
 import {Empty} from '@Commons/Empty';
-
-// import styles from './styles'
+import t from '@Lib/i18n';
 
 interface UserWatchListProps {
   navigation: StackNavigationProp<TabParamList, TabParams>;
@@ -38,9 +37,7 @@ export const UserWatchListScreen: React.FC<UserWatchListProps> = ({
     watchListVar && watchListResolver(watchListVar, item);
 
   const GetActiveTitle = () =>
-    activeTab === ActiveTab.Watch_List
-      ? 'My Favorite Posts'
-      : 'I Like These Articles';
+    activeTab === ActiveTab.Watch_List ? t.favoriteArticle : t.likeArticle;
 
   return (
     <Screen>

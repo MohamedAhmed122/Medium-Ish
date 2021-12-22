@@ -2,8 +2,9 @@ import React from 'react';
 import {initialFormValues} from '@Types/Form';
 import {validationRegisterSchema as validationSchema} from '@Utils/validationSchema';
 import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
-import {View} from 'react-native';
 
+import t from '@Lib/i18n';
+import {View} from 'react-native';
 import {AvoidingKeyboardView} from '@Commons/AvoidingKeyboardView';
 import {AuthText} from '@Components/AuthText';
 import {COLORS} from '@Styles/colors';
@@ -34,21 +35,21 @@ export const RegisterForm: React.FC<RegisterProps> = ({
               name: '',
             }}
             validationSchema={validationSchema}>
-            <AppInputField name="name" placeholder="Name" />
-            <AppInputField name="email" placeholder="Email" />
-            <AppInputField name="username" placeholder="Username" />
+            <AppInputField name="name" placeholder={t.inputs.name} />
+            <AppInputField name="email" placeholder={t.inputs.email} />
+            <AppInputField name="username" placeholder={t.inputs.username} />
             <AppInputField
               name="password"
-              placeholder="Password"
+              placeholder={t.inputs.password}
               secureTextEntry
             />
             <AppInputField
               name="confirmPassword"
-              placeholder="Confirm Password"
+              placeholder={t.inputs.confirmPassword}
               secureTextEntry
             />
             <AppSubmitButton
-              title="Register"
+              title={t.register}
               color={COLORS.secondary}
               loading={loading}
             />
@@ -56,7 +57,7 @@ export const RegisterForm: React.FC<RegisterProps> = ({
         </View>
         <AuthText
           style={styles.text}
-          text="Login"
+          text={t.login}
           handleNavigate={handleNavigate}
         />
       </View>

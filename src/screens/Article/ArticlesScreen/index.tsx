@@ -49,7 +49,7 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   };
 
   if (articleLoading) return <AppLoading />;
-  if (!authors) return <Empty message="" />;
+  if (!authors) return <Empty />;
   if (articleError || !articles) return <Error />;
 
   return (

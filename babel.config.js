@@ -31,6 +31,7 @@ module.exports = {
           '@Assets': './src/Assets',
           '@Types': './src/types',
           '@Navigation': './src/navigation',
+          '@Lib': './src/lib',
         },
       },
     ],

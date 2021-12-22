@@ -1,14 +1,15 @@
 import React from 'react';
+import {View} from 'react-native';
 // import {useRegisterUser} from '@GraphQL/query';
 import {initialFormValues, RegisterValue} from '@Types/Form';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {AuthParamList, AuthParams} from '@Navigation/auth-stack/interface';
 
+import t from '@Lib/i18n';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {RegisterForm} from './RegisterForm';
 import {useInitiateAuthor} from '@GraphQL/requests';
-import {View} from 'react-native';
 
 // import styles from './styles'
 
@@ -35,7 +36,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({navigation}) => {
   return (
     <Screen scroll>
       <View>
-        <Header handleGoBack={handleGoBack} title={'Welcome, to Medium-Ish'} />
+        <Header handleGoBack={handleGoBack} title={t.welcomeText} />
         <RegisterForm
           handleSubmit={handleSubmit}
           loading={loading}

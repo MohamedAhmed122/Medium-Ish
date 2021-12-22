@@ -1,8 +1,11 @@
 import React from 'react';
 import {View} from 'react-native';
 import {SvgUri} from 'react-native-svg';
+
 import {Seed} from '@Types/Avatar';
 import {AnimatableView, AppBadge, AppButton} from '@Commons/index';
+
+import t from '@Lib/i18n';
 import {avatars} from '@Assets/data';
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
@@ -37,10 +40,14 @@ export const GenerateAvatar: React.FC<GenerateAvatarProps> = ({
         ))}
       </View>
       <View style={styles.btnContainer}>
-        <AppButton color={COLORS.dark} title="Randomize" onPress={randomize} />
+        <AppButton
+          color={COLORS.dark}
+          title={t.randomize}
+          onPress={randomize}
+        />
         <AppButton
           color={COLORS.secondary}
-          title="processed "
+          title={t.processed}
           onPress={handleProcessed}
           loading={updateAvatarLoading}
         />

@@ -74,7 +74,8 @@
       "@Screens/*": ["src/screens/*"],
       "@Config/*": ["src/config/*"],
       "@Types/*": ["src/types/*"],
-      "@Navigation/*": ["src/navigation/*"]
+      "@Navigation/*": ["src/navigation/*"],
+      "@Lib/*": ["src/lib/*"]
     }
   },
   "exclude": [

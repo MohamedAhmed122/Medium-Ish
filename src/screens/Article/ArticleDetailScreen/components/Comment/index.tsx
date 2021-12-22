@@ -1,9 +1,13 @@
 import React from 'react';
+
 import {View} from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import {SendCommentProps, SendComment} from './SendComment';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {AppInput} from '@Commons/index';
+import {AppInput} from '@Commons/AppInput';
+
+import t from '@Lib/i18n';
+import {COLORS} from '@Styles/colors';
 import styles from './styles';
 
 interface Props {
@@ -22,12 +26,12 @@ export const Comment: React.FC<Props> = ({
       <View style={styles.commentInput}>
         <View style={styles.comment}>
           <AppInput
-            placeholder="write Comment..."
+            placeholder={t.inputs.comment}
             value={comment}
             onChangeText={setComment}>
             <FontAwesome
               name="angellist"
-              color="gray"
+              color={COLORS.gray}
               size={21}
               style={styles.angellist}
             />
