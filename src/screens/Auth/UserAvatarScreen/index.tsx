@@ -9,7 +9,10 @@ import {Image as ImagePickerProps} from 'react-native-image-crop-picker';
 import {pickImage} from '@Utils/PickImage';
 import {getAvatarUri, getRandomNumber} from '@Utils/utils';
 // RENDER && STYLE
-import {RenderAvatarChoicesButtons, RenderAvatarPickers} from './components';
+import {
+  RenderAvatarChoicesButtons,
+  RenderAvatarPickers,
+} from '@Components/Avatar';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';

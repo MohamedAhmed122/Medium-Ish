@@ -8,8 +8,10 @@ import {Image as ImagePickerProps} from 'react-native-image-crop-picker';
 import {pickImage} from '@Utils/PickImage';
 import {getAvatarUri, getRandomNumber} from '@Utils/utils';
 // RENDER && STYLE
-import {RenderAvatarChoicesButtons} from '@Components/RenderAvatarChoicesButtons';
-import {RenderAvatarPickers} from '@Components/RenderAvatarPickers';
+import {
+  RenderAvatarPickers,
+  RenderAvatarChoicesButtons,
+} from '@Components/Avatar';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {useUpdateAvatar} from '@GraphQL/requests';

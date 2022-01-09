@@ -44,6 +44,5 @@ export const Header: React.FC<HeaderProps> = ({
         </AppText>
       </View>
     </View>
-    // <View></View>
   );
 };
