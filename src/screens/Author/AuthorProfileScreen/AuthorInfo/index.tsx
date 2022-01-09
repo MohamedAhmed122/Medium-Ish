@@ -5,7 +5,6 @@ import {UserImage} from '@Components/UserImage';
 import {AuthorDetail} from '@GraphQL/requests';
 import {View} from 'react-native';
 import styles from './styles';
-import t from '@Lib/i18n';
 interface AuthorInfoProps {
   author: AuthorDetail;
 }
@@ -23,10 +22,14 @@ export const AuthorInfo: React.FC<AuthorInfoProps> = ({author}) => {
       <AppText style={styles.desc}>
         {bio}
 <<<<<<< HEAD
+<<<<<<< HEAD
         {/* {t.inputs.lorem} */}
 =======
         {t.inputs.lorem}
 >>>>>>> c20a53c (Added: locales)
+=======
+        {/* {t.inputs.lorem} */}
+>>>>>>> 778e294 (Update)
       </AppText>
       <AppBadge title="My color" color={color.hex} />
     </View>
