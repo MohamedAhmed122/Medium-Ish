@@ -6,7 +6,12 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {TabParamList, TabParams} from '@Navigation/tab-navigation/interface';
 
 // GRAPHQL
-import {useGetAuthors, useGetArticles, Article} from '@GraphQL/requests';
+import {
+  useGetAuthors,
+  useGetArticles,
+  Article,
+  useLikeArticle,
+} from '@GraphQL/requests';
 import {watchListVar} from '@GraphQL/Apollo/cache';
 // SOUND
 import {playSong} from '@Utils/playSound';
@@ -24,6 +29,9 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   const {authorLoading, authors} = useGetAuthors();
 
   const {articles, articleError, articleLoading, refetch} = useGetArticles();
+
+  const {likeOrDisLikeArticle, likes, likeLoading} = useLikeArticle();
+  console.log(likes, likeLoading);
 
   useMediaPlayer();
 
@@ -62,6 +70,7 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
       authorLoading={authorLoading}
       articleLoading={articleLoading}
       handleNavigate={handleNavigate}
+      likeOrDisLikeArticle={likeOrDisLikeArticle}
     />
   );
 };

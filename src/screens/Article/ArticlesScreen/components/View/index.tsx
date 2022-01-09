@@ -20,6 +20,7 @@ interface ArticlesViewProps {
   articles: {articles: Article[]};
   handleNavigate(id: string): void;
   handleWatchListItems(article: Article): void;
+  likeOrDisLikeArticle(variables: any): any;
 }
 
 export const ArticlesView: React.FC<ArticlesViewProps> = ({
@@ -31,6 +32,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
   articles,
   handleNavigate,
   handleWatchListItems,
+  likeOrDisLikeArticle,
 }) => {
   return (
     <SafeAreaView style={styles.screen}>
@@ -61,6 +63,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
         keyExtractor={item => item.id}
         renderItem={({item}) => (
           <ArticleCard
+            likeOrDisLikeArticle={likeOrDisLikeArticle}
             item={item}
             handleNavigate={handleNavigate}
             handleWatchListItems={handleWatchListItems}
