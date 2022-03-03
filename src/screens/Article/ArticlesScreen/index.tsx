@@ -2,8 +2,6 @@
 import React from 'react';
 // TYPES
 import {Navigators} from '@Navigation/index';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {TabParamList, TabParams} from '@Navigation/tab-navigation/interface';
 
 // GRAPHQL
 import {
@@ -20,13 +18,14 @@ import {useMediaPlayer} from '@Hooks/useMediaPlayer';
 import {Error, AppLoading, Empty} from '@Commons/index';
 import {watchListResolver} from '@Utils/watchListReslover';
 import {ArticlesView} from './components/View';
+import {RootNavigation} from '@Navigation/app-navigation/interface';
 
 interface ArticleProps {
-  navigation: StackNavigationProp<TabParamList, TabParams>;
+  navigation: RootNavigation;
 }
 
 export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
-  const {authorLoading, authors} = useGetAuthors();
+  const {authorLoading, authors, authorError} = useGetAuthors();
 
   const {articles, articleError, articleLoading, refetch} = useGetArticles();
 
@@ -42,12 +41,9 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
     });
   };
 
-  const handleNavigateToProfile = (id: string) => {
-    navigation.navigate(Navigators.Tab.Author, {
-      screen: Navigators.AuthorStack.AuthorProfile,
-      params: {id},
-    });
-  };
+  const handleNavigateToProfile = (id: string) =>
+    navigation.navigate(Navigators.App.AuthorArticles, {id});
+
   const handleWatchListItems = (item: Article): void =>
     watchListVar && watchListResolver(watchListVar, item);
 
@@ -57,7 +53,7 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   };
 
   if (articleLoading) return <AppLoading />;
-  if (!authors) return <Empty />;
+  if (!authors || authorError) return <Empty />;
   if (articleError || !articles) return <Error />;
 
   return (
