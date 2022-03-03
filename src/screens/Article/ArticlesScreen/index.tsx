@@ -53,11 +53,10 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   };
 
   if (articleLoading) return <AppLoading />;
-<<<<<<< HEAD
-  if (!authors || authorError) return <Empty />;
-=======
   if (!authors) return <Empty />;
->>>>>>> c20a53c (Added: locales)
+
+  if (!authors || authorError) return <Empty />;
+
   if (articleError || !articles) return <Error />;
 
   return (
