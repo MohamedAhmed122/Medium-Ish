@@ -16,7 +16,7 @@ interface ArticlesViewProps {
   articleLoading: boolean;
   authors: {authors: Author[]};
   authorLoading: boolean;
-  handleNavigateToProfile(id: string): void;
+  handleNavigateToProfile(id: string, username: string): void;
   articles: {articles: Article[]};
   handleNavigate(id: string): void;
   handleWatchListItems(article: Article): void;

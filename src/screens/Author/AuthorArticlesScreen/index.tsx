@@ -4,12 +4,13 @@ import {FlatList} from 'react-native';
 
 import {Screen, Empty, AppLoading, Error} from '@Commons/index';
 import {RouteProp} from '@react-navigation/native';
-import {
-  AuthorParamList,
-  AuthorParams,
-} from '@Navigation/author-stack/interface';
+
 import {useGetAuthorArticles} from '@GraphQL/requests';
-import {RootNavigation} from '@Navigation/app-navigation/interface';
+import {
+  AppNavigationParamList,
+  AppNavigationParams,
+  RootNavigation,
+} from '@Navigation/app-navigation/interface';
 
 import {ArticleCard} from '@Components/AuthorArticleCard';
 import {ArticleParams} from '@Navigation/article-stack/interface';
@@ -19,7 +20,7 @@ import styles from './styles';
 import {COLORS} from '@Styles/colors';
 
 interface AuthorArticlesProps {
-  route: RouteProp<AuthorParamList, AuthorParams.AuthorArticles>;
+  route: RouteProp<AppNavigationParamList, AppNavigationParams.AuthorArticles>;
   navigation: RootNavigation;
 }
 
@@ -27,7 +28,7 @@ export const AuthorArticlesScreen: React.FC<AuthorArticlesProps> = ({
   route,
   navigation,
 }) => {
-  const {id} = route.params;
+  const {id, username} = route.params;
   const {loading, articles, error} = useGetAuthorArticles(id);
 
   const handleNavigate = (articleId: string) => {
@@ -42,7 +43,7 @@ export const AuthorArticlesScreen: React.FC<AuthorArticlesProps> = ({
         ListHeaderComponent={() => (
           <Header
             handleGoBack={navigation.goBack}
-            title={'Mohamed Youssef'}
+            title={username}
             color={COLORS.primary}
           />
         )}

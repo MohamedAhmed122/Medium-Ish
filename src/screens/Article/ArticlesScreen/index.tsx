@@ -41,8 +41,8 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
     });
   };
 
-  const handleNavigateToProfile = (id: string) =>
-    navigation.navigate(Navigators.App.AuthorArticles, {id});
+  const handleNavigateToProfile = (id: string, username: string) =>
+    navigation.navigate(Navigators.App.AuthorArticles, {id, username});
 
   const handleWatchListItems = (item: Article): void =>
     watchListVar && watchListResolver(watchListVar, item);

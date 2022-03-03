@@ -17,7 +17,7 @@ export enum AppNavigationParams {
 
 export type AppNavigationParamList = {
   Welcome: NO_PARAMS;
-  AuthorArticles: {id: string};
+  AuthorArticles: {id: string; username: string};
   TabNavigation: NavigatorScreenParams<TabParamList>;
   AuthNavigation: NavigatorScreenParams<AuthParamList>;
 };

@@ -7,11 +7,12 @@ import {UserImage} from '@Components/UserImage';
 
 interface Props {
   item: Author;
-  handleNavigateToProfile(id: string): void;
+  handleNavigateToProfile(id: string, username: string): void;
 }
 export const UserList: React.FC<Props> = ({item, handleNavigateToProfile}) => {
   return (
-    <TouchableOpacity onPress={() => handleNavigateToProfile(item.id)}>
+    <TouchableOpacity
+      onPress={() => handleNavigateToProfile(item.id, item.username)}>
       <View style={[styles.postImgContainer, {borderColor: item.color?.hex}]}>
         <UserImage
           style={styles.img}
