@@ -5,6 +5,7 @@ import {initialFormValues} from '@Types/Form';
 import {AppForm, AppInputField, AppSubmitButton} from '@Components/Form';
 import {validationLoginSchema as validationSchema} from '@Utils/validationSchema';
 // RENDER
+import t from '@Lib/i18n';
 import {View} from 'react-native';
 import {AuthText} from '@Components/AuthText';
 import styles from './styles';
@@ -22,17 +23,23 @@ export const LoginForm: React.FC<LoginFormProps> = ({
 }) => {
   return (
     <View style={styles.loginContainer}>
-      <AppForm
-        onSubmit={handleSubmit}
-        initialValues={{username: '', password: ''}}
-        validationSchema={validationSchema}>
-        <AppInputField name="username" placeholder="Username" />
-        <AppInputField name="password" placeholder="Password" secureTextEntry />
-        <AppSubmitButton title="Login" loading={loading} />
-      </AppForm>
+      <View>
+        <AppForm
+          onSubmit={handleSubmit}
+          initialValues={{username: '', password: ''}}
+          validationSchema={validationSchema}>
+          <AppInputField name="username" placeholder={t.inputs.username} />
+          <AppInputField
+            name="password"
+            placeholder={t.inputs.password}
+            secureTextEntry
+          />
+          <AppSubmitButton title={t.login} loading={loading} />
+        </AppForm>
+      </View>
       <AuthText
         style={styles.title}
-        text="You don't have an account, register"
+        text={t.register}
         handleNavigate={handleNavigateToRegister}
       />
     </View>

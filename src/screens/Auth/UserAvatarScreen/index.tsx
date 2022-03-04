@@ -8,14 +8,18 @@ import {Image as ImagePickerProps} from 'react-native-image-crop-picker';
 // UTILS
 import {pickImage} from '@Utils/PickImage';
 import {getAvatarUri, getRandomNumber} from '@Utils/utils';
+// QL
+import {useReactiveVar} from '@apollo/client';
+import {currentAuthor} from '@GraphQL/Apollo/cache';
 // RENDER && STYLE
-import {RenderAvatarChoicesButtons, RenderAvatarPickers} from './components';
+import {
+  RenderAvatarChoicesButtons,
+  RenderAvatarPickers,
+} from '@Components/Avatar';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';
 import {useUpdateAvatar, useUploadImage} from '@GraphQL/requests';
-import {useReactiveVar} from '@apollo/client';
-import {currentAuthor} from '@GraphQL/Apollo/cache';
 
 interface AvatarScreenProps {
   navigation: StackNavigationProp<AuthParamList, AuthParams.UserAvatar>;
@@ -51,6 +55,7 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
     });
   };
 
+  // TODO: upload image to the server
   const handleProcessedUploadPhoto = () => {
     if (!image) return;
   };

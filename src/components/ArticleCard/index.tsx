@@ -17,12 +17,14 @@ export interface ArticleCardProps {
   item: Article;
   handleNavigate(id: string): void;
   handleWatchListItems(item: Article): void;
+  likeOrDisLikeArticle(variables: any): any;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
   item,
   handleNavigate,
   handleWatchListItems,
+  likeOrDisLikeArticle,
 }) => {
   const {author, description, category, title, id, likes} = item;
 
@@ -35,7 +37,15 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
     toggleWatchButton();
     handleWatchListItems(item);
   };
-
+  const onLikeOrDisLikeArticle = () => {
+    likeOrDisLikeArticle({
+      variables: {
+        id,
+        likes: 100,
+      },
+    });
+    toggleLikeButton();
+  };
   // console.log(item, 'hh');
   return (
     <TouchableOpacity
@@ -72,7 +82,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         <LikeButton
           likes={likes}
           isLiked={isLiked}
-          toggleButton={toggleLikeButton}
+          toggleButton={onLikeOrDisLikeArticle}
         />
       </View>
     </TouchableOpacity>

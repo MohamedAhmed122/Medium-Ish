@@ -4,7 +4,7 @@ import {CORE_AUTHORS_FIELDS} from '@GraphQL/fragments';
 
 export const SEARCH_ARTICLES = gql`
   query searchArticles($title: String!) {
-    articles(where: {title_contains: $title}) {
+    articles(where: {title_contains: $title}, first: 4) {
         id
         title
         createdAt

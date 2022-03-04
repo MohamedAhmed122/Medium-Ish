@@ -1,16 +1,20 @@
 import React from 'react';
+
+import {initialFormValues} from '@Types/Form';
+
 import {
   AppForm,
   AppInputField,
   AppSubmitButton,
   AppPickerField,
 } from '@Components/Form';
-import {createPostValidationSchema as validationSchema} from '@Utils/validationSchema';
 import {RichTextEditor} from '@Components/RichText';
+import {AvoidingKeyboardView} from '@Commons/AvoidingKeyboardView';
+import {createPostValidationSchema as validationSchema} from '@Utils/validationSchema';
+
+import t from '@Lib/i18n';
 import {categories} from '@Assets/data';
 import styles from './styles';
-import {initialFormValues} from '@Types/Form';
-import {AvoidingKeyboardView} from '@Commons/AvoidingKeyboardView';
 
 interface Props {
   setTextEditor(html: string): void;
@@ -33,20 +37,20 @@ export const ArticleForm: React.FC<Props> = ({
           description: '',
           categories: categories[0],
         }}>
-        <AppInputField name="title" placeholder="Post Title" />
+        <AppInputField name="title" placeholder={t.inputs.title} />
         <AppInputField
           multiline
           inputContainerStyle={styles.textarea}
           name="description"
-          placeholder="Post Description"
+          placeholder={t.inputs.description}
         />
         <RichTextEditor handleOnHtmlChange={setTextEditor} />
         <AppPickerField
           name="categories"
           items={categories}
-          placeholder="Categories"
+          placeholder={t.inputs.categories}
         />
-        <AppSubmitButton title="Create Post" loading={loading} />
+        <AppSubmitButton title={t.createArticle} loading={loading} />
       </AppForm>
     </AvoidingKeyboardView>
   );

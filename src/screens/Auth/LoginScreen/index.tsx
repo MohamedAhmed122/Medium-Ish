@@ -7,7 +7,7 @@ import {AuthParams} from '@Navigation/auth-stack/interface';
 
 import {LoginValue, initialFormValues} from '@Types/Form';
 import {LoginForm} from './LoginForm';
-
+import t from '@Lib/i18n';
 import {Screen} from '@Commons/index';
 import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';
@@ -35,7 +35,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({navigation}) => {
   return (
     <Screen>
       <Header
-        title="Welcome, to Medium-Ish"
+        title={t.welcomeText}
         handleGoBack={handleGoBack}
         color={COLORS.primary}
       />

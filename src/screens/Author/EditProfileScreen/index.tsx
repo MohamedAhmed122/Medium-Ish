@@ -8,9 +8,10 @@ import {
 } from '@Navigation/author-stack/interface';
 import {EditProfileFrom, EditProfileImage} from './components';
 import {EditProfileValue, initialFormValues} from '@Types/Form';
-import {Header} from '@Components/Header';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useEditAuthorData} from '@GraphQL/requests';
+import {Header} from '@Components/Header';
+import t from '@Lib/i18n';
 
 interface EditProfileProps {
   route: RouteProp<AuthorParamList, AuthorParams.EditProfile>;
@@ -43,7 +44,7 @@ export const EditProfileScreen: React.FC<EditProfileProps> = ({
 
   return (
     <Screen scroll>
-      <Header title="Edit Profile" handleGoBack={navigation.goBack} />
+      <Header title={t.editProfile} handleGoBack={navigation.goBack} />
       <EditProfileImage
         author={author}
         handleNavigation={onNavigateToEditImage}

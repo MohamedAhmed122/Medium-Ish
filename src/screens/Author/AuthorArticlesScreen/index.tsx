@@ -1,21 +1,26 @@
 /* eslint-disable curly */
 import React from 'react';
+import {FlatList} from 'react-native';
 
 import {Screen, Empty, AppLoading, Error} from '@Commons/index';
 import {RouteProp} from '@react-navigation/native';
-import {
-  AuthorParamList,
-  AuthorParams,
-} from '@Navigation/author-stack/interface';
+
 import {useGetAuthorArticles} from '@GraphQL/requests';
+import {
+  AppNavigationParamList,
+  AppNavigationParams,
+  RootNavigation,
+} from '@Navigation/app-navigation/interface';
+
 import {ArticleCard} from '@Components/AuthorArticleCard';
-import {FlatList} from 'react-native';
-// import {StackNavigationProp} from '@react-navigation/stack';
-import {RootNavigation} from '@Navigation/app-navigation/interface';
 import {ArticleParams} from '@Navigation/article-stack/interface';
+import {Header} from '@Components/Header';
+
+import styles from './styles';
+import {COLORS} from '@Styles/colors';
 
 interface AuthorArticlesProps {
-  route: RouteProp<AuthorParamList, AuthorParams.AuthorArticles>;
+  route: RouteProp<AppNavigationParamList, AppNavigationParams.AuthorArticles>;
   navigation: RootNavigation;
 }
 
@@ -23,7 +28,7 @@ export const AuthorArticlesScreen: React.FC<AuthorArticlesProps> = ({
   route,
   navigation,
 }) => {
-  const {id} = route.params;
+  const {id, username} = route.params;
   const {loading, articles, error} = useGetAuthorArticles(id);
 
   const handleNavigate = (articleId: string) => {
@@ -35,6 +40,14 @@ export const AuthorArticlesScreen: React.FC<AuthorArticlesProps> = ({
   return (
     <Screen>
       <FlatList
+        ListHeaderComponent={() => (
+          <Header
+            handleGoBack={navigation.goBack}
+            title={username}
+            color={COLORS.primary}
+          />
+        )}
+        ListHeaderComponentStyle={styles.listHeaderComponentStyle}
         data={articles.articles}
         keyExtractor={item => item.id}
         renderItem={({item}) => (

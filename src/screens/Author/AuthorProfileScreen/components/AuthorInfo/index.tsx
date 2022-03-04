@@ -20,8 +20,16 @@ export const AuthorInfo: React.FC<AuthorInfoProps> = ({author}) => {
         </View>
       </View>
       <AppText style={styles.desc}>
-        {bio} The following builds are available to test. Learn more about build
-        status and metrics. Version 9.1
+        {bio}
+<<<<<<< HEAD
+<<<<<<< HEAD
+        {/* {t.inputs.lorem} */}
+=======
+        {t.inputs.lorem}
+>>>>>>> c20a53c (Added: locales)
+=======
+        {/* {t.inputs.lorem} */}
+>>>>>>> 778e294 (Update)
       </AppText>
       <AppBadge title="My color" color={color.hex} />
     </View>

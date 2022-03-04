@@ -1,18 +1,16 @@
 /* eslint-disable curly */
-import React, {useState} from 'react';
+import React from 'react';
 // TYPES
 import {Navigators} from '@Navigation/index';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {TabParamList, TabParams} from '@Navigation/tab-navigation/interface';
 
 // GRAPHQL
 import {
   useGetAuthors,
   useGetArticles,
   Article,
-  useAddToWatchList,
+  useLikeArticle,
 } from '@GraphQL/requests';
-
+// import {watchListVar} from '@GraphQL/Apollo/cache';
 // SOUND
 import {playSong} from '@Utils/playSound';
 import {useMediaPlayer} from '@Hooks/useMediaPlayer';
@@ -20,21 +18,19 @@ import {useMediaPlayer} from '@Hooks/useMediaPlayer';
 import {Error, AppLoading, Empty} from '@Commons/index';
 
 import {ArticlesView} from './components/View';
-import {useToggleButton} from '@Hooks/useToggle';
-import {AuthorProfileScreen} from '@Screens/Author';
+import {RootNavigation} from '@Navigation/app-navigation/interface';
 
 interface ArticleProps {
-  navigation: StackNavigationProp<TabParamList, TabParams>;
+  navigation: RootNavigation;
 }
 
 export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
-  const {value: openAuthorModal, toggleButton} = useToggleButton(false);
-  const [userId, setUserId] = useState<string | null>(null);
-  const {authorLoading, authors} = useGetAuthors();
+  const {authorLoading, authors, authorError} = useGetAuthors();
 
   const {articles, articleError, articleLoading, refetch} = useGetArticles();
 
-  const {addToWatchList} = useAddToWatchList();
+  const {likeOrDisLikeArticle, likes, likeLoading} = useLikeArticle();
+  console.log(likes, likeLoading);
 
   useMediaPlayer();
 
@@ -45,16 +41,11 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
     });
   };
 
-  const handleWatchListItems = (item: Article): void => {
-    addToWatchList({
-      variables: {articleId: item.id},
-    });
-  };
+  const handleNavigateToProfile = (id: string, username: string) =>
+    navigation.navigate(Navigators.App.AuthorArticles, {id, username});
 
-  const onViewUserProfile = (id: string) => {
-    toggleButton();
-    setUserId(id);
-  };
+  const handleWatchListItems = (item: Article): void => {};
+  // watchListVar && watchListResolver(watchListVar, item);
 
   const onRefresh = () => {
     playSong();
@@ -62,30 +53,23 @@ export const ArticlesScreen: React.FC<ArticleProps> = ({navigation}) => {
   };
 
   if (articleLoading) return <AppLoading />;
-  if (!authors) return <Empty message="" />;
+  if (!authors) return <Empty />;
+
+  if (!authors || authorError) return <Empty />;
+
   if (articleError || !articles) return <Error />;
 
   return (
-    <>
-      <ArticlesView
-        articleProps={{
-          handleNavigate,
-          handleWatchListItems,
-        }}
-        userListProps={{
-          onPress: onViewUserProfile,
-        }}
-        onRefresh={onRefresh}
-        articles={articles}
-        authors={authors}
-        authorLoading={authorLoading}
-        articleLoading={articleLoading}
-      />
-      <AuthorProfileScreen
-        ontoggleAuthorModal={toggleButton}
-        openAuthorModal={openAuthorModal}
-        id={userId}
-      />
-    </>
+    <ArticlesView
+      onRefresh={onRefresh}
+      handleWatchListItems={handleWatchListItems}
+      handleNavigateToProfile={handleNavigateToProfile}
+      articles={articles}
+      authors={authors}
+      authorLoading={authorLoading}
+      articleLoading={articleLoading}
+      handleNavigate={handleNavigate}
+      likeOrDisLikeArticle={likeOrDisLikeArticle}
+    />
   );
 };

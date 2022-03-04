@@ -29,7 +29,7 @@ export const AuthProfileView: React.FC<Props> = ({
       refreshControl={
         <RefreshControl refreshing={loading} onRefresh={refetch} />
       }>
-      <Header {...header} />
+      {header.author && <Header {...header} />}
       <RowContainer {...row} />
     </ScrollView>
   );

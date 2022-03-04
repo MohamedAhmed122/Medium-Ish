@@ -8,11 +8,12 @@ import {Image as ImagePickerProps} from 'react-native-image-crop-picker';
 import {pickImage} from '@Utils/PickImage';
 import {getAvatarUri, getRandomNumber} from '@Utils/utils';
 // RENDER && STYLE
-import {RenderAvatarChoicesButtons} from '@Components/RenderAvatarChoicesButtons';
-import {RenderAvatarPickers} from '@Components/RenderAvatarPickers';
+import {
+  RenderAvatarPickers,
+  RenderAvatarChoicesButtons,
+} from '@Components/Avatar';
 import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
-import {COLORS} from '@Styles/colors';
 import {useUpdateAvatar} from '@GraphQL/requests';
 import {useReactiveVar} from '@apollo/client';
 import {currentAuthor} from '@GraphQL/Apollo/cache';
@@ -20,6 +21,8 @@ import {
   AuthorParamList,
   AuthorParams,
 } from '@Navigation/author-stack/interface';
+import t from '@Lib/i18n';
+import {COLORS} from '@Styles/colors';
 
 interface EditImageProps {
   navigation: StackNavigationProp<AuthorParamList, AuthorParams.EditImage>;
@@ -78,7 +81,7 @@ export const EditImageScreen: React.FC<EditImageProps> = ({navigation}) => {
   return (
     <Screen scroll>
       <Header
-        title="Choose Avatar"
+        title={t.chooseAvatar}
         color={COLORS.primary}
         handleGoBack={handleGoBack}
       />

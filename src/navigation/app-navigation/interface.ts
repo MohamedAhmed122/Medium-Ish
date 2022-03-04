@@ -12,10 +12,12 @@ export enum AppNavigationParams {
   Welcome = 'Welcome',
   TabNavigation = 'TabNavigation',
   AuthNavigation = 'AuthNavigation',
+  AuthorArticles = 'AuthorArticles',
 }
 
 export type AppNavigationParamList = {
   Welcome: NO_PARAMS;
+  AuthorArticles: {id: string; username: string};
   TabNavigation: NavigatorScreenParams<TabParamList>;
   AuthNavigation: NavigatorScreenParams<AuthParamList>;
 };

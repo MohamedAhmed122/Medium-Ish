@@ -12,8 +12,8 @@ export const useAddBio = (navigation: RootNavigation) => {
     {updateAuthor: Author},
     UpdateAuthorInfoParams
   >(UPDATE_AUTHOR_INFO, {
-    onError: ({networkError}) => {
-      errorHandler(networkError);
+    onError: err => {
+      errorHandler(err);
     },
     onCompleted: author => {
       currentAuthor(author.updateAuthor);

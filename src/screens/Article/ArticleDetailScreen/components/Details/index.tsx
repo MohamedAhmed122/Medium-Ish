@@ -2,8 +2,6 @@ import React from 'react';
 import {Text, Dimensions, View} from 'react-native';
 
 import RenderHtml from 'react-native-render-html';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {COLORS} from '@Styles/colors';
 import styles from './styles';
 import {ArticleDetail as DetailedArticle} from '@GraphQL/requests';
 import {UserImage} from '@Components/UserImage';
@@ -32,7 +30,6 @@ export const Details: React.FC<Props> = ({article}) => {
           />
           <Text style={styles.username}>{author.username}</Text>
         </View>
-        <FontAwesome name="trash" color={COLORS.danger} size={23} />
       </View>
       <View style={styles.descContainer}>
         <AppText fontFamily="Roboto-Medium" style={styles.title}>

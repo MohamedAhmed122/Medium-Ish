@@ -5,3 +5,4 @@ export * from './useCreateArticle';
 export * from './useGetAuthorArticles';
 export * from './useAddToWatchList';
 export * from './useGetWatchList';
+export * from './useLikeArticle';

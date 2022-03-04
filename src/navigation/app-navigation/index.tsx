@@ -7,6 +7,7 @@ import {AppNavigationParams, AppNavigationParamList} from './interface';
 import {TabNavigation} from '../tab-navigation';
 import {AuthNavigator} from '../auth-stack';
 import {WelcomeScreen} from '@Screens/WelcomeScreen';
+import {AuthorArticlesScreen} from '@Screens/Author';
 
 const Stack = createNativeStackNavigator<AppNavigationParamList>();
 
@@ -27,6 +28,10 @@ export const AppNavigation = () => {
       <Stack.Screen
         name={AppNavigationParams.AuthNavigation}
         component={AuthNavigator}
+      />
+      <Stack.Screen
+        name={AppNavigationParams.AuthorArticles}
+        component={AuthorArticlesScreen}
       />
     </Stack.Navigator>
   );

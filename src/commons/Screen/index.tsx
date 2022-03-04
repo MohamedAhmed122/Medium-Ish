@@ -1,5 +1,6 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleProp, ViewStyle} from 'react-native';
+import {ScrollView, StyleProp, ViewStyle, SafeAreaView} from 'react-native';
+
 import styles from './styles';
 
 interface ScreenProps {
@@ -8,20 +9,21 @@ interface ScreenProps {
 }
 //  Authorization
 export const Screen: React.FC<ScreenProps> = ({
-  scroll,
+  scroll = false,
   scrollContainerStyle,
   children,
 }) => {
   if (scroll) {
     return (
-      <ScrollView style={[styles.screen, scrollContainerStyle]}>
-        <SafeAreaView style={styles.scrollScreen} />
+      <ScrollView style={[styles.scrollScreen, scrollContainerStyle]}>
+        <SafeAreaView style={styles.screen} />
         {children}
       </ScrollView>
     );
   } else {
+    console.log('Safe View');
     return (
-      <SafeAreaView style={[styles.scrollScreen, scrollContainerStyle]}>
+      <SafeAreaView style={[styles.screen, scrollContainerStyle]}>
         {children}
       </SafeAreaView>
     );

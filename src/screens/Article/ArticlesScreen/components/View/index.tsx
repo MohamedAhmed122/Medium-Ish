@@ -1,23 +1,26 @@
 import React from 'react';
 import {FlatList} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {Article, Author} from '@GraphQL/requests';
 
-import {AppLoading, Screen} from '@Commons/index';
-import {ArticleCard, ArticleCardProps} from '@Components/ArticleCard';
+import {AppLoading} from '@Commons/index';
+import {ArticleCard} from '@Components/ArticleCard';
 import {FeaturedFlatList} from '@Components/FeaturedFlatList';
-import {UserList, UserListProps} from '../UserList';
+import {UserList} from '../UserList';
 
 import styles from './styles';
 
 interface ArticlesViewProps {
-  articleProps: Omit<ArticleCardProps, 'item'>;
-  userListProps: Omit<UserListProps, 'item'>;
-  articleLoading: boolean;
-  authorLoading: boolean;
-  authors: {authors: Author[]};
-  articles: {articles: Article[]};
   onRefresh(): void;
+  articleLoading: boolean;
+  authors: {authors: Author[]};
+  authorLoading: boolean;
+  handleNavigateToProfile(id: string, username: string): void;
+  articles: {articles: Article[]};
+  handleNavigate(id: string): void;
+  handleWatchListItems(article: Article): void;
+  likeOrDisLikeArticle(variables: any): any;
 }
 
 export const ArticlesView: React.FC<ArticlesViewProps> = ({
@@ -25,39 +28,45 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
   articleLoading,
   authors,
   authorLoading,
+  handleNavigateToProfile,
   articles,
-  articleProps,
-  userListProps,
+  handleNavigate,
+  handleWatchListItems,
+  likeOrDisLikeArticle,
 }) => {
   return (
-    <>
-      <Screen>
-        <FlatList
-          onRefresh={onRefresh}
-          refreshing={articleLoading}
-          ListHeaderComponentStyle={styles.header}
-          ListHeaderComponent={() => (
-            <>
-              {authors && (
-                <FeaturedFlatList
-                  loading={authorLoading}
-                  showsHorizontalScrollIndicator={false}
-                  horizontal
-                  keyExtractor={item => item.id}
-                  data={authors.authors}
-                  renderItem={({item}) => (
-                    <UserList item={item} {...userListProps} />
-                  )}
-                  ListEmptyComponent={AppLoading}
-                />
-              )}
-            </>
-          )}
-          data={articles.articles}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => <ArticleCard item={item} {...articleProps} />}
-        />
-      </Screen>
-    </>
+    <SafeAreaView style={styles.screen}>
+      <FlatList
+        onRefresh={onRefresh}
+        refreshing={articleLoading}
+        ListHeaderComponent={() => (
+          <>
+            {authors && (
+              <FeaturedFlatList
+                loading={authorLoading}
+                showsHorizontalScrollIndicator={false}
+                horizontal
+                keyExtractor={item => item.id}
+                data={authors.authors}
+                renderItem={({item}) => (
+                  <UserList item={item} onPress={handleNavigateToProfile} />
+                )}
+                ListEmptyComponent={AppLoading}
+              />
+            )}
+          </>
+        )}
+        data={articles.articles}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => (
+          <ArticleCard
+            likeOrDisLikeArticle={likeOrDisLikeArticle}
+            item={item}
+            handleNavigate={handleNavigate}
+            handleWatchListItems={handleWatchListItems}
+          />
+        )}
+      />
+    </SafeAreaView>
   );
 };

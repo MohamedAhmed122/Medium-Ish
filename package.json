@@ -22,6 +22,7 @@
     "apollo3-cache-persist": "^0.13.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "compose-function": "^3.0.3",
+    "dayjs": "^1.10.7",
     "formik": "^2.2.9",
     "graphql": "^16.0.1",
     "react": "17.0.2",

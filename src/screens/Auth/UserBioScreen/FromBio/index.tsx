@@ -1,13 +1,17 @@
 import React from 'react';
+
+import {initialFormValues} from '@Types/Form';
+
 import {
   AppForm,
   AppInputField,
   AppPickerField,
   AppSubmitButton,
 } from '@Components/Form';
+
+import t from '@Lib/i18n';
 import {colors} from '@Assets/data';
 import styles from './styles';
-import {initialFormValues} from '@Types/Form';
 
 interface Props {
   handleSubmit(values: initialFormValues): void;
@@ -22,16 +26,20 @@ export const FromBio: React.FC<Props> = ({handleSubmit, loading}) => {
       validationSchema={null}>
       <AppInputField
         name="bio"
-        placeholder="Bio"
+        placeholder={t.inputs.bio}
         inputContainerStyle={styles.textarea}
       />
       <AppPickerField
         name="color"
         items={colors}
-        placeholder="Favorite Color"
+        placeholder={t.inputs.color}
         inverted={true}
       />
-      <AppSubmitButton title="Submit" style={styles.button} loading={loading} />
+      <AppSubmitButton
+        title={t.submit}
+        style={styles.button}
+        loading={loading}
+      />
     </AppForm>
   );
 };

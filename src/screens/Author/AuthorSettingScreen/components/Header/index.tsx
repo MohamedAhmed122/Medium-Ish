@@ -5,6 +5,7 @@ import {AuthorDetail} from '@GraphQL/requests';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {AppText} from '@Commons/AppText';
 import {UserImage} from '@Components/UserImage';
+import t from '@Lib/i18n';
 import styles from './styles';
 
 export interface HeaderProps {
@@ -22,7 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <View style={[styles.container, {backgroundColor: color.hex}]}>
       <AppText fontFamily="Roboto-Medium" style={styles.profileText}>
-        PROFILE
+        {t.profileText}
       </AppText>
       <View style={styles.profileContainer}>
         <View style={styles.iconsContainer}>

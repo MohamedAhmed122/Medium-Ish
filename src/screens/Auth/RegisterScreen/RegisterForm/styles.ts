@@ -1,19 +1,24 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {COLORS} from '@Styles/colors';
+
+const {height} = Dimensions.get('window');
 
 export default StyleSheet.create({
   loginContainer: {
     marginTop: 15,
   },
+
+  container: {
+    height,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
   text: {
-    textAlign: 'center',
+    textAlign: 'right',
     fontSize: 18,
     color: COLORS.secondary,
-  },
-  authText: {
-    textAlign: 'center',
-    marginTop: 10,
-    color: COLORS.primary,
-    fontSize: 17,
+    marginBottom: 120,
+    marginRight: 50,
+    textTransform: 'uppercase',
   },
 });

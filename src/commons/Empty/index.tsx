@@ -2,14 +2,13 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {AppText} from '@Commons/AppText';
 import {COLORS} from '@Styles/colors';
+import t from '@Lib/i18n';
 
 interface Props {
   message?: string;
 }
 
-export const Empty: React.FC<Props> = ({
-  message = 'Unfortunately, The Current List is Empty',
-}) => {
+export const Empty: React.FC<Props> = ({message = t.emptyList}) => {
   return (
     <View style={styles.container}>
       <AppText style={styles.text}>{message}</AppText>

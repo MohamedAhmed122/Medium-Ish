@@ -7,12 +7,12 @@ import {UserImage} from '@Components/UserImage';
 import styles from './styles';
 export interface UserListProps {
   item: Author;
-  onPress(id: string): void;
+  onPress(id: string, username: string): void;
 }
 export const UserList: React.FC<UserListProps> = ({item, onPress}) => {
   return (
     <>
-      <TouchableOpacity onPress={() => onPress(item.id)}>
+      <TouchableOpacity onPress={() => onPress(item.id, item.username)}>
         <View style={[styles.postImgContainer, {borderColor: item.color?.hex}]}>
           <UserImage
             style={styles.img}

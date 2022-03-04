@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import {AppButton} from '@Commons/AppButton';
 
+import t from '@Lib/i18n';
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
 
@@ -15,10 +16,10 @@ export const RequestAuth: React.FC<Props> = ({
 }) => {
   return (
     <View style={styles.modal}>
-      <Text style={styles.text}>You need to be registered</Text>
-      <AppButton title="Login" onPress={handleNavigateToLogin} />
+      <Text style={styles.text}>{t.modalTitle}</Text>
+      <AppButton title={t.login} onPress={handleNavigateToLogin} />
       <AppButton
-        title="Register"
+        title={t.register}
         color={COLORS.secondary}
         onPress={handleNavigateToRegister}
       />

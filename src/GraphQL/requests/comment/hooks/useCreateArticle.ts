@@ -8,8 +8,8 @@ export const useCreateComment = () => {
     {createComment: Comment},
     Comment
   >(CREATE_COMMENT, {
-    onError: ({networkError}) => {
-      errorHandler(networkError);
+    onError: err => {
+      errorHandler(err);
     },
   });
 

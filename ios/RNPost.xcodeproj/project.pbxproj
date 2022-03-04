@@ -19,9 +19,9 @@
 		3D3656D3738B437B9ACFFFEB /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D73A15E9189743EC9E6FD850 /* Roboto-LightItalic.ttf */; };
 		52FA403108414E0DB7F02F50 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4839A2A97CF46E2B2117C55 /* Roboto-Medium.ttf */; };
 		5C8C12672708409F99C0A220 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E221393B215F47E597A72698 /* Roboto-Bold.ttf */; };
-		6172F2D35A4C3AA820D92908 /* libPods-RNPost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-RNPost.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-RNPost-RNPostTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-RNPost-RNPostTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8914A31BE1C425182716A0EE /* libPods-RNPost.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-RNPost.a */; };
 		92EAD39223324EC4A0D77A93 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEAACDCA3D94406887EB87F9 /* Roboto-Italic.ttf */; };
 		A43B84F49218481EB1DDFEDF /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7C1C0653F454DF6854D7C88 /* Roboto-Regular.ttf */; };
 		EA276B1935134FAB9047D2E8 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 552BDBC51E074D64B6A6DE8F /* Roboto-MediumItalic.ttf */; };
@@ -83,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6172F2D35A4C3AA820D92908 /* libPods-RNPost.a in Frameworks */,
+				8914A31BE1C425182716A0EE /* libPods-RNPost.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,7 +616,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -682,7 +682,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

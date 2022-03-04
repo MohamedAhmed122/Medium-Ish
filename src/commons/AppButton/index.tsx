@@ -30,7 +30,10 @@ export const AppButton: React.FC<AppButtonProps> = ({
       disabled={loading || disabled}
       style={[
         styles.container,
-        {backgroundColor: color, opacity: loading ? 0.6 : 1},
+        {
+          backgroundColor: disabled ? COLORS.quicksilver : color,
+          opacity: loading ? 0.6 : 1,
+        },
         style,
       ]}>
       <Choose>
