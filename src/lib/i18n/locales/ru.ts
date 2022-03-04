@@ -36,4 +36,8 @@ export default {
     registerBtn: 'регистр',
     inspire: 'Вдохновлен Medium',
   },
+  profile: {
+    myArticle: 'My Articles',
+    myColor: 'My Color',
+  },
 };
