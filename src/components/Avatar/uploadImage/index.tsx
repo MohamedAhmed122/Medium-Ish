@@ -7,6 +7,7 @@ import {Image as ImagePickerProps} from 'react-native-image-crop-picker';
 
 import {COLORS} from '@Styles/colors';
 import styles from './styles';
+import t from '@Lib/i18n';
 
 export interface UploadImageProps {
   handlePickImage(): void;
@@ -34,7 +35,7 @@ export const UploadImage: React.FC<UploadImageProps> = ({
       {/* <Image source={{uri: ''}} style={styles.placeholder} /> */}
       <View style={styles.buttonContainer}>
         <AppButton
-          title="processed"
+          title={t.processed}
           onPress={handleProcessed}
           color={COLORS.secondary}
           loading={loading}

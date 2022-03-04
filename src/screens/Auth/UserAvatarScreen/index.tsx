@@ -20,6 +20,7 @@ import {Screen} from '@Commons/Screen';
 import {Header} from '@Components/Header';
 import {COLORS} from '@Styles/colors';
 import {useUpdateAvatar, useUploadImage} from '@GraphQL/requests';
+import t from '@Lib/i18n';
 
 interface AvatarScreenProps {
   navigation: StackNavigationProp<AuthParamList, AuthParams.UserAvatar>;
@@ -80,7 +81,7 @@ export const AvatarScreen: React.FC<AvatarScreenProps> = ({navigation}) => {
   return (
     <Screen scroll>
       <Header
-        title="Choose Avatar"
+        title={t.chooseAvatar}
         color={COLORS.primary}
         handleGoBack={handleGoBack}
       />
